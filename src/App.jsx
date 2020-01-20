@@ -1,23 +1,28 @@
-import React from "react";
-import "./App.css";
+// Dependencies
+import React, { Component } from 'react';
+import {Provider} from 'react-redux';
+// Internals
+import './App.css';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import store from './store';
+
 import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
+import AboutUs from "./pages/admin/AboutUs";
 import Contact from "./pages/Contact";
-import AllProducts from "./pages/AllProducts";
-import Product from "./pages/Product";
+import AllProducts from "./pages/products/AllProducts";
+import Product from "./pages/products/Product";
 import CartPage from "./pages/CartPage";
 import Payment from "./pages/Payment";
 import ThankYou from "./pages/ThankYou";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 import EditListing from "./pages/EditListing";
 import NewListing from "./pages/NewListing";
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <BrowserRouter>
         <Switch>
           <Route path="/" component={Home} exact={true} />
@@ -34,7 +39,7 @@ function App() {
           <Route path="/new_listing" component={NewListing} />
         </Switch>
       </BrowserRouter>
-    </div>
+    </Provider>
   );
 }
 
