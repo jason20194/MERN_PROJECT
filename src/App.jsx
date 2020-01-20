@@ -3,6 +3,8 @@ import "./App.css";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import {Provider} from 'react-redux';
+
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
@@ -14,10 +16,11 @@ import ThankYou from "./pages/ThankYou";
 import AdminDashboard from "./pages/AdminDashboard";
 import EditListing from "./pages/EditListing";
 import NewListing from "./pages/NewListing";
+import store from './store';
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <BrowserRouter>
         <Switch>
           <Route path="/" component={Home} exact={true} />
@@ -34,7 +37,7 @@ function App() {
           <Route path="/new_listing" component={NewListing} />
         </Switch>
       </BrowserRouter>
-    </div>
+    </Provider>
   );
 }
 
