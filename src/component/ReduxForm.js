@@ -1,6 +1,28 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form';
 
+const validate = (values) => {
+    let errors = [];
+  
+    if(!values.productTitle)
+    {
+      errors.productTitle="This is a required field"
+    }
+
+    if(!values.productPrice)
+    {
+        errors.productPrice="This is a required field"
+    }
+
+    if(!values.productAvailability)
+    {
+        errors.productAvailability="This is a required field"
+    }
+  
+    
+    return errors;
+    };
+
 class ProductForm extends Component {
 
     renderDropdown = () => {
@@ -12,33 +34,52 @@ class ProductForm extends Component {
         )
     }
 
+    renderField = ({input,type,label,meta:{touched,error,warning}}) => {
+        return(
+          <div>
+            <label><h2>{label}:</h2></label>
+            <input {...input} type={type} className="myInput" />
+            {touched && 
+            (error && <div style={{color: "red"}}>{error}</div>)}
+          </div>
+        )
+      }
+    renderMessageField = ({input,type,label,meta:{touched,error,warning}}) => {
+        return(
+          <div>
+            <label><h2>{label}:</h2></label>
+            <textarea rows="10" cols="56" {...input} type={type} className="myTextArea" />
+            {touched && 
+            (error && <div style={{color: "red"}}>{error}</div>)}
+          </div>
+        )
+      }
+    
+
     render() {
         return (
             <form onSubmit={this.props.handleSubmit}>
             <div>
-                <label htmlFor="productTitle">Title:</label>
-                <Field name ="productTitle" component="input" type="text"/>
+                <Field name ="productTitle" component={this.renderField} type="text" label="Title"/>
             </div>
             <div>
-                <label htmlFor="productPrice">Price:</label>
-                <Field name="productPrice" component="input" type="integer"/>
+                <Field name="productPrice" component={this.renderField} type="integer" label="Price"/>
             </div>
             <div>
-                <label htmlFor="productAvailability">Availability:</label>
-                <Field name="productAvailability" component={this.renderDropdown} type="text"/>
+                <Field name="productAvailability" component={this.renderDropdown} type="text" label="Availability"/>
             </div>
             <div>
-                <label htmlFor="productDescription">Description:</label>
                 <Field name="productDescription"
-                component="textarea"
-                type="text"/>
+                component={this.renderMessageField}
+                type="textarea" label="Description"/>
             </div>
             <button type="choose-picture">Choose File</button>
             <button type="create-product-listing">Create 
             Product Listing</button>
+            <button onClick={this.props.reset}>Reset</button>
           </form>)
     }
 }
 
 // Decorate the form component
-export default reduxForm({form: 'product'})(ProductForm)
+export default reduxForm({form: 'product',validate})(ProductForm)
