@@ -1,5 +1,7 @@
 // Dependencies
 import React, { Component } from 'react';
+import {Form, Formgroup, Input, Label, Button} from 'reactstrap';
+import axios from 'axios'
 import {Provider} from 'react-redux';
 // Internals
 import './App.css';

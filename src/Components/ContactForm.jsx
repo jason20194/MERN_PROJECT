@@ -3,76 +3,70 @@ import React, { Component } from 'react';
 
 import {Field,reduxForm} from 'redux-form';
 
-import './Contact.css'
-// Externals
-// import Field from './Field';
-// import Button from './Button';
+import {Form, FormGroup, Input, Label, Button} from 'reactstrap' 
 
-const validate = (values) => {
-  let errors = [];
-
-  if(!values.name)
-  {
-    errors.name="This is a required field"
-  }
-
-  if(!values.email)
-  {
-    errors.email="This is a required field"
-  }
-
-  if(!values.message)
-  {
-    errors.message="This is a required field"
-  }
-
-  return errors;
-  };
+import axios from 'axios'
 
 class ContactForm extends Component {
-
-  renderField = ({input,type,label,meta:{touched,error,warning}}) => {
-    return(
-      <div>
-        <label><h2>{label}:</h2></label>
-        <input {...input} type={type} className="myInput" />
-        {touched && 
-        (error && <div style={{color: "red"}}>{error}</div>)}
-      </div>
-    )
+  constructor(){
+    super()
+    
+    this.state = {
+      name: '',
+      email: '',
+      message: '',
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
-
-  renderMessageField = ({input,type,label,meta:{touched,error,warning}}) => {
-    return(
-      <div>
-        <label><h2>{label}:</h2></label>
-        <textarea rows="10" cols="56" {...input} type={type} className="myTextArea" />
-        {touched && 
-        (error && <div style={{color: "red"}}>{error}</div>)}
-      </div>
-    )
+  
+  handleChange = e => {
+    this.setState({[e.target.name]: e.target.value })
   }
+  
+  async handleSubmit(e) {
+    e.preventDefault()
 
+  const {name, email, message} = this.state
 
+    const form = await axios.post('/api/form', {
+      name, 
+      email,
+      message
+    })
 
+  }
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit} className="myContactForm">
-        {/* Name field */}
-        <Field
-          label="Full Name" name="name" component={this.renderField} type="text"/>
-      
-        {/* Email field */}
-        <Field
-          label="Email" name="email" component={this.renderField} type="text" />
-        {/* Message textarea */}
-        <Field
-          label="Message" name="message" component={this.renderMessageField} type="text"/>
-        {/* Submit button */}
-        <button style={{width:80,height:30,borderRadius:10,background:"white",fontSize:"20px"}} type="submit">Submit</button>
-      </form>
-    );
+      <Form onSubmit={this.handleSubmit} style={{width:'600px'}}>
+        <FormGroup>
+          <Label for="Name">Name</Label>
+          <Input
+          type="text"
+          name="name"
+          onChange={this.handleChange}/>
+          </FormGroup>
+          <FormGroup>
+          <Label for="Email">Email</Label>
+          <Input
+          type="email"
+          name="email"
+          onChange={this.handleChange}/>
+          </FormGroup>
+          <FormGroup>
+          <Label for="Message">Message</Label>
+          <Input
+          type="textarea"
+          name="message"
+          onChange={this.handleChange}/>
+          </FormGroup>
+
+      <Button>Submit</Button>
+
+      </Form>
+
+    )
   }
 }
 
-export default reduxForm({form:'contact',validate})(ContactForm);
+export default ContactForm;
