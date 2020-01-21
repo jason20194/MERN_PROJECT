@@ -14,20 +14,17 @@ const validate = (values) => {
         errors.productPrice="This is a required field"
     }
 
-    if(!values.productAvailability)
-    {
-        errors.productAvailability="This is a required field"
-    }
+    
   
     
     return errors;
     };
 
-class ProductForm extends Component {
+class ListingForm extends Component {
 
     renderDropdown = () => {
         return(
-            <select name="cars">
+            <select name="productAvailability">
               <option value="In Stock">In Stock</option>
               <option value="Out of Stock">Out of Stock</option>
             </select>
@@ -54,7 +51,7 @@ class ProductForm extends Component {
           </div>
         )
       }
-    
+  
 
     render() {
         return (
@@ -63,23 +60,24 @@ class ProductForm extends Component {
                 <Field name ="productTitle" component={this.renderField} type="text" label="Title"/>
             </div>
             <div>
-                <Field name="productPrice" component={this.renderField} type="integer" label="Price"/>
+                <Field name="productPrice" component={this.renderField} type="number" label="Price"/>
             </div>
             <div>
+                <label>Availability:</label>
                 <Field name="productAvailability" component={this.renderDropdown} type="text" label="Availability"/>
             </div>
             <div>
+             
                 <Field name="productDescription"
                 component={this.renderMessageField}
                 type="textarea" label="Description"/>
             </div>
-            <button type="choose-picture">Choose File</button>
-            <button type="create-product-listing">Create 
-            Product Listing</button>
+            
+            <input type="submit" value="Create Product Listing" />
             <button onClick={this.props.reset}>Reset</button>
           </form>)
     }
 }
 
 // Decorate the form component
-export default reduxForm({form: 'product',validate})(ProductForm)
+export default reduxForm({form: 'product',validate})(ListingForm)
