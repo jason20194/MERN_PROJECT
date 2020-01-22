@@ -33,7 +33,7 @@ function App() {
           <Route path="payment" component={Payment} />
           <Route path="/thank_you" component={ThankYou} />
           <Route path="/admin" component={AdminDashboard} />
-          <Route path="/edit_lising/:id" component={EditListing} />
+          <Route path="/edit_listing/:id" component={EditListing} />
           <Route path="/thank_you" component={ThankYou} />
           <Route path="/new_listing" component={NewListing} />
         </Switch>

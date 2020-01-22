@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import MyForm from '../component/ReduxForm'
+import axios from 'axios';
 
 class NewListing extends Component {
   
-    submit = (values) => {
+    submit = async (values) => {
      
       console.log(values)
+      const res = await axios.post('http://localhost:5000/listings/new',
+        axios.defaults.values
+      )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
       
     }
 

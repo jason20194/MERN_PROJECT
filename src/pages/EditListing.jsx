@@ -1,13 +1,20 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import EditForm from '../component/EditForm'
 
 class EditListing extends Component {
+
+  submit = (values) => {
+     
+    console.log(values)
+    
+  }
+
   render() {
     return (
-      <div>
-        <h1>Hello from EditListing page</h1>
-      </div>
+      <EditForm onSubmit={this.submit}/>
     );
   }
 }
 
-export default EditListing;
+export default EditListing
+

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form';
 
 
+
 const validate = (values) => {
     let errors = [];
   
@@ -21,7 +22,7 @@ const validate = (values) => {
     return errors;
     };
 
-class ListingForm extends Component {
+class EditForm extends Component {
 
     // renderDropdown = () => {
     //     return(
@@ -75,7 +76,7 @@ class ListingForm extends Component {
                 type="textarea" label="Description"/>
             </div>
             
-            <input type="submit" value="Create Product Listing" />
+            <input type="submit" value="Save Changes" />
             <button onClick={this.props.reset}>Reset</button>
 
   
@@ -83,5 +84,4 @@ class ListingForm extends Component {
     }
 }
 
-// Decorate the form component
-export default reduxForm({form: 'product',validate})(ListingForm)
+export default reduxForm({form: 'EditForm',validate})(EditForm)
