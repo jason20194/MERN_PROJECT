@@ -5,18 +5,16 @@ import { Field, reduxForm } from 'redux-form';
 const validate = (values) => {
     let errors = [];
   
-    if(!values.productTitle)
+    if(!values.title)
     {
-      errors.productTitle="This is a required field"
+      errors.title="This is a required field"
     }
 
-    if(!values.productPrice)
+    if(!values.price)
     {
-        errors.productPrice="This is a required field"
+        errors.price="This is a required field"
     }
-
-
-  
+    
     
     return errors;
     };
@@ -58,19 +56,19 @@ class ListingForm extends Component {
         return (
             <form onSubmit={this.props.handleSubmit}>
             <div>
-                <Field name ="productTitle" component={this.renderField} type="text" label="Title"/>
+                <Field name ="title" component={this.renderField} type="text" label="Title"/>
             </div>
             <div>
-                <Field name="productPrice" component={this.renderField} type="number" label="Price"/>
+                <Field name="price" component={this.renderField} type="number" label="Price"/>
             </div>
             <div>
-            In Stock<Field name="productAvailability" component="input" type="checkbox">
+            In Stock<Field name="available" component="input" type="checkbox">
             
           </Field>
             </div>
             <div>
              
-                <Field name="productDescription"
+                <Field name="description"
                 component={this.renderMessageField}
                 type="textarea" label="Description"/>
             </div>

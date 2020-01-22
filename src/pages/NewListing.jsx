@@ -8,7 +8,7 @@ class NewListing extends Component {
      
       console.log(values)
       const res = await axios.post('http://localhost:5000/listings/new',
-        axios.defaults.values
+        values
       )
       .then(function (response) {
         console.log(response);
