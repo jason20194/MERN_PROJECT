@@ -28,12 +28,16 @@ class ContactForm extends Component {
     e.preventDefault()
 
   const {name, email, message} = this.state
-
-    const form = await axios.post('/api/form', {
+    try{    
+      const form = await axios.post('/api/form', {
       name, 
       email,
       message
-    })
+    })}
+    catch (err){
+      console.log(err)
+    }
+
 
   }
   render() {
