@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
 
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
