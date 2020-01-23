@@ -1,7 +1,7 @@
 // could try index.js
 import { combineReducers } from "redux";
-// import postReducer from './postReducer';
+import cartReducer from "./cartReducer";
 
 export default combineReducers({
-  // posts: postReducer
+  cart: cartReducer
 });
