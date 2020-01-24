@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RemoveFromCart from "../components/RemoveFromCart";
+import RemoveFromCart from "../Components/RemoveFromCart";
 
 class CartPage extends Component {
   state = {

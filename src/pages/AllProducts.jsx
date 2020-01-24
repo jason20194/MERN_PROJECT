@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import AddToCart from "../components/AddToCart";
+import AddToCart from "../Components/AddToCart";
 
 class AllProducts extends Component {
   state = {
