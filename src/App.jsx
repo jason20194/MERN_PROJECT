@@ -1,15 +1,14 @@
 // Dependencies
-import React, { Component } from 'react';
-import {Form, Formgroup, Input, Label, Button} from 'reactstrap';
-import axios from 'axios'
-import {Provider} from 'react-redux';
+import React, { Component } from "react";
+import { Form, Formgroup, Input, Label, Button } from "reactstrap";
+import axios from "axios";
+import { Provider } from "react-redux";
 // Internals
-import './App.css';
+import "./App.css";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
 
-import store from './store';
+import store from "./store";
 
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
@@ -22,8 +21,6 @@ import ThankYou from "./pages/ThankYou";
 import AdminDashboard from "./pages/AdminDashboard";
 import EditListing from "./pages/EditListing";
 import NewListing from "./pages/NewListing";
-
-import store from "./store";
 
 function App() {
   return (
