@@ -11,14 +11,14 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import store from './store';
 
 import Home from "./pages/Home";
-import AboutUs from "./pages/admin/AboutUs";
+import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
-import AllProducts from "./pages/products/AllProducts";
-import Product from "./pages/products/Product";
+import AllProducts from "./pages/AllProducts";
+import Product from "./pages/Product";
 import CartPage from "./pages/CartPage";
 import Payment from "./pages/Payment";
 import ThankYou from "./pages/ThankYou";
-import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
 import EditListing from "./pages/EditListing";
 import NewListing from "./pages/NewListing";
 
