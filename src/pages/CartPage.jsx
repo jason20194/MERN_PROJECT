@@ -1,13 +1,34 @@
 import React, { Component } from "react";
-import Cart from "../components/Cart";
+import RemoveFromCart from "../components/RemoveFromCart";
 
 class CartPage extends Component {
+  state = {
+    data: null
+  };
+
+  componentDidMount() {
+    if (localStorage.getItem("products")) {
+      let products = JSON.parse(localStorage.getItem("products"));
+      // console.log(products);
+      this.setState({ data: products });
+    }
+  }
+
   render() {
-    return (
-      <div>
-        <Cart />
-      </div>
-    );
+    const { data } = this.state;
+    return data
+      ? data.map((product, index) => {
+          return (
+            <div key={index} className="products-on-cart">
+              <h1>titile : {product.title}</h1>
+              <p>id: {product._id}</p>
+              <p>description:{product.description}</p>
+              <p>${product.price}</p>
+              <RemoveFromCart product={product} />
+            </div>
+          );
+        })
+      : null;
   }
 }
 

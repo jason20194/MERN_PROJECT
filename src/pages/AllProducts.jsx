@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Cart from "../components/Cart";
+import AddToCart from "../components/AddToCart";
 
 class AllProducts extends Component {
   state = {
@@ -27,7 +27,7 @@ class AllProducts extends Component {
               <p>id: {product._id}</p>
               <p>description:{product.description}</p>
               <p>${product.price}</p>
-              <Cart product={product} />
+              <AddToCart product={product} />
             </div>
           );
         })

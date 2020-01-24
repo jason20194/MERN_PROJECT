@@ -1,9 +1,5 @@
 import { ADD_ITEM, REMOVE_ITEM, ADD_INITIAL_CART } from "../actions/types";
 
-// how will reducer get access to the state and what structure should the data be in?
-
-// these are the sample products to show that a state can update and add new products in it
-
 let initialState = { products: [] };
 
 if (localStorage.getItem("products")) {
@@ -20,14 +16,31 @@ if (localStorage.getItem("products")) {
 
 export default function(state = initialState, action) {
   let newState = {};
+  let productsArray = [...state.products];
 
   switch (action.type) {
     case ADD_ITEM:
-      let productsArray = [...state.products];
       productsArray.push(action.data);
       newState = { products: productsArray };
 
       localStorage.setItem("products", JSON.stringify(productsArray));
+      break;
+    case REMOVE_ITEM:
+      const filteredArray = productsArray.filter(element => {
+        console.log(element._id, action.data._id);
+        if (element._id === action.data._id) {
+          return false;
+        }
+        return true;
+      });
+
+      console.log(filteredArray);
+
+      newState = { products: filteredArray };
+
+      console.log(newState);
+
+      localStorage.setItem("products", JSON.stringify(filteredArray));
       break;
 
     default:
@@ -36,3 +49,7 @@ export default function(state = initialState, action) {
 
   return newState;
 }
+
+// if (element._id === action.data._id) {
+//   return element;
+// }

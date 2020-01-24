@@ -1,4 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM, ADD_INITIAL_CART } from "./types";
+import { ADD_ITEM, REMOVE_ITEM } from "./types";
 
 // the functions created here will be exported to the component that needs to use that function. those function will be adding a item and removing item from the cart
 
@@ -10,12 +10,11 @@ export const addItem = item => {
   };
 };
 
-export const addInitialCart = items => {
+// are we going to make the api calls here or in reducers???
+
+export const removeItem = item => {
   return {
-    type: ADD_INITIAL_CART,
-    data: items
+    type: REMOVE_ITEM,
+    data: item
   };
 };
-
-// are we going to make the api calls here or in reducers???
-export const removeItem = () => {};

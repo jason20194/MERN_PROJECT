@@ -1,25 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addItem, removeItem, addInitialCart } from "../actions/cartAction";
-import items from "../data/items";
+import { addItem } from "../actions/cartAction";
+// import items from "../data/items";
 
-class Cart extends Component {
-  state = items;
+class AddToCart extends Component {
+  // state = items;
 
-  componentDidMount() {
-    this.props.addInitialCart(this.state);
-    // console.log(this.props.product);
-  }
+  // componentDidMount() {
+  //   this.props.addInitialCart(this.state);
+  //   // console.log(this.props.product);
+  // }
 
   render() {
     return (
       <button
         style={{
-          padding: "20px"
+          padding: "20px",
+          color: "green"
         }}
         onClick={() => this.props.addItem(this.props.product)}
       >
-        Click me
+        Add to cart
       </button>
     );
   }
@@ -35,9 +36,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchProps = {
-  addItem,
-  removeItem,
-  addInitialCart
+  addItem
 };
 
-export default connect(mapStateToProps, mapDispatchProps)(Cart);
+export default connect(mapStateToProps, mapDispatchProps)(AddToCart);
