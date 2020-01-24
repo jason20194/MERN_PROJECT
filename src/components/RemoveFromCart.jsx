@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { removeItem } from "../actions/cartAction";
 // import items from "../data/items";
 
 class RemoveFromCart extends Component {
@@ -11,6 +9,8 @@ class RemoveFromCart extends Component {
   //   // console.log(this.props.product);
   // }
 
+  componentDidUpdate(prevProps, prevState) {}
+
   render() {
     return (
       <button
@@ -18,7 +18,7 @@ class RemoveFromCart extends Component {
           padding: "20px",
           color: "red"
         }}
-        onClick={() => this.props.removeItem(this.props.product)}
+        onClick={() => this.props.itemRemovedFromCart(this.props.product)}
       >
         Remove from cart
       </button>
@@ -26,15 +26,4 @@ class RemoveFromCart extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    // its stored in cart because we have used cart in combine reducers function in reducers index
-    products: state.cart
-  };
-};
-
-const mapDispatchProps = {
-  removeItem
-};
-
-export default connect(mapStateToProps, mapDispatchProps)(RemoveFromCart);
+export default RemoveFromCart;

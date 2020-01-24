@@ -1,22 +1,21 @@
-import { ADD_ITEM, REMOVE_ITEM, ADD_INITIAL_CART } from "../actions/types";
+import { ADD_ITEM, REMOVE_ITEM } from "../actions/types";
 
 let initialState = { products: [] };
 
 if (localStorage.getItem("products")) {
   const initialCart = JSON.parse(localStorage.getItem("products"));
+  console.log(initialCart);
   initialState = { products: initialCart };
 }
 
-// try this one as well
-// if (localStorage.products) {
-//   const initialCart = JSON.parse(localStorage.products);
-//   const initialState = { products: initialCart };
-//   console.log(initialState.products);
-// }
-
 export default function(state = initialState, action) {
   let newState = {};
-  let productsArray = [...state.products];
+  let productsArray;
+  if ([...state.products].length === 0) {
+    productsArray = [];
+  } else {
+    productsArray = [...state.products];
+  }
 
   switch (action.type) {
     case ADD_ITEM:
@@ -27,18 +26,13 @@ export default function(state = initialState, action) {
       break;
     case REMOVE_ITEM:
       const filteredArray = productsArray.filter(element => {
-        console.log(element._id, action.data._id);
         if (element._id === action.data._id) {
           return false;
         }
         return true;
       });
 
-      console.log(filteredArray);
-
       newState = { products: filteredArray };
-
-      console.log(newState);
 
       localStorage.setItem("products", JSON.stringify(filteredArray));
       break;
@@ -49,7 +43,3 @@ export default function(state = initialState, action) {
 
   return newState;
 }
-
-// if (element._id === action.data._id) {
-//   return element;
-// }

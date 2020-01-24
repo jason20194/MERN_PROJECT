@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import RemoveFromCart from "../Components/RemoveFromCart";
+import { connect } from "react-redux";
+import { removeItem } from "../actions/cartAction";
 
 class CartPage extends Component {
-  state = {
-    data: null
+  itemRemovedFromCart = item => {
+    this.props.removeItem(item);
   };
 
-  componentDidMount() {
-    if (localStorage.getItem("products")) {
-      let products = JSON.parse(localStorage.getItem("products"));
-      // console.log(products);
-      this.setState({ data: products });
-    }
-  }
-
   render() {
-    const { data } = this.state;
+    const data = this.props.products;
     return data
       ? data.map((product, index) => {
           return (
@@ -24,7 +18,10 @@ class CartPage extends Component {
               <p>id: {product._id}</p>
               <p>description:{product.description}</p>
               <p>${product.price}</p>
-              <RemoveFromCart product={product} />
+              <RemoveFromCart
+                product={product}
+                itemRemovedFromCart={this.itemRemovedFromCart}
+              />
             </div>
           );
         })
@@ -32,4 +29,15 @@ class CartPage extends Component {
   }
 }
 
-export default CartPage;
+const mapStateToProps = state => {
+  return {
+    // its stored in cart because we have used cart in combine reducers function in reducers index
+    products: state.cart.products
+  };
+};
+
+const mapDispatchProps = {
+  removeItem
+};
+
+export default connect(mapStateToProps, mapDispatchProps)(CartPage);

@@ -1,7 +1,7 @@
 // Dependencies
 import React, { Component } from "react";
 
-import { Field, reduxForm } from "redux-form";
+// import { Field, reduxForm } from "redux-form";
 
 import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 
