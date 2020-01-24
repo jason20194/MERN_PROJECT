@@ -1,8 +1,15 @@
-import React from "react";
-import "./App.css";
+// Dependencies
+import React, { Component } from 'react';
+import {Form, Formgroup, Input, Label, Button} from 'reactstrap';
+import axios from 'axios'
+import {Provider} from 'react-redux';
+// Internals
+import './App.css';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
+
+import store from './store';
 
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
