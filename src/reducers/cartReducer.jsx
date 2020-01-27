@@ -4,7 +4,7 @@ let initialState = { products: [] };
 
 if (localStorage.getItem("products")) {
   const initialCart = JSON.parse(localStorage.getItem("products"));
-  console.log(initialCart);
+  // console.log(initialCart);
   initialState = { products: initialCart };
 }
 

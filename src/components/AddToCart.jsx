@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addItem } from "../actions/cartAction";
+import Button from "react-bootstrap/Button";
 // import items from "../data/items";
 
 class AddToCart extends Component {
@@ -13,15 +14,15 @@ class AddToCart extends Component {
 
   render() {
     return (
-      <button
+      <Button
         style={{
-          padding: "20px",
-          color: "green"
+          margin: "5px",
+          background: "green"
         }}
         onClick={() => this.props.addItem(this.props.product)}
       >
         Add to cart
-      </button>
+      </Button>
     );
   }
 }
