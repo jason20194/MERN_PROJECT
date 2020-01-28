@@ -4,7 +4,7 @@ import { Elements, StripeProvider } from "react-stripe-elements";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import { removeItem } from "../actions/cartAction";
 import RemoveFromCart from "../Components/RemoveFromCart";
 import CheckoutForm from "../Components/CheckoutForm";
@@ -19,7 +19,7 @@ class CartPage extends Component {
       return a + parseFloat(b.price);
     }, 0);
 
-    console.log(totalCart);
+    // console.log(totalCart);
 
     return (
       <StripeProvider
@@ -30,7 +30,7 @@ pk_test_rUJstJZFyU6dqDejrAXPdZ7I00a5ztU78b"
           {data
             ? data.map((product, index) => {
                 return (
-                  <Container>
+                  <Container key={index}>
                     <Row>
                       <Col sm={8}>
                         <div key={index} className="products-on-cart">
@@ -65,7 +65,7 @@ pk_test_rUJstJZFyU6dqDejrAXPdZ7I00a5ztU78b"
           <hr />
           <h1>React Stripe Elements Example</h1>
           <Elements>
-            <CheckoutForm totalCart={totalCart} />
+            <CheckoutForm cartData={data} cartTotal={totalCart} />
           </Elements>
         </div>
       </StripeProvider>

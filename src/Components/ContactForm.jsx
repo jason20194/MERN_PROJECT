@@ -29,7 +29,7 @@ class ContactForm extends Component {
 
     const { name, email, message } = this.state;
     try {
-      const form = await axios.post("/api/form", {
+      await axios.post("/api/form", {
         name,
         email,
         message

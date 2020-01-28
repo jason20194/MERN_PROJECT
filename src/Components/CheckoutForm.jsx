@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
+const axios = require("axios");
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -8,25 +9,38 @@ class CheckoutForm extends Component {
   }
 
   async submit(ev) {
-    let { token } = await this.props.stripe.createToken({
-      name: "NameMurtaza",
-      addres: "11 hermione terrace"
-    });
+    console.log(ev);
 
-    console.log(this.props);
+    let { token } = await this.props.stripe.createToken(this.props.cartData);
 
-    console.log(token);
+    const paymentData = this.props.cartData;
 
-    // let response = await fetch("/charge", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "text/plain" },
-    //   body: token.id
-    // });
+    // console.log(paymentData);
+    // console.log(token);
 
-    // if (response.ok) console.log("Purchase Complete!");
+    const dataObject = {
+      token: token,
+      payload: paymentData
+    };
+
+    axios
+      .post("/charge", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        tokenId: token.id,
+        payload: dataObject
+      })
+      .then(response => {
+        console.log(response.data);
+
+        // const parsedData = JSON.parse(response.config.data);
+        // console.log(parsedData);
+        // props.history.push("/");
+      })
+      .catch(err => console.log("this is the error" + err));
   }
   render() {
-    console.log(this.props);
+    // console.log(this.props);
 
     return (
       <div
