@@ -1,8 +1,6 @@
-// Dependencies
 import React from "react";
-// import { Form, Formgroup, Input, Label, Button } from "reactstrap";
 import { Provider } from "react-redux";
-// Internals
+
 import "./App.css";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
