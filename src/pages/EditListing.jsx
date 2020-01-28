@@ -9,10 +9,12 @@ class EditListing extends Component {
     loading: true,
   }
   async componentDidMount() {
-    console.log("working");
+    console.log(this.props);
     
     try {
-      const response = await axios.get('http://localhost:5000/listings/5e28de70cd0dbe3421cfb912');
+      const response = await axios.get(`http://localhost:5000/listings/${this.props.match.params.id}`)
+
+    
 
       
       // console.log(this.props.match.params.id)
@@ -28,19 +30,19 @@ class EditListing extends Component {
   }
 
   
-  // submit = async (values) => {
+  submit = async (values) => {
      
     
-  //   console.log(values)
-  //   const res = await axios.get(`http://localhost:5000/listings/${id}`)
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
+    console.log(values)
+    const res = await axios.put(`http://localhost:5000/listings/edit/${this.props.match.params.id}`, values)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
     
-  // }
+  }
     
   
 
