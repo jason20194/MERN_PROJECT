@@ -47,6 +47,20 @@ class EditListing extends Component {
   
 
   render() {
+      let widget = window.cloudinary.createUploadWidget({
+      cloudName: "medicinepower",
+      uploadPreset: "medicinepower" }, 
+      (error, result) => {
+        if (!error && result && result.event === 'success') {
+          console.log('Done! Here is the image info: ', result.info);
+        }
+       })
+  
+    const showWidget = () => {
+      widget.open()
+      console.log(widget)
+    }
+
     if (this.state.loading) {
       return null;
     }
