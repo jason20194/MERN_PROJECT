@@ -75,6 +75,11 @@ class EditForm extends Component {
                 component={this.renderMessageField}
                 type="textarea" label="Description"/>
             </div>
+            <div>
+              <label htmlFor="image">Image</label>
+              <Field name="image" component="input" type="button"
+            onClick={this.props.showWidget}></Field>
+            </div>
             
             <input type="submit" value="Save changes" />
             <button onClick={this.props.reset}>Reset</button>

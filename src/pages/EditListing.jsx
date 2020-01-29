@@ -66,7 +66,12 @@ class EditListing extends Component {
     }
 
     return (
+    <div>
       <EditForm onSubmit={this.submit} initialValues={this.state.data}/>
+      <div id='photo-form-container'>
+          <button onClick={showWidget}>Upload Photo</button>
+        </div>
+    </div>
     );
   }
 }
