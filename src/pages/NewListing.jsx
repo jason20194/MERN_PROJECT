@@ -1,23 +1,19 @@
-import React, { Component } from 'react';
-import MyForm from '../component/ReduxForm'
-import axios from 'axios';
+import React, { Component } from "react";
+import MyForm from "../Components/ReduxForm";
+import axios from "axios";
 
 class NewListing extends Component {
-
-    submit = async (values) => {
-     
-      console.log(values)
-      await axios.post('http://localhost:5000/listings/new',
-        values
-      )
-      .then(function (response) {
+  submit = async values => {
+    console.log(values);
+    await axios
+      .post("http://localhost:5000/listings/new", values)
+      .then(function(response) {
         console.log(response);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
-      
-    }
+  };
 
   // checkUploadResult = (resultEvent) => {
   //   if (resultEvent.event === 'success') {
@@ -28,28 +24,29 @@ class NewListing extends Component {
   //       .then(this.props.history.push(`/profile`))
   //   }
   // }
-  
 
-  
   render() {
-    let widget = window.cloudinary.createUploadWidget({
-      cloudName: "medicinepower",
-      uploadPreset: "medicinepower" }, 
+    let widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: "medicinepower",
+        uploadPreset: "medicinepower"
+      },
       (error, result) => {
-        if (!error && result && result.event === 'success') {
-          console.log('Done! Here is the image info: ', result.info);
+        if (!error && result && result.event === "success") {
+          console.log("Done! Here is the image info: ", result.info);
         }
-       })
-  
+      }
+    );
+
     const showWidget = () => {
-      widget.open()
-      console.log(widget)
-    }
+      widget.open();
+      console.log(widget);
+    };
 
     return (
       <div>
-        <MyForm onSubmit={this.submit}/>
-        <div id='photo-form-container'>
+        <MyForm onSubmit={this.submit} />
+        <div id="photo-form-container">
           <button onClick={showWidget}>Upload Photo</button>
         </div>
       </div>
@@ -57,6 +54,4 @@ class NewListing extends Component {
   }
 }
 
-export default NewListing
-
-
+export default NewListing;
