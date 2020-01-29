@@ -29,9 +29,9 @@ function App() {
             <Route path="/about_us" component={AboutUs} />
             <Route path="/contact" component={Contact} />
             <Route path="/all_products" component={AllProducts} />
-            <Route path="/product/:id" component={Product} />
+            <Route path="/listing/:id" component={Product} />
             <Route path="/cart" component={CartPage} />
-            <Route path="payment" component={Payment} />
+            <Route path="/payment" component={Payment} />
             <Route path="/thank_you" component={ThankYou} />
             <Route path="/admin" component={AdminDashboard} />
             <Route path="/edit_listing/:id" component={EditListing} />
