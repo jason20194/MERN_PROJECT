@@ -19,9 +19,40 @@ class NewListing extends Component {
       
     }
 
+  // checkUploadResult = (resultEvent) => {
+  //   if (resultEvent.event === 'success') {
+  //     console.log(this.props.currentUser.id,
+  //       {
+  //         caption: '',
+  //         url: resultEvent.info.secure_url})
+  //       .then(this.props.history.push(`/profile`))
+  //   }
+  // }
+  
+
+  
   render() {
+    let widget = window.cloudinary.createUploadWidget({
+      cloudName: "medicinepower",
+      uploadPreset: "medicinepower" }, 
+      (error, result) => {
+        if (!error && result && result.event === 'success') {
+          console.log('Done! Here is the image info: ', result.info);
+        }
+       })
+  
+    const showWidget = () => {
+      widget.open()
+      console.log(widget)
+    }
+
     return (
-      <MyForm onSubmit={this.submit}/>
+      <div>
+        <MyForm onSubmit={this.submit}/>
+        <div id='photo-form-container'>
+          <button onClick={showWidget}>Upload Photo</button>
+        </div>
+      </div>
     );
   }
 }
