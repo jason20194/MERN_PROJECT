@@ -10,8 +10,18 @@ class CheckoutForm extends Component {
 
   async submit(ev) {
     ev.preventDefault();
-    const { target } = ev;
-    console.log(target);
+    const { currentTarget } = ev;
+    const fD = new FormData(currentTarget);
+
+    console.log(fD);
+
+    console.log(currentTarget);
+
+    const cardInfo = {
+      name: fD.get("address")
+    };
+
+    console.log(cardInfo);
 
     let { token } = await this.props.stripe.createToken();
 
