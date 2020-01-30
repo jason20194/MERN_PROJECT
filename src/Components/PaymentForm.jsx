@@ -10,17 +10,27 @@ import CheckoutForm from "../Components/CheckoutForm";
 
 export class PaymentForm extends Component {
   render() {
+    const data = this.props.products;
+    if (!data) {
+      return <h1>no items in cart</h1>;
+    }
+    const totalCart = data.reduce((a, b) => {
+      return a + parseFloat(b.price);
+    }, 0);
+    // return null;
     return (
-      <div></div>
-      //   <StripeProvider
-      //     apiKey="
-      // pk_test_rUJstJZFyU6dqDejrAXPdZ7I00a5ztU78b"
-      //   >
-      //     <h1>React Stripe Elements Example</h1>
-      //     <Elements>
-      //       <CheckoutForm cartData={data} cartTotal={totalCart} />
-      //     </Elements>
-      //   </StripeProvider>
+      <StripeProvider
+        apiKey="
+      pk_test_rUJstJZFyU6dqDejrAXPdZ7I00a5ztU78b"
+      >
+        <div>
+          <h1>Payment</h1>
+          <h3>Total = {totalCart}</h3>
+          <Elements>
+            <CheckoutForm cartData={data} cartTotal={totalCart} />
+          </Elements>
+        </div>
+      </StripeProvider>
     );
   }
 }

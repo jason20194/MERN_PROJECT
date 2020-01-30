@@ -51,7 +51,7 @@ class CheckoutForm extends Component {
         }}
       >
         <form onSubmit={this.submit}>
-          <p>Would you like to complete the purchase?</p>
+          <p>Please complete the details below to complete your purchase</p>
 
           <input
             style={fieldStyle}
