@@ -62,9 +62,7 @@ class ListingForm extends Component {
                 <Field name="price" component={this.renderField} type="number" label="Price"/>
             </div>
             <div>
-            In Stock<Field name="available" component="input" type="checkbox">
-            
-          </Field>
+            In Stock<Field name="available" component="input" type="checkbox"></Field>
             </div>
             <div>
              

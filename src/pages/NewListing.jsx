@@ -3,6 +3,10 @@ import MyForm from '../component/ReduxForm'
 import axios from 'axios';
 
 class NewListing extends Component {
+  state = {
+            url: null
+          }
+
 
     submit = async (values) => {
      
@@ -49,10 +53,16 @@ class NewListing extends Component {
     return (
       <div>
         <MyForm onSubmit={this.submit}/>
-        <div id='photo-form-container'>
-          <button onClick={showWidget}>Upload Photo</button>
-        </div>
-      </div>
+      <div id='photo-form-container'>
+      <button onClick={showWidget}>Upload Photo</button>
+    </div>
+    <div id='photo-form-container'>
+      <button onClick={showWidget}>Upload another Photo</button>
+    </div>
+    <div id='photo-form-container'>
+      <button onClick={showWidget}>Upload another Photo</button>
+    </div>
+    </div>
     );
   }
 }
