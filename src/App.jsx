@@ -18,6 +18,7 @@ import ThankYou from "./pages/ThankYou";
 import AdminDashboard from "./pages/AdminDashboard";
 import EditListing from "./pages/EditListing";
 import NewListing from "./pages/NewListing";
+import Reviews from "./pages/Reviews";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/edit_listing/:id" component={EditListing} />
             <Route path="/thank_you" component={ThankYou} />
             <Route path="/new_listing" component={NewListing} />
+            <Route path="/new_review" component={Reviews} /> 
           </Switch>
         </BrowserRouter>
       </Provider>
