@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import PaymentForm from "../Components/PaymentForm";
+import { connect } from "react-redux";
+
 // import { Elements, StripeProvider } from "react-stripe-elements";
 
 // import CheckoutForm from "../Components/CheckoutForm";
@@ -6,21 +9,15 @@ import React, { Component } from "react";
 class Payment extends Component {
   render() {
     // let totalCart = 0;
-    return;
-    // (
-    //       <div>
-    //         <StripeProvider
-    //           apiKey="
-    // pk_test_rUJstJZFyU6dqDejrAXPdZ7I00a5ztU78b"
-    //         >
-    //           <h1>React Stripe Elements Example</h1>
-    //           <Elements>
-    //             <CheckoutForm totalCart={totalCart} />
-    //           </Elements>
-    //         </StripeProvider>
-    //       </div>
-    // );
+    return <PaymentForm />;
   }
 }
 
-export default Payment;
+const mapStateToProps = state => {
+  console.log("in payment page");
+  return {
+    products: state.cart.products
+  };
+};
+
+export default connect(mapStateToProps)(Payment);
