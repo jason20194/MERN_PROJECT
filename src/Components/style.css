@@ -1,0 +1,30 @@
+.Content{
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-top: 5%;
+    transform: translateX(-50%);
+
+}
+
+.ProductTitle{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    text-transform: capitalize;
+    margin: 10px 0;
+}
+
+.ProductPrice{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    margin: 10px 0; 
+}
+
+.ProductImage {
+    width: 400px;
+    height: 500px;
+    border: 1px solid #cecece;
+}

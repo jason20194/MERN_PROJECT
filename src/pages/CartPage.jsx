@@ -33,7 +33,7 @@ class CartPage extends Component {
     } else {
       const data = this.props.products
           if (!data) {
-            return <h1>no items in cart</h1>
+            return <h1>No Items In Cart.</h1>
           }
           const totalCart = data.reduce((a, b) => {
             return a + parseFloat(b.price);

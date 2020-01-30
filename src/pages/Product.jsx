@@ -3,6 +3,7 @@ import axios from 'axios';
 import AddToCart from "../Components/AddToCart";
 import { Redirect, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import "../Components/style.css";
 
 class Product extends Component {
 
@@ -20,22 +21,29 @@ render() {
   const { product } = this.state;
   return (
     product && 
-      <div className="all_products">
+      <div className="Content">        
+                
+                <div className="ProductDetailsImageWrapper"></div>
+                <p className="ProductImage">{product.image}</p>
+                <p className="ProductTitle">{product.title}</p>
+                <p className="ProductPrice">Price: ${product.price}</p>
+              
+                <div className="ProductDescription">
+                                <h2>Description</h2>
+                                <p>{product.description}</p>
+                            </div>
     
-    <h1>{product.title}</h1>
-    <p>Id: {product._id}</p>
-    <p>imageURL 1000x1000</p>
-    <p>Price: ${product.price}</p>
-    <p>Description:{product.description}</p> 
-  
-    <Button>Buy now</Button>
     <AddToCart product={product} />
+    <Button>Buy now</Button>
+    <br></br>
     <Link to={`/all_products`}><Button style={{backgroundColor: '#000000'}} size="sm">Back to Product page</Button></Link>
     </div>
 
   )
 
+  
   }
 }
+
 
 export default Product;
