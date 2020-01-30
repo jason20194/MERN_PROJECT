@@ -63,7 +63,7 @@ pk_test_rUJstJZFyU6dqDejrAXPdZ7I00a5ztU78b"
           <hr />
           <hr />
           <hr />
-          <h1>React Stripe Elements Example</h1>
+          <h1>Payment</h1>
           <Elements>
             <CheckoutForm cartData={data} cartTotal={totalCart} />
           </Elements>

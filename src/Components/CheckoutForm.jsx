@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
 const axios = require("axios");
 
 class CheckoutForm extends Component {
@@ -18,7 +21,7 @@ class CheckoutForm extends Component {
     console.log(currentTarget);
 
     const cardInfo = {
-      name: fD.get("address")
+      name: fD.get("Delivery address")
     };
 
     console.log(cardInfo);
@@ -46,23 +49,44 @@ class CheckoutForm extends Component {
       .catch(err => console.log("this is the error" + err));
   }
   render() {
+    const fieldStyle = {
+      height: "50px",
+      background: ""
+    };
     return (
-      <div
-        style={{
-          color: "black",
-          width: "500px"
-        }}
-      >
-        <form onSubmit={this.submit}>
-          <p>Would you like to complete the purchase?</p>
+      <div>
+        <Form
+          onSubmit={this.submit}
+          style={{
+            width: "70%"
+          }}
+        >
+          <Row>
+            <Col>
+              <Form.Control
+                style={fieldStyle}
+                placeholder="Card Holder's Name"
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Control style={fieldStyle} placeholder="Delivery address" />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Control style={fieldStyle} placeholder="email address" />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <CardElement />
+              <button type="submit">Pay</button>
+            </Col>
+          </Row>
+        </Form>
 
-          <input type="text" name="name" placeholder="Card Holder's Name" />
-
-          <input type="text" name="address" placeholder="Delivery address" />
-
-          <CardElement />
-          <button type="submit">Pay</button>
-        </form>
         {/* <p>Would you like to complete the purchase?</p>
         <CardElement />
         <button onClick={this.submit}>Purchase</button> */}
