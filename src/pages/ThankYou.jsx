@@ -4,7 +4,7 @@ class ThankYou extends Component {
   render() {
     return (
       <div>
-        <h1>Hello from ThankYou page</h1>
+        <h1>Hello from Thank You page</h1>
       </div>
     );
   }
