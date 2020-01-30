@@ -78,7 +78,7 @@ class CartPage extends Component {
                 <Container>
                   <Row>
                     <Col sm={8}>CHECKOUT</Col>
-                    <Col sm={4}>Total Cart Value = {totalCart}</Col>
+                    <Col sm={4}>Total Cart Value = ${totalCart}</Col>
                   </Row>
                 </Container>
                 <hr />
