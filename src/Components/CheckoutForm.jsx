@@ -77,9 +77,6 @@ class CheckoutForm extends Component {
           <CardElement />
           <button type="submit">Pay</button>
         </form>
-        {/* <p>Would you like to complete the purchase?</p>
-        <CardElement />
-        <button onClick={this.submit}>Purchase</button> */}
       </div>
     );
   }
