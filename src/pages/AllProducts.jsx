@@ -26,24 +26,12 @@ class AllProducts extends Component {
           console.log(product)
           return (
             <div key={index} className="all_products">
-<<<<<<< HEAD
               <h1>title : {product.title}</h1>
               <p>id: {product._id}</p>
               <p>description:{product.description}</p>
               <p>price: ${product.price}</p>
           <p>availability: {product.available ? <span>✅</span> : <span>❌</span>}</p>
               {product.image ? <img width="400" src={product.image} alt="product pic"/> : null}
-=======
-              <h1>{product.title}</h1>
-              <p>Id: {product._id}</p>
-              <p>Image: 100x100 {product.Image}</p>
-              <p>Available: Yes/No {product.available} </p>
-              <p>Price: ${product.price}</p>
-
-              <Link to={`/listing/${product._id}`}>
-                <Button>Product Details</Button>
-              </Link>
->>>>>>> 811df1c2a7fb87fa15914ea2d24bcf423b76ea18
               <AddToCart product={product} />
             </div>
           );
