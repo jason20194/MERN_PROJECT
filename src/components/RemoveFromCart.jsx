@@ -1,22 +1,21 @@
-import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
+import React, { Component } from "./node_modules/react";
+import Button from "./node_modules/react-bootstrap/Button";
 
 class RemoveFromCart extends Component {
-
   // () => this.props.itemRemovedFromCart(this.props.product)
 
-  updateLocalStorageAndDispatch = (e) => {
-    let cart = JSON.parse(localStorage.getItem('products'))
+  updateLocalStorageAndDispatch = e => {
+    let cart = JSON.parse(localStorage.getItem("products"));
     if (!cart) {
-      return null
+      return null;
     }
     cart = cart.filter((item, index) => {
-      return index !== this.props.productIndex
-    })
-    localStorage.setItem('products', JSON.stringify(cart))
+      return index !== this.props.productIndex;
+    });
+    localStorage.setItem("products", JSON.stringify(cart));
     // here ill dispatch
-    this.props.itemRemovedFromCart(cart)
-  }
+    this.props.itemRemovedFromCart(cart);
+  };
 
   componentDidUpdate(prevProps, prevState) {}
 

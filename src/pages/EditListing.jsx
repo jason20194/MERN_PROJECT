@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EditForm from "../Components/EditForm";
+import EditForm from "../components/EditForm";
 import axios from "axios";
 
 class EditListing extends Component {

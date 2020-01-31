@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MyForm from "../Components/newListingForm";
+import MyForm from "../components/newListingForm";
 import axios from "axios";
 
 class NewListing extends Component {

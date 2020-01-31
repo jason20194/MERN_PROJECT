@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "./node_modules/react";
+import { connect } from "./node_modules/react-redux";
 import { updateCart } from "../actions/cartAction";
-import Button from "react-bootstrap/Button";
+import Button from "./node_modules/react-bootstrap/Button";
 // import items from "../data/items";
 
 class AddToCart extends Component {
@@ -12,16 +12,16 @@ class AddToCart extends Component {
   //   // console.log(this.props.product);
   // }
 
-  updateLocalStorageAndDispatch = (e) => {
-    let cart = JSON.parse(localStorage.getItem('products'))
+  updateLocalStorageAndDispatch = e => {
+    let cart = JSON.parse(localStorage.getItem("products"));
     if (!cart) {
-      cart = []
+      cart = [];
     }
-    cart.push(this.props.product)
-    localStorage.setItem('products', JSON.stringify(cart))
+    cart.push(this.props.product);
+    localStorage.setItem("products", JSON.stringify(cart));
     // here ill dispatch
-    this.props.updateCart(cart)
-  }
+    this.props.updateCart(cart);
+  };
 
   render() {
     return (
