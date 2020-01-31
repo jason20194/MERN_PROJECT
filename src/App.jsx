@@ -1,11 +1,8 @@
 import React from "react";
-import { Provider } from "react-redux";
-
+import { connect } from "react-redux";
+import { updateCart } from "./actions/cartAction";
 import "./App.css";
-
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
-import store from "./store";
 
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
@@ -20,10 +17,28 @@ import EditListing from "./pages/EditListing";
 import NewListing from "./pages/NewListing";
 import Reviews from "./pages/Reviews";
 
-function App() {
-  return (
-    <div>
-      <Provider store={store}>
+class App extends React.Component {
+  state = {
+    loading: true
+  };
+
+  componentDidMount() {
+    let products = JSON.parse(localStorage.getItem("products"));
+    if (!products) {
+      products = [];
+    }
+    this.props.updateCart(products);
+    this.setState({
+      loading: false
+    });
+  }
+
+  render() {
+    const { loading } = this.state;
+    if (loading) {
+      return null;
+    } else {
+      return (
         <BrowserRouter>
           <Switch>
             <Route path="/" component={Home} exact={true} />
@@ -41,9 +56,13 @@ function App() {
             <Route path="/new_review" component={Reviews} /> 
           </Switch>
         </BrowserRouter>
-      </Provider>
-    </div>
-  );
+      );
+    }
+  }
 }
 
-export default App;
+const mapDispatchProps = {
+  updateCart
+};
+
+export default connect(null, mapDispatchProps)(App);

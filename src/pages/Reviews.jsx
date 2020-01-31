@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import StarRatingComponent from 'react-star-rating-component';
-import MyForm from "../Components/ReviewForm";
+import MyForm from "../components/ReviewForm";
  
 class RatingStar extends Component {
   constructor() {

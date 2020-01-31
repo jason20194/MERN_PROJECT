@@ -1,11 +1,8 @@
-import React, { Component } from "./node_modules/react";
-import {
-  CardElement,
-  injectStripe
-} from "./node_modules/react-stripe-elements";
-const axios = require("./node_modules/axios");
+import React, { Component } from "react";
+import { CardElement, injectStripe } from "react-stripe-elements";
+const axios = require("axios");
 
-class CheckoutForm extends Component {
+class Stripe extends Component {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
@@ -54,7 +51,7 @@ class CheckoutForm extends Component {
         }}
       >
         <form onSubmit={this.submit}>
-          <p>Would you like to complete the purchase?</p>
+          <p>Please complete the details below to complete your purchase</p>
 
           <input
             style={fieldStyle}
@@ -80,12 +77,9 @@ class CheckoutForm extends Component {
           <CardElement />
           <button type="submit">Pay</button>
         </form>
-        {/* <p>Would you like to complete the purchase?</p>
-        <CardElement />
-        <button onClick={this.submit}>Purchase</button> */}
       </div>
     );
   }
 }
 
-export default injectStripe(CheckoutForm);
+export default injectStripe(Stripe);
