@@ -9,7 +9,8 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { updateCart } from "../actions/cartAction";
 import RemoveFromCart from "../components/RemoveFromCart";
-import CheckoutForm from "../components/Stripe";
+import Stripe from "../components/Stripe";
+// import CheckoutForm from "../components/CheckoutForm";
 
 class CartPage extends Component {
   itemRemovedFromCart = items => {
@@ -76,7 +77,7 @@ class CartPage extends Component {
           <hr />
           <h1>React Stripe Elements Example</h1>
           <Elements>
-            <CheckoutForm cartData={data} cartTotal={totalCart} />
+            <Stripe cartData={data} cartTotal={totalCart} />
           </Elements>
         </div>
       </StripeProvider>
