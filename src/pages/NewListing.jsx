@@ -3,16 +3,24 @@ import MyForm from "../components/newListingForm";
 import axios from "axios";
 
 class NewListing extends Component {
-  submit = async values => {
-    console.log(values);
-    await axios
-      .post("http://localhost:5000/listings/new", values)
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+  state = {
+            url: null
+          }
+
+
+    submit = async (values) => {
+      await axios.post('http://localhost:5000/listings/new',
+        { 
+          ...values,
+          image: this.state.url
+        }
+      )
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function(error) {
+      //   console.log(error);
+      // });
   };
 
   // checkUploadResult = (resultEvent) => {
@@ -34,6 +42,12 @@ class NewListing extends Component {
       (error, result) => {
         if (!error && result && result.event === "success") {
           console.log("Done! Here is the image info: ", result.info);
+          // console.log(this.props.product)
+          // // axios.post('http://localhost:5000/listings/new', result.info)
+          // this.submit(result.info)
+          this.setState({
+            url: result.info.url
+          })
         }
       }
     );
@@ -45,11 +59,17 @@ class NewListing extends Component {
 
     return (
       <div>
-        <MyForm onSubmit={this.submit} />
-        <div id="photo-form-container">
-          <button onClick={showWidget}>Upload Photo</button>
-        </div>
-      </div>
+        <MyForm onSubmit={this.submit}/>
+      <div id='photo-form-container'>
+      <button onClick={showWidget}>Upload Photo</button>
+    </div>
+    <div id='photo-form-container'>
+      <button onClick={showWidget}>Upload another Photo</button>
+    </div>
+    <div id='photo-form-container'>
+      <button onClick={showWidget}>Upload another Photo</button>
+    </div>
+    </div>
     );
   }
 }
