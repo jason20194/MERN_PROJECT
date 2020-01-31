@@ -1,13 +1,18 @@
 import React, { Component } from "react";
+import LogIn from "../components/LogIn";
 
-class ThankYou extends Component {
+class SignIn extends Component {
+  submit = values => {
+    console.log(values);
+  };
+
   render() {
     return (
       <div>
-        <h1>Hello from Thank You page</h1>
+        <LogIn onSubmit={this.submit} />
       </div>
     );
   }
 }
 
-export default ThankYou;
+export default SignIn;
