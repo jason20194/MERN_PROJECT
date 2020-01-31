@@ -8,8 +8,8 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { updateCart } from "../actions/cartAction";
-import RemoveFromCart from "../Components/RemoveFromCart";
-import CheckoutForm from "../Components/Stripe";
+import RemoveFromCart from "../components/RemoveFromCart";
+import CheckoutForm from "../components/Stripe";
 
 class CartPage extends Component {
   itemRemovedFromCart = items => {

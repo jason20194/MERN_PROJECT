@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PaymentForm from "../Components/PaymentForm";
+import PaymentForm from "../components/PaymentForm";
 import { connect } from "react-redux";
 
 class Payment extends Component {
