@@ -26,6 +26,8 @@ class CartPage extends Component {
     });
   }
 
+  // hi
+
   render() {
     const { loading } = this.state;
     if (loading) {
