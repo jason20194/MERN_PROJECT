@@ -9,7 +9,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { updateCart } from "../actions/cartAction";
 import RemoveFromCart from "../Components/RemoveFromCart";
-import CheckoutForm from "../Components/CheckoutForm";
+import CheckoutForm from "../Components/Stripe";
 
 class CartPage extends Component {
   itemRemovedFromCart = items => {

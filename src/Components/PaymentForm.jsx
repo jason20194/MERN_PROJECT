@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+// import Col from "react-bootstrap/Col";
+// import Row from "react-bootstrap/Row";
+// import Container from "react-bootstrap/Container";
 import { connect } from "react-redux";
 
 import { Elements, StripeProvider } from "react-stripe-elements";
 
-import CheckoutForm from "../Components/CheckoutForm";
+import Stripe from "./Stripe";
 
 export class PaymentForm extends Component {
   render() {
@@ -17,7 +17,6 @@ export class PaymentForm extends Component {
     const totalCart = data.reduce((a, b) => {
       return a + parseFloat(b.price);
     }, 0);
-    // return null;
     return (
       <StripeProvider
         apiKey="
@@ -27,7 +26,7 @@ export class PaymentForm extends Component {
           <h1>Payment</h1>
           <h3>Total = {totalCart}</h3>
           <Elements>
-            <CheckoutForm cartData={data} cartTotal={totalCart} />
+            <Stripe cartData={data} cartTotal={totalCart} />
           </Elements>
         </div>
       </StripeProvider>
