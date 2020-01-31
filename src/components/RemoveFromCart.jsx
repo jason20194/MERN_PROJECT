@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
+import React, { Component } from "./node_modules/react";
+import Button from "./node_modules/react-bootstrap/Button";
 
 class RemoveFromCart extends Component {
   // () => this.props.itemRemovedFromCart(this.props.product)

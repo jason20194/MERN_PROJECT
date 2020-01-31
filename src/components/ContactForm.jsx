@@ -1,11 +1,17 @@
 // Dependencies
-import React, { Component } from "react";
+import React, { Component } from "./node_modules/react";
 
 // import { Field, reduxForm } from "redux-form";
 
-import { Form, FormGroup, Input, Label, Button } from "reactstrap";
+import {
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Button
+} from "./node_modules/reactstrap";
 
-import axios from "axios";
+import axios from "./node_modules/axios";
 
 class ContactForm extends Component {
   constructor() {
