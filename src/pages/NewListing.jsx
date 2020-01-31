@@ -3,9 +3,9 @@ import MyForm from "../components/newListingForm";
 import axios from "axios";
 
 class NewListing extends Component {
-  state = {
-            url: null
-          }
+    state = {
+      url: []
+    }
 
 
     submit = async (values) => {
@@ -15,23 +15,7 @@ class NewListing extends Component {
           image: this.state.url
         }
       )
-      // .then(function (response) {
-      //   console.log(response);
-      // })
-      // .catch(function(error) {
-      //   console.log(error);
-      // });
-  };
-
-  // checkUploadResult = (resultEvent) => {
-  //   if (resultEvent.event === 'success') {
-  //     console.log(this.props.currentUser.id,
-  //       {
-  //         caption: '',
-  //         url: resultEvent.info.secure_url})
-  //       .then(this.props.history.push(`/profile`))
-  //   }
-  // }
+    }
 
   render() {
     let widget = window.cloudinary.createUploadWidget(
@@ -41,12 +25,10 @@ class NewListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log("Done! Here is the image info: ", result.info);
-          // console.log(this.props.product)
-          // // axios.post('http://localhost:5000/listings/new', result.info)
-          // this.submit(result.info)
-          this.setState({
-            url: result.info.url
+          this.setState((prevState) => {
+            return {
+              url: [...prevState.url, result.info.url]
+            }
           })
         }
       }
