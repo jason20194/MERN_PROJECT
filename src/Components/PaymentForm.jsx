@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import { Elements, StripeProvider } from "react-stripe-elements";
 
-import CheckoutForm from "../Components/CheckoutForm";
+import CheckoutForm from "../components/CheckoutForm";
 
 export class PaymentForm extends Component {
   render() {
