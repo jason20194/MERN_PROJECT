@@ -1,9 +1,6 @@
-import React, { Component } from "./node_modules/react";
-import {
-  CardElement,
-  injectStripe
-} from "./node_modules/react-stripe-elements";
-const axios = require("./node_modules/axios");
+import React, { Component } from "react";
+import { CardElement, injectStripe } from "react-stripe-elements";
+const axios = require("axios");
 
 class Stripe extends Component {
   constructor(props) {

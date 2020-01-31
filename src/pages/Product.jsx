@@ -3,7 +3,7 @@ import axios from "axios";
 import AddToCart from "../components/AddToCart";
 import { Redirect, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "../components/style.css";
+// import "../components/style.css";
 
 class Product extends Component {
   state = {

@@ -1,15 +1,9 @@
 // Dependencies
-import React, { Component } from "./node_modules/react";
+import React, { Component } from "react";
 
 // import { Field, reduxForm } from "redux-form";
 
-import {
-  Form,
-  FormGroup,
-  Input,
-  Label,
-  Button
-} from "./node_modules/reactstrap";
+import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 
 import axios from "axios";
 
