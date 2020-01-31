@@ -4,6 +4,7 @@ import axios from "axios";
 
 class EditListing extends Component {
   state = {
+    url: [],
     data: {},
     loading: true
   };
@@ -32,15 +33,13 @@ class EditListing extends Component {
     const res = await axios
       .put(
         `http://localhost:5000/listings/edit/${this.props.match.params.id}`,
-        values
+        { 
+          ...values,
+          image: this.state.url
+        }
       )
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
+      }
+ 
 
   render() {
     let widget = window.cloudinary.createUploadWidget(
@@ -50,7 +49,11 @@ class EditListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log("Done! Here is the image info: ", result.info);
+          this.setState((prevState) => {
+            return {
+              url: [...prevState.url, result.info.url]
+            }
+          })
         }
       }
     );
