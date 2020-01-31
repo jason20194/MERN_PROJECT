@@ -6,8 +6,8 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 // import Button from "react-bootstrap/Button";
 import { updateCart, populateCart } from "../actions/cartAction";
-import RemoveFromCart from "../Components/RemoveFromCart";
-import CheckoutForm from "../Components/CheckoutForm";
+import RemoveFromCart from "../components/RemoveFromCart";
+import CheckoutForm from "../components/CheckoutForm";
 
 class CartPage extends Component {
   state = {
