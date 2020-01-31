@@ -11,7 +11,7 @@ import {
   Button
 } from "./node_modules/reactstrap";
 
-import axios from "./node_modules/axios";
+import axios from "axios";
 
 class ContactForm extends Component {
   constructor() {
