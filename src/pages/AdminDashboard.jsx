@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import AllListingAdmin from "../components/AllListingsAdmin";
 
 class AdminDashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Hello from AdminDashboard page</h1>
+        <AllListingAdmin />
       </div>
     );
   }
