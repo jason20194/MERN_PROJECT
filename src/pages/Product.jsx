@@ -24,7 +24,7 @@ render() {
       <div className="Content">        
                 
                 <div className="ProductDetailsImageWrapper"></div>
-                <p className="ProductImage">{product.image}</p>
+                <p className="ProductImage">{product.image} ? </p>
                 <p className="ProductTitle">{product.title}</p>
                 <p className="ProductPrice">Price: ${product.price}</p>
               
