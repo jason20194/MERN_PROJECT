@@ -7,7 +7,7 @@ class AdminDashboard extends Component {
   render() {
     return (
       <div>
-        <AllListingAdmin />
+        {/* <AllListingAdmin /> */}
         <AllOrdersAdmin />
       </div>
     );

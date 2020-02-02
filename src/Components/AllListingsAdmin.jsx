@@ -14,18 +14,18 @@ export class AllListingAdmin extends Component {
       // console.log(data);
 
       this.setState({ data });
-      console.log(this.state);
+      // console.log(this.state);
     } catch (err) {
       console.log(err);
     }
   }
   render() {
     const { data } = this.state;
-    console.log(this.state);
+    // console.log(this.state);
 
     return data
       ? data.map((product, index) => {
-          console.log(product);
+          // console.log(product);
           return (
             <div key={index} className="">
               <h1>{product.title}</h1>
