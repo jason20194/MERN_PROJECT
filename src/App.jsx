@@ -15,7 +15,9 @@ import ThankYou from "./pages/ThankYou";
 import AdminDashboard from "./pages/AdminDashboard";
 import EditListing from "./pages/EditListing";
 import NewListing from "./pages/NewListing";
+import OrderDisplay from "./pages/OrderDisplay";
 import Reviews from "./pages/Reviews";
+import SignIn from "./pages/SignIn";
 
 class App extends React.Component {
   state = {
@@ -49,11 +51,13 @@ class App extends React.Component {
             <Route path="/cart" component={CartPage} />
             <Route path="/payment" component={Payment} />
             <Route path="/thank_you" component={ThankYou} />
-            <Route path="/admin" component={AdminDashboard} />
+            <Route path="/admin" component={AdminDashboard} exact={true} />
+            <Route path="/admin/order" component={OrderDisplay} />
             <Route path="/edit_listing/:id" component={EditListing} />
             <Route path="/thank_you" component={ThankYou} />
             <Route path="/new_listing" component={NewListing} />
             <Route path="/new_review" component={Reviews} /> 
+            <Route path="/login" component={SignIn} />
           </Switch>
         </BrowserRouter>
       );
