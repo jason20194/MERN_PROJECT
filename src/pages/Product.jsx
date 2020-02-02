@@ -18,13 +18,28 @@ class Product extends Component {
     this.setState({ product: response.data });
   };
 
+  checkImages = (images) => {
+    if (!images) {
+      return null
+    }
+    if (typeof(images) === String) {
+      return <img width="400" src={images} alt="product pic" />      
+    }
+    if (images.length === 0) {
+      return null
+    }
+    return images.map((image) => {
+      return <img width="400" src={image} alt="product pic" />
+    })
+  }
+
   render() {
     const { product } = this.state;
     return (
       product && (
         <div className="Content">
           <div className="ProductDetailsImageWrapper"></div>
-          <p className="ProductImage">{product.image}</p>
+          {this.checkImages(product.image)}
           <p className="ProductTitle">{product.title}</p>
           <p className="ProductPrice">Price: ${product.price}</p>
 

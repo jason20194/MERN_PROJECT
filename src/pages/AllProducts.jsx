@@ -20,6 +20,20 @@ class AllProducts extends Component {
     }
   }
 
+  checkImages = (images) => {
+    if (!images) {
+      return null
+    }
+    const imagesLength = images.length
+    if (typeof(images) === String) {
+      return <img width="400" src={images} alt="product pic" />      
+    }
+    if (imagesLength === 0) {
+      return null
+    }
+    return <img width="400" src={images[0]} alt="product pic" />
+  }
+
   render() {
     const { data } = this.state;
     return data
@@ -34,10 +48,7 @@ class AllProducts extends Component {
                 availability:{" "}
                 {product.available ? <span>✅</span> : <span>❌</span>}
               </p>
-              {product.image ? (
-                <img width="400" src={product.image} alt="product pic" />
-              ) : null}
-
+              {this.checkImages(product.image)}
               <Link to={`/listing/${product._id}`}>
                 <Button>Product Details</Button>
               </Link>
