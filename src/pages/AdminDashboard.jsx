@@ -2,14 +2,23 @@ import React, { Component } from "react";
 import AllListingAdmin from "../components/AllListingsAdmin";
 import AllOrdersAdmin from "../components/AllOrdersAdmin";
 import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
 class AdminDashboard extends Component {
   render() {
     return (
-      <div>
-        {/* <AllListingAdmin /> */}
-        <AllOrdersAdmin />
-      </div>
+      <Tabs
+        defaultActiveKey="listings"
+        transition={false}
+        id="noanim-tab-example"
+      >
+        <Tab eventKey="listings" title="Listings">
+          <AllListingAdmin />
+        </Tab>
+        <Tab eventKey="orders" title="Orders">
+          <AllOrdersAdmin />
+        </Tab>
+      </Tabs>
     );
   }
 }
