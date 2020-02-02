@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ContactForm from "../components/ContactForm";
+import Navbar from "../components/NavBar";
 
 class Contact extends Component {
   submit = values => {
@@ -9,6 +10,7 @@ class Contact extends Component {
   render() {
     return (
       <div>
+        <Navbar />
         <h1>Contact Form</h1>
         <ContactForm onSubmit={this.submit} />
       </div>
