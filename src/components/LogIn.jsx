@@ -38,20 +38,22 @@ class LogIn extends Component {
   }
   render() {
     return (
-      <div class="card">
-        <h1>LOGIN</h1>
-        <br></br>
-      <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
-        <FormGroup>
-          <Label for="Email">Email:</Label>
-          <Input type="email" name="email" onChange={this.handleChange} />
-        </FormGroup>
-        <FormGroup>
-          <Label for="Name">Password:</Label>
-          <Input type="text" name="name" onChange={this.handleChange} />
-        </FormGroup>
-        <Button>Log In</Button>
-      </Form>
+      <div className="card-container">
+        <div class="card2">
+          <h1>LOGIN</h1>
+          <br></br>
+        <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
+          <FormGroup>
+            <Label for="Email">Email:</Label>
+            <Input type="email" name="email" onChange={this.handleChange} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="Name">Password:</Label>
+            <Input type="text" name="name" onChange={this.handleChange} />
+          </FormGroup>
+          <Button>Log In</Button>
+        </Form>
+        </div>
       </div>
     );
   }

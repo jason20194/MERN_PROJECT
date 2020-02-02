@@ -11,7 +11,7 @@ class OrderDisplay extends Component {
 }
 
 componentDidMount = async () => {
-    const response = await axios.get(`http://localhost:5000/orders/5e32661b76c1bf29ee6e1879`)
+    const response = await axios.get(`http://localhost:5000/orders/5e36300f1fb5265c992955ad`)
     // console.log(response.data)
     this.setState({order: response.data})
 }
