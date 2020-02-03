@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import EditForm from "../components/EditForm";
 import axios from "axios";
+import { Redirect, Link } from "react-router-dom";
 
 class EditListing extends Component {
   state = {
@@ -9,8 +10,9 @@ class EditListing extends Component {
     loading: true
   };
   async componentDidMount() {
-    console.log(this.props);
-
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
+    }
     try {
       const response = await axios.get(
         `http://localhost:5000/listings/${this.props.match.params.id}`
@@ -61,6 +63,9 @@ class EditListing extends Component {
   };
 
   render() {
+    if (!this.token) {
+      return <Redirect to="/admin/login" />;
+    }
     let widget = window.cloudinary.createUploadWidget(
       {
         cloudName: "medicinepower",

@@ -1,23 +1,29 @@
 import React, { Component } from "react";
 import MyForm from "../components/newListingForm";
 import axios from "axios";
+import { Redirect, Link } from "react-router-dom";
 
 class NewListing extends Component {
-    state = {
-      url: []
+  state = {
+    url: []
+  };
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
     }
+  }
 
-
-    submit = async (values) => {
-      await axios.post('http://localhost:5000/listings/new',
-        { 
-          ...values,
-          image: this.state.url
-        }
-      )
-    }
+  submit = async values => {
+    await axios.post("http://localhost:5000/listings/new", {
+      ...values,
+      image: this.state.url
+    });
+  };
 
   render() {
+    if (!this.token) {
+      return <Redirect to="/admin/login" />;
+    }
     let widget = window.cloudinary.createUploadWidget(
       {
         cloudName: "medicinepower",
@@ -25,11 +31,11 @@ class NewListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          this.setState((prevState) => {
+          this.setState(prevState => {
             return {
               url: [...prevState.url, result.info.url]
-            }
-          })
+            };
+          });
         }
       }
     );
@@ -40,12 +46,12 @@ class NewListing extends Component {
     };
 
     return (
-    <div>
-        <MyForm onSubmit={this.submit}/>
-      <div id='photo-form-container'>
-      <button onClick={showWidget}>Upload Photo</button>
+      <div>
+        <MyForm onSubmit={this.submit} />
+        <div id="photo-form-container">
+          <button onClick={showWidget}>Upload Photo</button>
+        </div>
       </div>
-    </div>
     );
   }
 }

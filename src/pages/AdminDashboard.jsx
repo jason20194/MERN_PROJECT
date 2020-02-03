@@ -16,6 +16,7 @@ class AdminDashboard extends Component {
     if (!this.token) {
       return <Redirect to="/admin/login" />;
     }
+
     return (
       <Tabs
         defaultActiveKey="listings"

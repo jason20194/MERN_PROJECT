@@ -11,11 +11,12 @@ class OrderDisplay extends Component {
   };
 
   componentDidMount = async () => {
-    // const id = this.props.match.params.id || this.state.order._id;
     const response = await axios.get(
       `http://localhost:5000/orders/${this.props.match.params.id}`
     );
-    console.log(this.props.match.params.id);
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
+    }
     this.setState({ order: response.data });
   };
 
@@ -34,6 +35,9 @@ class OrderDisplay extends Component {
   };
 
   render() {
+    if (!this.token) {
+      return <Redirect to="/admin/login" />;
+    }
     const { order } = this.state;
 
     return (
