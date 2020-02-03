@@ -36,27 +36,39 @@ class AllProducts extends Component {
 
   render() {
     const { data } = this.state;
-    return data
-      ? data.map((product, index) => {
-          console.log(product);
-          return (
-            <div key={index} className="all_products">
-              <h1>{product.title}</h1>
-              <p>Id: {product._id}</p>
-              <p>Price: ${product.price}</p>
-              <p>
-                availability:{" "}
-                {product.available ? <span>✅</span> : <span>❌</span>}
-              </p>
-              {this.checkImages(product.image)}
-              <Link to={`/listing/${product._id}`}>
-                <Button>Product Details</Button>
-              </Link>
-              <AddToCart product={product} />
-            </div>
-          );
-        })
-      : null;
-  }
+    return (
+      <div className="all_products container">
+            {
+              data &&
+               data.map((product, index) => {
+                  // console.log(product);
+                  return (
+                  
+                    <div key={index} className='product'>
+                      <h1>{product.title}</h1>
+                      <p>Id: {product._id}</p>
+                      <p>Price: ${product.price}</p>
+                      <p>
+                        availability:{" "}
+                        {product.available ? <span>✅</span> : <span>❌</span>}
+                      </p>
+                      {this.checkImages(product.image)}
+                      <Link to={`/listing/${product._id}`}>
+                        <Button>Product Details</Button>
+                      </Link>
+                      <AddToCart product={product} />
+                    </div>
+                  );
+                })
+            
+          
+          }
+             
+
+      </div>
+    )
+          }
+ 
 }
+
 export default AllProducts;

@@ -4,6 +4,9 @@ import AddToCart from "../components/AddToCart";
 import { Redirect, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/products.css";
+import "../components/Carousel.css";
+import Carousel from "react-bootstrap/Carousel";
+import { Container, Row, Col } from "reactstrap";
 
 class Product extends Component {
   state = {
@@ -18,28 +21,42 @@ class Product extends Component {
     this.setState({ product: response.data });
   };
 
-  checkImages = (images) => {
+  checkImages = images => {
     if (!images) {
-      return null
+      return null;
     }
-    if (typeof(images) === String) {
-      return <img width="400" src={images} alt="product pic" />      
+    if (typeof images === String) {
+      return <img width="400" src={images} alt="product pic" />;
     }
     if (images.length === 0) {
-      return null
+      return null;
     }
-    return images.map((image) => {
-      return <img width="400" src={image} alt="product pic" />
-    })
-  }
+
+    return (
+      <div ClassName="photo">
+        <Carousel id="product-carousel">
+          {images.map(image => (
+            <Carousel.Item>
+              <img
+                className="d-block w-100 carousel-img"
+                src={image}
+                alt="Product Picture"
+              />
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+    );
+  };
 
   render() {
     const { product } = this.state;
     return (
       product && (
-        <div className="Content">
+        <div className="Content2">
           <div className="ProductDetailsImageWrapper"></div>
           {this.checkImages(product.image)}
+
           <p className="ProductTitle">{product.title}</p>
           <p className="ProductPrice">Price: ${product.price}</p>
 
@@ -49,7 +66,6 @@ class Product extends Component {
           </div>
 
           <AddToCart product={product} />
-          <Button>Buy now</Button>
           <br></br>
           <Link to={`/all_products`}>
             <Button style={{ backgroundColor: "#000000" }} size="sm">
