@@ -7,12 +7,11 @@ class Navbar extends React.Component{
         return (
             <div class = "navbar">
               <ul id="nav">
-                <li><a href="">Home</a></li>
-                <li><a href="sign_in">Sign In</a></li>
-                <li><a href="all_products">Products</a></li>
-                <li><a href="about_us">About Us</a></li>
-                <li><a href="contact">Contact</a></li>
-                <li><a href="cart">Cart</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/all_products">Products</a></li>
+                <li><a href="/about_us">About Us</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/cart">Cart</a></li>
               </ul>
             </div>
         );

@@ -21,7 +21,8 @@ class EditListing extends Component {
 
       this.setState({
         data: response.data,
-        loading: false
+        loading: false,
+        url: response.data.image
       });
     } catch (err) {
       // console.log(err);
@@ -49,6 +50,7 @@ class EditListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
+          console.log(result.info.url)
           this.setState((prevState) => {
             return {
               url: [...prevState.url, result.info.url]

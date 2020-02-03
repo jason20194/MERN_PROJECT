@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { updateCart } from "./actions/cartAction";
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Navbar from "./components/NavBar";
 
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
@@ -15,7 +16,9 @@ import ThankYou from "./pages/ThankYou";
 import AdminDashboard from "./pages/AdminDashboard";
 import EditListing from "./pages/EditListing";
 import NewListing from "./pages/NewListing";
+import OrderDisplay from "./pages/OrderDisplay";
 import Reviews from "./pages/Reviews";
+import SignIn from "./pages/SignIn";
 
 class App extends React.Component {
   state = {
@@ -40,6 +43,7 @@ class App extends React.Component {
     } else {
       return (
         <BrowserRouter>
+        <Navbar/>
           <Switch>
             <Route path="/" component={Home} exact={true} />
             <Route path="/about_us" component={AboutUs} />
@@ -49,11 +53,13 @@ class App extends React.Component {
             <Route path="/cart" component={CartPage} />
             <Route path="/payment" component={Payment} />
             <Route path="/thank_you" component={ThankYou} />
-            <Route path="/admin" component={AdminDashboard} />
+            <Route path="/admin" component={AdminDashboard} exact={true} />
+            <Route path="/admin/order" component={OrderDisplay} />
             <Route path="/edit_listing/:id" component={EditListing} />
             <Route path="/thank_you" component={ThankYou} />
             <Route path="/new_listing" component={NewListing} />
             <Route path="/new_review" component={Reviews} /> 
+            <Route path="/login" component={SignIn} />
           </Switch>
         </BrowserRouter>
       );

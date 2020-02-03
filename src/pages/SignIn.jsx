@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import ContactForm from "../components/ContactForm";
+import LogIn from "../components/LogIn";
 
-
-class Contact extends Component {
+class SignIn extends Component {
   submit = values => {
     console.log(values);
   };
@@ -10,10 +9,10 @@ class Contact extends Component {
   render() {
     return (
       <div>
-        <ContactForm onSubmit={this.submit} />
+        <LogIn onSubmit={this.submit} />
       </div>
     );
   }
 }
 
-export default Contact;
+export default SignIn;

@@ -40,6 +40,9 @@ class ContactForm extends Component {
   }
   render() {
     return (
+      <div className="card-container">
+        <div class="card2">
+          <h1>CONTACT US</h1>
       <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
         <FormGroup>
           <Label for="Name">Name</Label>
@@ -56,6 +59,8 @@ class ContactForm extends Component {
 
         <Button>Submit</Button>
       </Form>
+         </div>
+    </div>
     );
   }
 }

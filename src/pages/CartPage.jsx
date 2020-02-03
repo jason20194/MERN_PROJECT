@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button";
 import { updateCart } from "../actions/cartAction";
 import RemoveFromCart from "../components/RemoveFromCart";
 import Stripe from "../components/Stripe";
-import Navbar from "../components/NavBar";
+
 // import CheckoutForm from "../components/CheckoutForm";
 
 class CartPage extends Component {
@@ -35,7 +35,6 @@ class CartPage extends Component {
     pk_test_rUJstJZFyU6dqDejrAXPdZ7I00a5ztU78b"
       >
         <div>
-        <Navbar />
           {data
             ? data.map((product, index) => {
                 return (
