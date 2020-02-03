@@ -90,15 +90,6 @@ class ListingForm extends Component {
             label="Description"
           />
         </div>
-        <div>
-          <label htmlFor="image">Image</label>
-          <Field
-            name="image"
-            component="input"
-            type="button"
-            onClick={this.props.showWidget}
-          ></Field>
-        </div>
 
         <input type="submit" value="Create Product Listing" />
         <button onClick={this.props.reset}>Reset</button>

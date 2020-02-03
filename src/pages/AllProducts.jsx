@@ -31,7 +31,7 @@ class AllProducts extends Component {
     if (imagesLength === 0) {
       return null
     }
-    return <img width="400" src={images[0]} alt="product pic" />
+    return <img width="300" height="300" src={images[0]} alt="product pic" />
   }
 
   render() {
