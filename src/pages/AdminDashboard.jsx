@@ -6,7 +6,16 @@ import Tab from "react-bootstrap/Tab";
 import { Redirect, Link } from "react-router-dom";
 
 class AdminDashboard extends Component {
+  async componentDidMount() {
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
+    }
+  }
+
   render() {
+    if (!this.token) {
+      return <Redirect to="/admin/login" />;
+    }
     return (
       <Tabs
         defaultActiveKey="listings"
