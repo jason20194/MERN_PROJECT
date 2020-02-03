@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import styles from "../components/products.module.css"
+import { Alert } from 'react-alert'
 
 
 const validate = values => {
