@@ -31,16 +31,15 @@ class EditListing extends Component {
 
   submit = async values => {
     console.log(values);
-    const res = await axios
-      .put(
-        `http://localhost:5000/listings/edit/${this.props.match.params.id}`,
-        { 
-          ...values,
-          image: this.state.url
-        }
-      )
-      }
- 
+    const res = await axios.put(
+      `http://localhost:5000/listings/edit/${this.props.match.params.id}`
+      // that is this code doing?
+      // {
+      //   ...values,
+      //   image: this.state.url
+      // }
+    );
+  };
 
   render() {
     let widget = window.cloudinary.createUploadWidget(
@@ -50,12 +49,12 @@ class EditListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log(result.info.url)
-          this.setState((prevState) => {
+          console.log(result.info.url);
+          this.setState(prevState => {
             return {
               url: [...prevState.url, result.info.url]
-            }
-          })
+            };
+          });
         }
       }
     );
@@ -70,12 +69,12 @@ class EditListing extends Component {
     }
 
     return (
-    <div>
-      <EditForm onSubmit={this.submit} initialValues={this.state.data}/>
-      <div id='photo-form-container'>
+      <div>
+        <EditForm onSubmit={this.submit} initialValues={this.state.data} />
+        <div id="photo-form-container">
           <button onClick={showWidget}>Upload Photo</button>
         </div>
-    </div>
+      </div>
     );
   }
 }
