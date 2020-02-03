@@ -3,7 +3,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import { Redirect, Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import DeleteListing from "./DeleteListing";
+import DeleteListing from "./DeleteConfirmation";
 
 export class AllListingAdmin extends Component {
   state = {
@@ -23,28 +23,8 @@ export class AllListingAdmin extends Component {
     }
   }
 
-  deleteListing = async id => {
-    console.log("the id is", id);
-
-    try {
-      const response = await axios.delete(
-        `http://localhost:5000/listings/delete/${id}`
-      );
-      const order = response.data;
-      console.log(order);
-      // is this the right approach to call componentDidMount() in another method?
-      // this.setState({ setShow: false });
-      this.componentDidMount();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   render() {
     const { data } = this.state;
-    // console.log(this.state);
-    // const handleClose = () => this.setState({ setShow: false });
-    // const handleShow = () => this.setState({ setShow: true });
 
     return data
       ? data.map((listing, index) => {
@@ -63,17 +43,11 @@ export class AllListingAdmin extends Component {
                 <Button>Edit Listing</Button>
               </Link>
 
-              {/* <DeleteListing
-                handleClose={handleClose}
-                handleShow={handleShow}
-                deleteListing={this.deleteListing}
-                show={this.state.setShow}
-                listingId={listing._id}
-              /> */}
-
-              <Button onClick={() => this.deleteListing(listing._id)}>
-                Delete Product{" "}
-              </Button>
+              <Link to={`/admin/delete_listing/${listing._id}`}>
+                <Button style={{ backgroundColor: "#000000" }} size="sm">
+                  Delete Listing
+                </Button>
+              </Link>
             </div>
           );
         })
