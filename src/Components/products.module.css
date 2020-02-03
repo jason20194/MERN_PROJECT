@@ -19,6 +19,20 @@ display: flex;
 flex-wrap: wrap;
 } */
 
+.productForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.formWrapper {
+    max-width: 700px;
+    margin: 0px auto;
+}
+
+#productTextArea {
+    display: block;
+}
+
 .Content {
     display: flex;
     flex-direction: column;
@@ -31,6 +45,6 @@ flex-wrap: wrap;
     width: 50vw;
     height: 100vh;
     margin-top: 5%;
-
 }
+
 

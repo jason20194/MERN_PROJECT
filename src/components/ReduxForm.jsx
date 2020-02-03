@@ -1,7 +1,6 @@
 import React, { Component } from './node_modules/react'
 import { Field, reduxForm } from './node_modules/redux-form';
 
-
 const validate = (values) => {
     let errors = [];
   
