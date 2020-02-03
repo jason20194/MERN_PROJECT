@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import { updateCart } from "../actions/cartAction";
 import RemoveFromCart from "../components/RemoveFromCart";
 import Stripe from "../components/Stripe";
+
 // import CheckoutForm from "../components/CheckoutForm";
 
 class CartPage extends Component {

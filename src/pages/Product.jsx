@@ -19,6 +19,7 @@ class Product extends Component {
   };
 
   checkImages = (images) => {
+    console.log(images)
     if (!images) {
       return null
     }
