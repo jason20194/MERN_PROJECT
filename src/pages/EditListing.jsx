@@ -28,11 +28,20 @@ class EditListing extends Component {
   }
 
   submit = async values => {
-    console.log(values);
+    // console.log(values);
+    const token = localStorage.getItem("token");
+    console.log("inside edit axios and this is token from lclstrg = ", token);
+
+    let configgg = {
+      headers: {
+        "x-access-token": token
+      }
+    };
     const res = await axios
       .put(
         `http://localhost:5000/listings/edit/${this.props.match.params.id}`,
-        values
+        values,
+        configgg
       )
       .then(function(response) {
         console.log(response);
@@ -65,12 +74,12 @@ class EditListing extends Component {
     }
 
     return (
-    <div>
-      <EditForm onSubmit={this.submit} initialValues={this.state.data}/>
-      <div id='photo-form-container'>
+      <div>
+        <EditForm onSubmit={this.submit} initialValues={this.state.data} />
+        <div id="photo-form-container">
           <button onClick={showWidget}>Upload Photo</button>
         </div>
-    </div>
+      </div>
     );
   }
 }
