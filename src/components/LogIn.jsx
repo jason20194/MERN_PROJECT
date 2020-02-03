@@ -5,14 +5,14 @@ import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 
 import axios from "axios";
 
-import "../components/login.css"
+import "../components/login.css";
 
 class LogIn extends Component {
   constructor() {
     super();
 
     this.state = {
-      email: "",
+      username: "",
       password: ""
     };
     this.handleChange = this.handleChange.bind(this);
@@ -23,36 +23,53 @@ class LogIn extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  async handleSubmit(e) {
+  handleSubmit = async e => {
     e.preventDefault();
 
-    const { email, password } = this.state;
+    const { username, password } = this.state;
+
+    console.log("username", username, "password", password);
+
     try {
-      await axios.post("/api/form", {
-        email,
-        password
-      });
+      const response = await axios.post(
+        "http://localhost:5000/listings/admin/login",
+        {
+          username,
+          password
+        }
+      );
+      localStorage.setItem("token", response.data.token);
+      const token = localStorage.getItem("token");
+      console.log(token);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
   render() {
     return (
       <div className="card-container">
         <div class="card2">
           <h1>LOGIN</h1>
           <br></br>
-        <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
-          <FormGroup>
-            <Label for="Email">Email:</Label>
-            <Input type="email" name="email" onChange={this.handleChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="Name">Password:</Label>
-            <Input type="text" name="name" onChange={this.handleChange} />
-          </FormGroup>
-          <Button>Log In</Button>
-        </Form>
+          <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
+            <FormGroup>
+              <Label for="Username">Username:</Label>
+              <Input
+                type="username"
+                name="username"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="Password">Password:</Label>
+              <Input
+                type="password"
+                name="password"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            <Button>Log In</Button>
+          </Form>
         </div>
       </div>
     );

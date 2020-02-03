@@ -65,7 +65,7 @@ class App extends React.Component {
             <Route path="/thank_you" component={ThankYou} />
             <Route path="/new_listing" component={NewListing} />
             <Route path="/new_review" component={Reviews} />
-            <Route path="/login" component={SignIn} />
+            <Route path="/admin/login" component={SignIn} />
           </Switch>
         </BrowserRouter>
       );
