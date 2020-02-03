@@ -1,38 +1,34 @@
-import React from "react";
-import { BrowserRouter, Route } from 'react-router-dom';
-import Home from "../pages/Home";
+import React from 'react'
 
-class Navbar extends React.Component{
-    render() {
-        return (
-            <div class = "navbar">
-              <ul id="nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/all_products">Products</a></li>
-                <li><a href="/about_us">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/cart">Cart</a></li>
-              </ul>
-            </div>
-        );
-    }
+export default function NavBar() {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <a className="navbar-brand" href="/">
+    <img id="brand-image" alt="Website Logo" img src={require('../images/medicinepower.png')} />
+  </a>
+  <a className="navbar-brand">Medicine Power</a>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul className="navbar-nav mr-auto">
+      <li className="nav-item active">
+        <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/all_products">Products</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/about_us">About Us</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/contact">Contact</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/cart">Cart</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  )
 }
-
-class App extends React.Component {
-  render () {
-    return (
-        <BrowserRouter>
-      <div>
-        <Navbar/>
-        <div>
-        <Route path='/' component={Home} />
-          <h1>Navbar page</h1>
-        </div>
-      </div>
-      </BrowserRouter>
-    );
-  }
-}
-
-
-export default Navbar;

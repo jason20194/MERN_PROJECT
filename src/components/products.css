@@ -13,11 +13,11 @@ height: 500px;
 margin-top: 5%;
 }
 
-#root {
+/* #root {
 
 display: flex;
 flex-wrap: wrap;
-}
+} */
 
 .Content {
     display: flex;
