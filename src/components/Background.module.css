@@ -30,6 +30,7 @@
         background-color: hsla(0, 0%, 0%, 0);
         font-size: 1.25rem;
         border-radius: 5px;
+        
     }
     .SubContent button:hover {
         background-color: #f1f1f1;

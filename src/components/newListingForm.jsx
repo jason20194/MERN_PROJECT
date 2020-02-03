@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import styles from "../components/products.module.css"
+
 
 const validate = values => {
   let errors = [];
@@ -42,6 +44,24 @@ class ListingForm extends Component {
     label,
     meta: { touched, error, warning }
   }) => {
+    if (input.name === "description") {
+      return (
+        <div>
+          <label>
+            <h2>{label}:</h2>
+          </label>
+          <textarea
+            rows="10"
+            cols="56"
+            {...input}
+            type={type}
+            className="myTextArea"
+            id={styles.productTextArea}
+          />
+          {touched && error && <div style={{ color: "red" }}>{error}</div>}
+        </div>
+      )
+    }
     return (
       <div>
         <label>
@@ -61,48 +81,41 @@ class ListingForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit}>
-        <div>
-          <Field
-            name="title"
-            component={this.renderField}
-            type="text"
-            label="Title"
-          />
-        </div>
-        <div>
-          <Field
-            name="price"
-            component={this.renderField}
-            type="number"
-            label="Price"
-          />
-        </div>
-        <div>
-          In Stock
-          <Field name="available" component="input" type="checkbox"></Field>
-        </div>
-        <div>
-          <Field
-            name="description"
-            component={this.renderMessageField}
-            type="textarea"
-            label="Description"
-          />
-        </div>
-        <div>
-          <label htmlFor="image">Image</label>
-          <Field
-            name="image"
-            component="input"
-            type="button"
-            onClick={this.props.showWidget}
-          ></Field>
-        </div>
-
-        <input type="submit" value="Create Product Listing" />
-        <button onClick={this.props.reset}>Reset</button>
-      </form>
+      <div className={styles.formWrapper}>
+        <form className={styles.productForm} onSubmit={this.props.handleSubmit}>
+          <div>
+            <Field
+              name="title"
+              component={this.renderField}
+              type="text"
+              label="Title"
+            />
+          </div>
+          <div>
+            <Field
+              name="price"
+              component={this.renderField}
+              type="number"
+              label="Price"
+            />
+          </div>
+          <div>
+            In Stock
+            <Field name="available" component="input" type="checkbox"></Field>
+          </div>
+          <div>
+            <Field
+              name="description"
+              component={this.renderMessageField}
+              type="textarea"
+              label="Description"
+            />
+          </div>
+  
+          <input type="submit" value="Create Product Listing" style={{width: "200px", margin: "10px auto"}} />
+          <button style={{width: "200px", margin: "10px auto"}} onClick={this.props.reset}>Reset</button>
+        </form>
+      </div>
     );
   }
 }

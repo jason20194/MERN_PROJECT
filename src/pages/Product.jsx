@@ -3,7 +3,7 @@ import axios from "axios";
 import AddToCart from "../components/AddToCart";
 import { Redirect, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "../components/products.css";
+import "../components/products.module.css";
 
 class Product extends Component {
   state = {
@@ -19,6 +19,7 @@ class Product extends Component {
   };
 
   checkImages = (images) => {
+    console.log(images)
     if (!images) {
       return null
     }

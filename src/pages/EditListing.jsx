@@ -4,6 +4,7 @@ import axios from "axios";
 
 class EditListing extends Component {
   state = {
+    url: [],
     data: {},
     loading: true
   };
@@ -20,7 +21,8 @@ class EditListing extends Component {
 
       this.setState({
         data: response.data,
-        loading: false
+        loading: false,
+        url: response.data.image
       });
     } catch (err) {
       // console.log(err);
@@ -49,6 +51,13 @@ class EditListing extends Component {
       .catch(function(error) {
         console.log(error);
       });
+    console.log(values);
+
+    // that is this code doing?
+    // {
+    //   ...values,
+    //   image: this.state.url
+    // }
   };
 
   render() {
@@ -59,7 +68,12 @@ class EditListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log("Done! Here is the image info: ", result.info);
+          console.log(result.info.url);
+          this.setState(prevState => {
+            return {
+              url: [...prevState.url, result.info.url]
+            };
+          });
         }
       }
     );

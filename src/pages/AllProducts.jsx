@@ -3,7 +3,7 @@ import axios from "axios";
 import AddToCart from "../components/AddToCart";
 import { Redirect, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "../components/products.css"
+import style from "../components/products.module.css"
 
 class AllProducts extends Component {
   state = {
@@ -31,7 +31,7 @@ class AllProducts extends Component {
     if (imagesLength === 0) {
       return null
     }
-    return <img width="400" src={images[0]} alt="product pic" />
+    return <img width="300" height="300" src={images[0]} alt="product pic" />
   }
 
   render() {
@@ -52,7 +52,8 @@ class AllProducts extends Component {
               <Link to={`/listing/${product._id}`}>
                 <Button>Product Details</Button>
               </Link>
-              <AddToCart product={product} />
+              {product.available ? <AddToCart product={product} /> : null}
+              
             </div>
           );
         })
