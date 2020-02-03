@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import { Redirect, Link } from "react-router-dom";
 
 export class AllOrdersAdmin extends Component {
   state = {
@@ -10,7 +11,6 @@ export class AllOrdersAdmin extends Component {
     try {
       const response = await axios.get("http://localhost:5000/orders/all");
       const { data } = response;
-      console.log("onclick");
 
       this.setState({ data });
     } catch (err) {
@@ -26,8 +26,8 @@ export class AllOrdersAdmin extends Component {
         `http://localhost:5000/orders/fulfil/${id}`
       );
       const order = response.data;
-      console.log(order);
-      console.log(this.state);
+      // console.log(order);
+      // console.log(this.state);
       // is this the right approach to call componentDidMount() in another method?
       this.componentDidMount();
     } catch (err) {
@@ -66,6 +66,9 @@ export class AllOrdersAdmin extends Component {
                   <Button onClick={() => this.fulfilOder(order._id)}>
                     Fulfil the order
                   </Button>
+                  <Link to={`/admin/order/${order._id}`}>
+                    <Button>View Details</Button>
+                  </Link>
                 </div>
               );
             })
@@ -79,6 +82,9 @@ export class AllOrdersAdmin extends Component {
                 <p>Number of items: {order.numberOfItems}</p>
                 <p>status: {order.fulfilled ? "fulfilled" : "pending"}</p>
                 <hr />
+                <Link to={`/admin/order/${order._id}`}>
+                  <Button>View Details</Button>
+                </Link>
               </div>
             ))
           : null}
