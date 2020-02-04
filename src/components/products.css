@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:700&display=swap");
+
+.all_products {
+  display: flex;
+  flex-wrap: wrap;
+  text-transform: capitalize;
+  font-family: "Lato", sans-serif;
+}
+
+.card-list-img {
+  max-height: 195px;
+}
+
+.product {
+  width: 400px;
+  height: 500px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  font-family: "Lato", sans-serif;
+}
+
+#product-carousel {
+  /* display: flex; */
+  background-color: blanchedalmond;
+  /* margin-top: 20%;
+  margin-left: 10%; */
+  width: 500px;
+  border: black;
+}
+
+.back-to-product-btn {
+  margin: 5px;
+  padding: 6px 12px;
+}
+.product-price {
+  margin: 5px;
+}
+
+.ProductTitle {
+  text-transform: capitalize;
+}
+
+.Content2 {
+  font-family: "Lato", sans-serif;
+}

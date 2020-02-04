@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AddToCart from "../components/AddToCart";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import "../components/products.css";
 import "../components/Carousel.css";
 import Carousel from "react-bootstrap/Carousel";
 import { Container, Row, Col } from "reactstrap";
 import { isBrowser } from "react-device-detect";
-import "../components/products.module.css";
 
 class Product extends Component {
   state = {
