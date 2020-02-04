@@ -1,0 +1,36 @@
+.main-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* background-color: green; */
+  height: 800px;
+}
+.left-side {
+  background-color: blue;
+  height: 100%;
+  width: 45%;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+  height: 100%;
+  width: 45%;
+}
+
+.product-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 50%;
+  width: 100%;
+  background-color: purple;
+}
+
+.description-box {
+  height: 50%;
+  width: 100%;
+
+  background-color: yellow;
+}
