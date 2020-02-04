@@ -9,6 +9,7 @@ class AdminDashboard extends Component {
   async componentDidMount() {
     if (localStorage.getItem("token")) {
       const token = localStorage.getItem("token");
+      return token;
     }
   }
 

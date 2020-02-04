@@ -12,6 +12,7 @@ class EditListing extends Component {
   async componentDidMount() {
     if (localStorage.getItem("token")) {
       const token = localStorage.getItem("token");
+      return token;
     }
     try {
       const response = await axios.get(
@@ -41,7 +42,7 @@ class EditListing extends Component {
         "x-access-token": token
       }
     };
-    const res = await axios
+    await axios
       .put(
         `http://localhost:5000/listings/edit/${this.props.match.params.id}`,
         values,

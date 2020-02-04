@@ -13,6 +13,7 @@ class DeleteConfirmation extends Component {
   componentDidMount = async () => {
     if (localStorage.getItem("token")) {
       const token = localStorage.getItem("token");
+      return token;
     }
     const response = await axios.get(
       `http://localhost:5000/listings/${this.props.match.params.id}`

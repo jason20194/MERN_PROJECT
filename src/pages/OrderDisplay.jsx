@@ -16,6 +16,7 @@ class OrderDisplay extends Component {
     );
     if (localStorage.getItem("token")) {
       const token = localStorage.getItem("token");
+      return token;
     }
     this.setState({ order: response.data });
   };

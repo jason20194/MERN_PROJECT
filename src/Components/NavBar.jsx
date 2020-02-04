@@ -7,7 +7,6 @@ export default function NavBar() {
         <img
           id="brand-image"
           alt="Website Logo"
-          img
           src={require("../images/medicinepower.png")}
         />
       </a>
