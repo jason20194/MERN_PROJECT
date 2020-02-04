@@ -40,10 +40,8 @@ class DeleteConfirmation extends Component {
     console.log("the id is", id);
 
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/listings/delete/${id}`
-      );
-      const order = response.data;
+      await axios.delete(`http://localhost:5000/listings/delete/${id}`);
+      // const order = response.data;
       this.setState({
         deleted: true,
         message: "This listing has been deleted"

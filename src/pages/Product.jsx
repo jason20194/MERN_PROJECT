@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AddToCart from "../components/AddToCart";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/products.module.css";
 
@@ -18,21 +18,21 @@ class Product extends Component {
     this.setState({ product: response.data });
   };
 
-  checkImages = (images) => {
-    console.log(images)
+  checkImages = images => {
+    console.log(images);
     if (!images) {
-      return null
+      return null;
     }
-    if (typeof(images) === String) {
-      return <img width="400" src={images} alt="product pic" />      
+    if (typeof images === String) {
+      return <img width="400" src={images} alt="product pic" />;
     }
     if (images.length === 0) {
-      return null
+      return null;
     }
-    return images.map((image) => {
-      return <img width="400" src={image} alt="product pic" />
-    })
-  }
+    return images.map(image => {
+      return <img width="400" src={image} alt="product pic" />;
+    });
+  };
 
   render() {
     const { product } = this.state;

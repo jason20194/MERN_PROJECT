@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AddToCart from "../components/AddToCart";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import style from "../components/products.module.css"
+// import style from "../components/products.module.css"
 
 class AllProducts extends Component {
   state = {
@@ -20,19 +20,19 @@ class AllProducts extends Component {
     }
   }
 
-  checkImages = (images) => {
+  checkImages = images => {
     if (!images) {
-      return null
+      return null;
     }
-    const imagesLength = images.length
-    if (typeof(images) === String) {
-      return <img width="400" src={images} alt="product pic" />      
+    const imagesLength = images.length;
+    if (typeof images === String) {
+      return <img width="400" src={images} alt="product pic" />;
     }
     if (imagesLength === 0) {
-      return null
+      return null;
     }
-    return <img width="300" height="300" src={images[0]} alt="product pic" />
-  }
+    return <img width="300" height="300" src={images[0]} alt="product pic" />;
+  };
 
   render() {
     const { data } = this.state;
@@ -53,7 +53,6 @@ class AllProducts extends Component {
                 <Button>Product Details</Button>
               </Link>
               {product.available ? <AddToCart product={product} /> : null}
-              
             </div>
           );
         })

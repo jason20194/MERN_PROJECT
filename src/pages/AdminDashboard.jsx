@@ -3,7 +3,7 @@ import AllListingAdmin from "../components/AllListingsAdmin";
 import AllOrdersAdmin from "../components/AllOrdersAdmin";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class AdminDashboard extends Component {
   async componentDidMount() {
@@ -35,14 +35,3 @@ class AdminDashboard extends Component {
 }
 
 export default AdminDashboard;
-
-{
-  /* <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
-  <Tab eventKey="listings" title="Listings">
-    <AllListingAdmin />
-  </Tab>
-  <Tab eventKey="listings" title="Orders">
-    <AllOrdersAdmin />
-  </Tab>
-</Tabs>; */
-}

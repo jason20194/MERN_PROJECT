@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/order.css";
 
@@ -24,9 +24,7 @@ class OrderDisplay extends Component {
     console.log("the id is", id);
 
     try {
-      const response = await axios.put(
-        `http://localhost:5000/orders/fulfil/${id}`
-      );
+      await axios.put(`http://localhost:5000/orders/fulfil/${id}`);
 
       this.setState({ fulfilled: true });
     } catch (err) {

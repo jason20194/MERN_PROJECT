@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export class AllOrdersAdmin extends Component {
   state = {
@@ -22,13 +22,11 @@ export class AllOrdersAdmin extends Component {
     console.log("the id is", id);
 
     try {
-      const response = await axios.put(
-        `http://localhost:5000/orders/fulfil/${id}`
-      );
-      const order = response.data;
-      // console.log(order);
-      // console.log(this.state);
-      // is this the right approach to call componentDidMount() in another method?
+      await axios.put(`http://localhost:5000/orders/fulfil/${id}`);
+      // const order = response.data;
+
+      // need to change this method, cant directly call component did mount.
+      // make another get request here with the axios instead
       this.componentDidMount();
     } catch (err) {
       console.log(err);
@@ -49,6 +47,7 @@ export class AllOrdersAdmin extends Component {
         } else {
           pendingOrders.push(order);
         }
+        return data;
       });
     }
 
