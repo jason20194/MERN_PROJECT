@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Elements, StripeProvider } from "react-stripe-elements";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -101,11 +101,3 @@ export default connect(mapStateToProps, mapDispatchProps)(CartPage);
 // we have one central dispatch for redux to update the global state, UPDATE_CART
 
 // no localstorage in the reducer, we'll do anything to do with localstorage in the compoenent itself
-
-{
-  /* <Link to={{ pathname:"/payment", aboutProps:{
-              totalCart : "another"
-            }}>
-              <Button>Product Details</Button>
-            </Link> */
-}

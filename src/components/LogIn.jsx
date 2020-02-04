@@ -48,7 +48,7 @@ class LogIn extends Component {
   render() {
     return (
       <div className="card-container">
-        <div class="card2">
+        <div className="card2">
           <h1>LOGIN</h1>
           <br></br>
           <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>

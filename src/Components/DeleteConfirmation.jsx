@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
@@ -12,11 +11,18 @@ class DeleteConfirmation extends Component {
   };
 
   componentDidMount = async () => {
+    let token = localStorage.getItem("token");
+    if (!token) {
+      this.redirect();
+    }
     const response = await axios.get(
       `http://localhost:5000/listings/${this.props.match.params.id}`
     );
     console.log(response.data);
     this.setState({ listing: response.data });
+  };
+  redirect = () => {
+    this.props.history.push("/admin/login");
   };
 
   checkImages = images => {
@@ -38,10 +44,8 @@ class DeleteConfirmation extends Component {
     console.log("the id is", id);
 
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/listings/delete/${id}`
-      );
-      const order = response.data;
+      await axios.delete(`http://localhost:5000/listings/delete/${id}`);
+      // const order = response.data;
       this.setState({
         deleted: true,
         message: "This listing has been deleted"
