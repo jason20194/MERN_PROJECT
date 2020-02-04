@@ -34,7 +34,7 @@ class EditListing extends Component {
     const token = localStorage.getItem("token");
     console.log("inside edit axios and this is token from lclstrg = ", token);
 
-    let configgg = {
+    let postData = {
       headers: {
         "x-access-token": token
       }
@@ -43,7 +43,7 @@ class EditListing extends Component {
       .put(
         `http://localhost:5000/listings/edit/${this.props.match.params.id}`,
         values,
-        configgg
+        postData
       )
       .then(function(response) {
         console.log(response);

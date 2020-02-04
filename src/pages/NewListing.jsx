@@ -3,19 +3,28 @@ import MyForm from "../components/newListingForm";
 import axios from "axios";
 
 class NewListing extends Component {
-    state = {
-      url: []
-    }
+  state = {
+    url: []
+  };
 
+  submit = async values => {
+    const token = localStorage.getItem("token");
 
-    submit = async (values) => {
-      await axios.post('http://localhost:5000/listings/new',
-        { 
-          ...values,
-          image: this.state.url
-        }
-      )
-    }
+    let postData = {
+      headers: {
+        "x-access-token": token
+      }
+    };
+
+    await axios.post(
+      "http://localhost:5000/listings/new",
+      {
+        ...values,
+        image: this.state.url
+      },
+      postData
+    );
+  };
 
   render() {
     let widget = window.cloudinary.createUploadWidget(
@@ -25,11 +34,11 @@ class NewListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          this.setState((prevState) => {
+          this.setState(prevState => {
             return {
               url: [...prevState.url, result.info.url]
-            }
-          })
+            };
+          });
         }
       }
     );
@@ -40,12 +49,12 @@ class NewListing extends Component {
     };
 
     return (
-    <div>
-        <MyForm onSubmit={this.submit}/>
-      <div id='photo-form-container'>
-      <button onClick={showWidget}>Upload Photo</button>
+      <div>
+        <MyForm onSubmit={this.submit} />
+        <div id="photo-form-container">
+          <button onClick={showWidget}>Upload Photo</button>
+        </div>
       </div>
-    </div>
     );
   }
 }
