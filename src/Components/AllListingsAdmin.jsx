@@ -46,7 +46,7 @@ export class AllListingAdmin extends Component {
                 <tr>
                   <td>{listing._id}</td>
                   <td>{listing.title}</td>
-                  <td>@{listing.price}</td>
+                  <td>${listing.price}</td>
                   <td>
                     <Link to={`/edit_listing/${listing._id}`}>
                       <Button>Edit</Button>
