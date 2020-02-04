@@ -51,7 +51,7 @@ class AllProducts extends Component {
                   <div>
                     <ReactImageFallback
                       src={this.checkImages(product.image)}
-                      fallbackImage="https://via.placeholder.com/300"
+                      fallbackImage="https://via.placeholder.com/348x195"
                     />
                   </div>
                   {/* {this.checkImages(product.image)} */}
