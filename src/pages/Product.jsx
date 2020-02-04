@@ -59,8 +59,14 @@ class Product extends Component {
             <div className="carousel-img">
               {this.checkImages(product.image)}
             </div>
-            <div className="product-price mt-3">
-              <h3>Price: ${product.price}</h3>
+            <div className="product-price mt-3 mr-4">
+              <h3>${product.price} HKD</h3>
+            </div>
+            <div className="in-stock ml-1">
+              <h6>
+                In Stock:{" "}
+                {product.available ? <span> ✅</span> : <span> ❌</span>}
+              </h6>
             </div>
             <div className="product-buttons d-flex align-items-center mt-3">
               <AddToCart product={product} />
@@ -81,7 +87,7 @@ class Product extends Component {
               <h1>{product.title}</h1>
             </div>
             <div className="ProductDescription mt-3">
-              <h2>Health Benefits</h2>
+              <h2>Health Benefits:</h2>
               <p>{product.description}</p>
             </div>
           </div>

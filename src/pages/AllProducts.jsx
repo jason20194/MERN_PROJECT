@@ -3,7 +3,7 @@ import axios from "axios";
 import AddToCart from "../components/AddToCart";
 import { Redirect, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "../components/products.css"
+import "../components/products.css";
 
 class AllProducts extends Component {
   state = {
@@ -20,55 +20,47 @@ class AllProducts extends Component {
     }
   }
 
-  checkImages = (images) => {
+  checkImages = images => {
     if (!images) {
-      return null
+      return null;
     }
-    const imagesLength = images.length
-    if (typeof(images) === String) {
-      return <img width="400" src={images} alt="product pic" />      
+    const imagesLength = images.length;
+    if (typeof images === String) {
+      return <img width="400" src={images} alt="product pic" />;
     }
     if (imagesLength === 0) {
-      return null
+      return null;
     }
-    return <img width="400" src={images[0]} alt="product pic" />
-  }
+    return <img width="400" src={images[0]} alt="product pic" />;
+  };
 
   render() {
     const { data } = this.state;
     return (
       <div className="all_products container">
-            {
-              data &&
-               data.map((product, index) => {
-                  // console.log(product);
-                  return (
-                  
-                    <div key={index} className='product'>
-                      <h1>{product.title}</h1>
-                      <p>Id: {product._id}</p>
-                      <p>Price: ${product.price}</p>
-                      <p>
-                        availability:{" "}
-                        {product.available ? <span>✅</span> : <span>❌</span>}
-                      </p>
-                      {this.checkImages(product.image)}
-                      <Link to={`/listing/${product._id}`}>
-                        <Button>Product Details</Button>
-                      </Link>
-                      <AddToCart product={product} />
-                    </div>
-                  );
-                })
-            
-          
-          }
-             
-
+        {data &&
+          data.map((product, index) => {
+            // console.log(product);
+            return (
+              <div key={index} className="product">
+                <h1>{product.title}</h1>
+                <p>Id: {product._id}</p>
+                <p>Price: ${product.price}</p>
+                <p>
+                  In Stock:{" "}
+                  {product.available ? <span>✅</span> : <span>❌</span>}
+                </p>
+                {this.checkImages(product.image)}
+                <Link to={`/listing/${product._id}`}>
+                  <Button>Product Details</Button>
+                </Link>
+                <AddToCart product={product} />
+              </div>
+            );
+          })}
       </div>
-    )
-          }
- 
+    );
+  }
 }
 
 export default AllProducts;

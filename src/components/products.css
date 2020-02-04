@@ -8,6 +8,7 @@
   margin: 0 auto;
   padding: 0;
   margin-top: 5%;
+  text-transform: capitalize;
 }
 
 .product {
@@ -34,4 +35,8 @@
 }
 .product-price {
   margin: 5px;
+}
+
+.ProductTitle {
+  text-transform: capitalize;
 }
