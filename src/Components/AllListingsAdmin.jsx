@@ -11,10 +11,6 @@ export class AllListingAdmin extends Component {
     // setShow: false
   };
   async componentDidMount() {
-    // let token = localStorage.getItem("token");
-    // if (!token) {
-    //   return <Redirect to="/admin/login" />;
-    // }
     try {
       const response = await axios.get("http://localhost:5000/listings/all");
       const { data } = response;

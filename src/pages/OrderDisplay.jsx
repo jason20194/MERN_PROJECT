@@ -13,12 +13,16 @@ class OrderDisplay extends Component {
   componentDidMount = async () => {
     let token = localStorage.getItem("token");
     if (!token) {
-      return <Redirect to="/admin/login" />;
+      this.redirect();
     }
     const response = await axios.get(
       `http://localhost:5000/orders/${this.props.match.params.id}`
     );
     this.setState({ order: response.data });
+  };
+
+  redirect = () => {
+    this.props.history.push("/admin/login");
   };
 
   fulfilOder = async id => {

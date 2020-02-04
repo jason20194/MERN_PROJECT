@@ -9,11 +9,13 @@ class AdminDashboard extends Component {
   componentDidMount() {
     let token = localStorage.getItem("token");
     if (!token) {
-      console.log("token", token);
-
-      return <Redirect to="/admin/login" />;
+      this.redirect();
     }
   }
+
+  redirect = () => {
+    this.props.history.push("/admin/login");
+  };
 
   render() {
     return (

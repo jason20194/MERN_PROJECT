@@ -8,10 +8,6 @@ export class AllOrdersAdmin extends Component {
     data: null
   };
   async componentDidMount() {
-    // let token = localStorage.getItem("token");
-    // if (!token) {
-    //   return <Redirect to="/admin/login" />;
-    // }
     try {
       const response = await axios.get("http://localhost:5000/orders/all");
       const { data } = response;

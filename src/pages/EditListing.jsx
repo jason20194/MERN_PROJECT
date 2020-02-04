@@ -12,7 +12,7 @@ class EditListing extends Component {
   async componentDidMount() {
     let token = localStorage.getItem("token");
     if (!token) {
-      return <Redirect to="/admin/login" />;
+      this.redirect();
     }
     try {
       const response = await axios.get(
@@ -31,6 +31,10 @@ class EditListing extends Component {
       // console.log(err);
     }
   }
+
+  redirect = () => {
+    this.props.history.push("/admin/login");
+  };
 
   submit = async values => {
     const token = localStorage.getItem("token");

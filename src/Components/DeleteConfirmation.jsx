@@ -13,13 +13,16 @@ class DeleteConfirmation extends Component {
   componentDidMount = async () => {
     let token = localStorage.getItem("token");
     if (!token) {
-      return <Redirect to="/admin/login" />;
+      this.redirect();
     }
     const response = await axios.get(
       `http://localhost:5000/listings/${this.props.match.params.id}`
     );
     console.log(response.data);
     this.setState({ listing: response.data });
+  };
+  redirect = () => {
+    this.props.history.push("/admin/login");
   };
 
   checkImages = images => {

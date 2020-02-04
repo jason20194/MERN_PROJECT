@@ -10,9 +10,13 @@ class NewListing extends Component {
   componentDidMount() {
     let token = localStorage.getItem("token");
     if (!token) {
-      return <Redirect to="/admin/login" />;
+      this.redirect();
     }
   }
+
+  redirect = () => {
+    this.props.history.push("/admin/login");
+  };
 
   submit = async values => {
     const token = localStorage.getItem("token");
