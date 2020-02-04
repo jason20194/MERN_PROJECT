@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MyForm from "../components/newListingForm";
 import axios from "axios";
+import styles from "../components/products.module.css"
 
 class NewListing extends Component {
     state = {
@@ -18,33 +19,9 @@ class NewListing extends Component {
     }
 
   render() {
-    let widget = window.cloudinary.createUploadWidget(
-      {
-        cloudName: "medicinepower",
-        uploadPreset: "medicinepower"
-      },
-      (error, result) => {
-        if (!error && result && result.event === "success") {
-          this.setState((prevState) => {
-            return {
-              url: [...prevState.url, result.info.url]
-            }
-          })
-        }
-      }
-    );
-
-    const showWidget = () => {
-      widget.open();
-      console.log(widget);
-    };
-
     return (
-    <div>
-        <MyForm onSubmit={this.submit}/>
-      <div id='photo-form-container'>
-      <button onClick={showWidget}>Upload Photo</button>
-      </div>
+    <div className={styles.formWrapper} >
+        <MyForm onSubmit={this.submit} />
     </div>
     );
   }
