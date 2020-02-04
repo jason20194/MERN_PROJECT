@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:700&display=swap");
+
 .all_products {
   display: flex;
   flex-wrap: wrap;
   text-transform: capitalize;
+  font-family: "Lato", sans-serif;
 }
 
 .card-list-img {
@@ -15,6 +18,7 @@
   padding: 16px;
   margin-bottom: 16px;
   flex-wrap: wrap;
+  font-family: "Lato", sans-serif;
 }
 
 #product-carousel {
@@ -36,4 +40,8 @@
 
 .ProductTitle {
   text-transform: capitalize;
+}
+
+.Content2 {
+  font-family: "Lato", sans-serif;
 }

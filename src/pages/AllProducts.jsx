@@ -4,7 +4,9 @@ import AddToCart from "../components/AddToCart";
 import { Redirect, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/products.css";
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Card, Placeholder } from "semantic-ui-react";
+import ReactImageFallback from "react-image-fallback";
+
 class AllProducts extends Component {
   state = {
     data: null
@@ -45,14 +47,19 @@ class AllProducts extends Component {
             // console.log(product);
             return (
               <Card style={{ width: "350px" }}>
-                {/* <div key={index} className="product"> */}
                 <Card.Content>
-                  {this.checkImages(product.image)}
+                  <div>
+                    <ReactImageFallback
+                      src={this.checkImages(product.image)}
+                      fallbackImage="https://via.placeholder.com/300"
+                    />
+                  </div>
+                  {/* {this.checkImages(product.image)} */}
                   <div className="card-info p-3">
                     <Card.Header>{product.title}</Card.Header>
-                    <Card.Meta>
+                    {/* <Card.Meta>
                       <span className="product-id">Item Id: {product._id}</span>
-                    </Card.Meta>
+                    </Card.Meta> */}
                     <Card.Description>Price: ${product.price}</Card.Description>
                     <Card.Content extra>
                       {" "}
@@ -65,7 +72,6 @@ class AllProducts extends Component {
                     <AddToCart product={product} />
                   </div>
                 </Card.Content>
-                {/* </div> */}
               </Card>
             );
           })}
