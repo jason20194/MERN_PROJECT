@@ -28,7 +28,7 @@ class NewListing extends Component {
     };
 
     await axios.post(
-      "http://localhost:5000/listings/new",
+      "http://localhost:5000/admin/new",
       {
         ...values,
         image: this.state.url

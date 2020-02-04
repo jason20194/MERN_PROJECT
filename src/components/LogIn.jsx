@@ -5,6 +5,8 @@ import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 
 import axios from "axios";
 
+import { withRouter } from "react-router";
+
 import "../components/login.css";
 
 class LogIn extends Component {
@@ -38,13 +40,23 @@ class LogIn extends Component {
           password
         }
       );
+
       localStorage.setItem("token", response.data.token);
       const token = localStorage.getItem("token");
+      if (token) {
+        this.redirect();
+      }
       console.log(token);
     } catch (err) {
       console.log(err);
     }
   };
+
+  redirect = () => {
+    console.log("redirect called", this.props);
+    this.props.history.push("/admin");
+  };
+
   render() {
     return (
       <div className="card-container">
@@ -76,4 +88,4 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn;
+export default withRouter(LogIn);

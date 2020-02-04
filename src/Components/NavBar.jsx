@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
+import Logout from "./Logout";
 
 export default function NavBar() {
   return (
@@ -48,6 +50,9 @@ export default function NavBar() {
             <a className="nav-link" href="/cart">
               Cart
             </a>
+          </li>
+          <li className="nav-item">
+            <Logout />
           </li>
         </ul>
       </div>
