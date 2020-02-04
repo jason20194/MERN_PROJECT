@@ -1,21 +1,41 @@
 import React, { Component } from "react";
 import MyForm from "../components/newListingForm";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class NewListing extends Component {
-    state = {
-      url: []
+  state = {
+    url: []
+  };
+  componentDidMount() {
+    let token = localStorage.getItem("token");
+    if (!token) {
+      this.redirect();
     }
+  }
 
+  redirect = () => {
+    this.props.history.push("/admin/login");
+  };
 
-    submit = async (values) => {
-      await axios.post('http://localhost:5000/listings/new',
-        { 
-          ...values,
-          image: this.state.url
-        }
-      )
-    }
+  submit = async values => {
+    const token = localStorage.getItem("token");
+
+    let postData = {
+      headers: {
+        "x-access-token": token
+      }
+    };
+
+    await axios.post(
+      "http://localhost:5000/admin/new",
+      {
+        ...values,
+        image: this.state.url
+      },
+      postData
+    );
+  };
 
   render() {
     let widget = window.cloudinary.createUploadWidget(
@@ -25,11 +45,11 @@ class NewListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          this.setState((prevState) => {
+          this.setState(prevState => {
             return {
               url: [...prevState.url, result.info.url]
-            }
-          })
+            };
+          });
         }
       }
     );
@@ -41,17 +61,11 @@ class NewListing extends Component {
 
     return (
       <div>
-        <MyForm onSubmit={this.submit}/>
-      <div id='photo-form-container'>
-      <button onClick={showWidget}>Upload Photo</button>
-    </div>
-    <div id='photo-form-container'>
-      <button onClick={showWidget}>Upload another Photo</button>
-    </div>
-    <div id='photo-form-container'>
-      <button onClick={showWidget}>Upload another Photo</button>
-    </div>
-    </div>
+        <MyForm onSubmit={this.submit} />
+        <div id="photo-form-container">
+          <button onClick={showWidget}>Upload Photo</button>
+        </div>
+      </div>
     );
   }
 }

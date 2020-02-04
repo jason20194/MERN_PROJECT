@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import EditForm from "../components/EditForm";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class EditListing extends Component {
   state = {
+    url: [],
     data: {},
     loading: true
   };
   async componentDidMount() {
-    console.log(this.props);
-
+    let token = localStorage.getItem("token");
+    if (!token) {
+      this.redirect();
+    }
     try {
       const response = await axios.get(
         `http://localhost:5000/listings/${this.props.match.params.id}`
@@ -20,19 +24,32 @@ class EditListing extends Component {
 
       this.setState({
         data: response.data,
-        loading: false
+        loading: false,
+        url: response.data.image
       });
     } catch (err) {
       // console.log(err);
     }
   }
 
+  redirect = () => {
+    this.props.history.push("/admin/login");
+  };
+
   submit = async values => {
-    console.log(values);
-    const res = await axios
+    const token = localStorage.getItem("token");
+    console.log("inside edit axios and this is token from lclstrg = ", token);
+
+    let postData = {
+      headers: {
+        "x-access-token": token
+      }
+    };
+    await axios
       .put(
         `http://localhost:5000/listings/edit/${this.props.match.params.id}`,
-        values
+        values,
+        postData
       )
       .then(function(response) {
         console.log(response);
@@ -40,6 +57,13 @@ class EditListing extends Component {
       .catch(function(error) {
         console.log(error);
       });
+    console.log(values);
+
+    // that is this code doing?
+    // {
+    //   ...values,
+    //   image: this.state.url
+    // }
   };
 
   render() {
@@ -50,7 +74,12 @@ class EditListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log("Done! Here is the image info: ", result.info);
+          console.log(result.info.url);
+          this.setState(prevState => {
+            return {
+              url: [...prevState.url, result.info.url]
+            };
+          });
         }
       }
     );
@@ -65,12 +94,12 @@ class EditListing extends Component {
     }
 
     return (
-    <div>
-      <EditForm onSubmit={this.submit} initialValues={this.state.data}/>
-      <div id='photo-form-container'>
+      <div>
+        <EditForm onSubmit={this.submit} initialValues={this.state.data} />
+        <div id="photo-form-container">
           <button onClick={showWidget}>Upload Photo</button>
         </div>
-    </div>
+      </div>
     );
   }
 }
