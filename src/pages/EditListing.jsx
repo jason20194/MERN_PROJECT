@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import EditForm from "../components/EditForm";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class EditListing extends Component {
   state = {
@@ -9,8 +10,10 @@ class EditListing extends Component {
     loading: true
   };
   async componentDidMount() {
-    console.log(this.props);
-
+    let token = localStorage.getItem("token");
+    if (!token) {
+      this.redirect();
+    }
     try {
       const response = await axios.get(
         `http://localhost:5000/listings/${this.props.match.params.id}`
@@ -29,21 +32,24 @@ class EditListing extends Component {
     }
   }
 
+  redirect = () => {
+    this.props.history.push("/admin/login");
+  };
+
   submit = async values => {
-    // console.log(values);
     const token = localStorage.getItem("token");
     console.log("inside edit axios and this is token from lclstrg = ", token);
 
-    let configgg = {
+    let postData = {
       headers: {
         "x-access-token": token
       }
     };
-    const res = await axios
+    await axios
       .put(
         `http://localhost:5000/listings/edit/${this.props.match.params.id}`,
         values,
-        configgg
+        postData
       )
       .then(function(response) {
         console.log(response);

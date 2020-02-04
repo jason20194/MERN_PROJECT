@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/order.css";
 
@@ -11,21 +11,25 @@ class OrderDisplay extends Component {
   };
 
   componentDidMount = async () => {
-    // const id = this.props.match.params.id || this.state.order._id;
+    let token = localStorage.getItem("token");
+    if (!token) {
+      this.redirect();
+    }
     const response = await axios.get(
       `http://localhost:5000/orders/${this.props.match.params.id}`
     );
-    console.log(this.props.match.params.id);
     this.setState({ order: response.data });
+  };
+
+  redirect = () => {
+    this.props.history.push("/admin/login");
   };
 
   fulfilOder = async id => {
     console.log("the id is", id);
 
     try {
-      const response = await axios.put(
-        `http://localhost:5000/orders/fulfil/${id}`
-      );
+      await axios.put(`http://localhost:5000/orders/fulfil/${id}`);
 
       this.setState({ fulfilled: true });
     } catch (err) {

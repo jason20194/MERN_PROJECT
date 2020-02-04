@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { Redirect, Link } from "react-router-dom";
+import Table from "react-bootstrap/Table";
+
+import { Link } from "react-router-dom";
 
 export class AllOrdersAdmin extends Component {
   state = {
@@ -22,13 +24,11 @@ export class AllOrdersAdmin extends Component {
     console.log("the id is", id);
 
     try {
-      const response = await axios.put(
-        `http://localhost:5000/orders/fulfil/${id}`
-      );
-      const order = response.data;
-      // console.log(order);
-      // console.log(this.state);
-      // is this the right approach to call componentDidMount() in another method?
+      await axios.put(`http://localhost:5000/orders/fulfil/${id}`);
+      // const order = response.data;
+
+      // need to change this method, cant directly call component did mount.
+      // make another get request here with the axios instead
       this.componentDidMount();
     } catch (err) {
       console.log(err);
@@ -49,45 +49,86 @@ export class AllOrdersAdmin extends Component {
         } else {
           pendingOrders.push(order);
         }
+        return data;
       });
     }
 
+    // return (
+    //   <div>
+    //     <h2>Pending Orders</h2>
+    //     {pendingOrders !== null
+    //       ? pendingOrders.map((order, index) => {
+    //           return (
+    //             <div key={index}>
+    //               <p>id: {order._id}</p>
+    //               <p>Total value: ${order.totalValue}</p>
+    //               <p>Number of items: {order.numberOfItems}</p>
+    //               <p>status: {order.fulfilled ? "fulfilled" : "pending"}</p>
+    //               <Button onClick={() => this.fulfilOder(order._id)}>
+    //                 Fulfil the order
+    //               </Button>
+    //               <Link to={`/admin/order/${order._id}`}>
+    //                 <Button>View Details</Button>
+    //               </Link>
+    //             </div>
+    //           );
+    //         })
+    //       : null}
+    //     <h2>Fulfilled Orders</h2>
+    //     {fulfilledOrders !== null
+    //       ? fulfilledOrders.map((order, index) => (
+    //           <div key={index}>
+    //             <p>id: {order._id}</p>
+    //             <p>Total value: ${order.totalValue}</p>
+    //             <p>Number of items: {order.numberOfItems}</p>
+    //             <p>status: {order.fulfilled ? "fulfilled" : "pending"}</p>
+    //             <hr />
+    //             <Link to={`/admin/order/${order._id}`}>
+    //               <Button>View Details</Button>
+    //             </Link>
+    //           </div>
+    //         ))
+    //       : null}
+    //   </div>
+    // );
+
     return (
       <div>
-        <h2>Pending Orders</h2>
-        {pendingOrders !== null
-          ? pendingOrders.map((order, index) => {
-              return (
-                <div key={index}>
-                  <p>id: {order._id}</p>
-                  <p>Total value: ${order.totalValue}</p>
-                  <p>Number of items: {order.numberOfItems}</p>
-                  <p>status: {order.fulfilled ? "fulfilled" : "pending"}</p>
-                  <Button onClick={() => this.fulfilOder(order._id)}>
-                    Fulfil the order
-                  </Button>
-                  <Link to={`/admin/order/${order._id}`}>
-                    <Button>View Details</Button>
-                  </Link>
-                </div>
-              );
-            })
-          : null}
-        <h2>Fulfilled Orders</h2>
-        {fulfilledOrders !== null
-          ? fulfilledOrders.map((order, index) => (
-              <div key={index}>
-                <p>id: {order._id}</p>
-                <p>Total value: ${order.totalValue}</p>
-                <p>Number of items: {order.numberOfItems}</p>
-                <p>status: {order.fulfilled ? "fulfilled" : "pending"}</p>
-                <hr />
-                <Link to={`/admin/order/${order._id}`}>
-                  <Button>View Details</Button>
-                </Link>
-              </div>
-            ))
-          : null}
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Total Value</th>
+              <th>Number of items</th>
+              <th>status</th>
+              <th>Fulfil</th>
+              <th>View details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pendingOrders !== null &&
+              pendingOrders.map((order, index) => {
+                return (
+                  <tr>
+                    <td>{order._id}</td>
+                    <td>{order.totalValue}</td>
+                    <td>{order.numberOfItems}</td>
+                    <td>{order.fulfilled ? "fulfilled" : "pending"}</td>
+                    <td>
+                      <Button onClick={() => this.fulfilOder(order._id)}>
+                        Fulfil the order
+                      </Button>
+                    </td>
+                    <td>
+                      <Link to={`/admin/order/${order._id}`}>
+                        <Button>View Details</Button>
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </Table>
       </div>
     );
   }
