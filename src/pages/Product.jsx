@@ -8,7 +8,6 @@ import "../components/Carousel.css";
 import Carousel from "react-bootstrap/Carousel";
 import { Container, Row, Col } from "reactstrap";
 import { isBrowser } from "react-device-detect";
-
 class Product extends Component {
   state = {
     product: null

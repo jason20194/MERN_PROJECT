@@ -3,12 +3,9 @@ import axios from "axios";
 import AddToCart from "../components/AddToCart";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-
-import "../components/products.module.css";
+import "../components/products.css";
 import { Card, Placeholder } from "semantic-ui-react";
 import ReactImageFallback from "react-image-fallback";
-
-// import style from "../components/products.module.css"
 
 class AllProducts extends Component {
   state = {
