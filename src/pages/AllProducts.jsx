@@ -4,7 +4,7 @@ import AddToCart from "../components/AddToCart";
 import { Redirect, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/products.css";
-
+import { Card, Icon, Image } from "semantic-ui-react";
 class AllProducts extends Component {
   state = {
     data: null
@@ -31,31 +31,42 @@ class AllProducts extends Component {
     if (imagesLength === 0) {
       return null;
     }
-    return <img width="400" src={images[0]} alt="product pic" />;
+    return (
+      <img className="w-100 card-list-img" src={images[0]} alt="product pic" />
+    );
   };
 
   render() {
     const { data } = this.state;
     return (
-      <div className="all_products container">
+      <div className="all_products container d-flex">
         {data &&
           data.map((product, index) => {
             // console.log(product);
             return (
-              <div key={index} className="product">
-                <h1>{product.title}</h1>
-                <p>Id: {product._id}</p>
-                <p>Price: ${product.price}</p>
-                <p>
-                  In Stock:{" "}
-                  {product.available ? <span>✅</span> : <span>❌</span>}
-                </p>
-                {this.checkImages(product.image)}
-                <Link to={`/listing/${product._id}`}>
-                  <Button>Product Details</Button>
-                </Link>
-                <AddToCart product={product} />
-              </div>
+              <Card style={{ width: "350px" }}>
+                {/* <div key={index} className="product"> */}
+                <Card.Content>
+                  {this.checkImages(product.image)}
+                  <div className="card-info p-3">
+                    <Card.Header>{product.title}</Card.Header>
+                    <Card.Meta>
+                      <span className="product-id">Item Id: {product._id}</span>
+                    </Card.Meta>
+                    <Card.Description>Price: ${product.price}</Card.Description>
+                    <Card.Content extra>
+                      {" "}
+                      In Stock:{" "}
+                      {product.available ? <span>✅</span> : <span>❌</span>}
+                    </Card.Content>
+                    <Link to={`/listing/${product._id}`}>
+                      <Button>Product Details</Button>
+                    </Link>
+                    <AddToCart product={product} />
+                  </div>
+                </Card.Content>
+                {/* </div> */}
+              </Card>
             );
           })}
       </div>
