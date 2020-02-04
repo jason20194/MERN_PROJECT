@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import { Redirect, Link } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
-import DeleteListing from "./DeleteConfirmation";
+// import Modal from "react-bootstrap/Modal";
+// import DeleteListing from "./DeleteConfirmation";
 
 export class AllListingAdmin extends Component {
   state = {

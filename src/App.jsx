@@ -5,7 +5,6 @@ import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/NavBar";
 
-
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
@@ -45,7 +44,7 @@ class App extends React.Component {
     } else {
       return (
         <BrowserRouter>
-        <Navbar/>
+          <Navbar />
           <Switch>
             <Route path="/" component={Home} exact={true} />
             <Route path="/about_us" component={AboutUs} />
