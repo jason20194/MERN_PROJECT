@@ -8,9 +8,9 @@ class NewListing extends Component {
     url: []
   };
   componentDidMount() {
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-    }
+    // if (localStorage.getItem("token")) {
+    //   const token = localStorage.getItem("token");
+    // }
   }
 
   submit = async values => {
@@ -21,9 +21,9 @@ class NewListing extends Component {
   };
 
   render() {
-    if (!this.token) {
-      return <Redirect to="/admin/login" />;
-    }
+    // if (!this.token) {
+    //   return <Redirect to="/admin/login" />;
+    // }
     let widget = window.cloudinary.createUploadWidget(
       {
         cloudName: "medicinepower",
