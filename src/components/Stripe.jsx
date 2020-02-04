@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
+import { withRouter } from "react-router";
+
 const axios = require("axios");
 
 class Stripe extends Component {
@@ -40,18 +42,16 @@ class Stripe extends Component {
         orderData: { itemsInCart, customerInfo, cartTotal }
       })
       .then(response => {
-        console.log("response = ", response.data);
-
-        console.log("local storage = ", localStorage);
-
         localStorage.removeItem("products");
-
-        console.log("state = ", this.state);
-
-        console.log("after removing = ", localStorage);
+        this.redirect();
       })
       .catch(err => console.log("this is the error" + err));
   }
+
+  redirect = () => {
+    console.log("redirect called", this.props);
+    this.props.history.push("/thank_you");
+  };
 
   render() {
     const fieldStyle = {
@@ -96,4 +96,6 @@ class Stripe extends Component {
   }
 }
 
-export default injectStripe(Stripe);
+export default withRouter(injectStripe(Stripe));
+
+// export default injectStripe(Stripe);

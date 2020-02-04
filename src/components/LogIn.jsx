@@ -53,7 +53,6 @@ class LogIn extends Component {
   };
 
   redirect = () => {
-    console.log("redirect called", this.props);
     this.props.history.push("/admin");
   };
 
