@@ -10,9 +10,9 @@ class EditListing extends Component {
     loading: true
   };
   async componentDidMount() {
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-      return token;
+    let token = localStorage.getItem("token");
+    if (!token) {
+      return <Redirect to="/admin/login" />;
     }
     try {
       const response = await axios.get(
@@ -33,7 +33,6 @@ class EditListing extends Component {
   }
 
   submit = async values => {
-    // console.log(values);
     const token = localStorage.getItem("token");
     console.log("inside edit axios and this is token from lclstrg = ", token);
 
@@ -64,9 +63,6 @@ class EditListing extends Component {
   };
 
   render() {
-    if (!this.token) {
-      return <Redirect to="/admin/login" />;
-    }
     let widget = window.cloudinary.createUploadWidget(
       {
         cloudName: "medicinepower",

@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 export class AllOrdersAdmin extends Component {
   state = {
     data: null
   };
   async componentDidMount() {
+    // let token = localStorage.getItem("token");
+    // if (!token) {
+    //   return <Redirect to="/admin/login" />;
+    // }
     try {
       const response = await axios.get("http://localhost:5000/orders/all");
       const { data } = response;

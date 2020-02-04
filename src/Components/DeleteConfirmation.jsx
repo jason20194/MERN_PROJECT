@@ -11,9 +11,9 @@ class DeleteConfirmation extends Component {
   };
 
   componentDidMount = async () => {
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-      return token;
+    let token = localStorage.getItem("token");
+    if (!token) {
+      return <Redirect to="/admin/login" />;
     }
     const response = await axios.get(
       `http://localhost:5000/listings/${this.props.match.params.id}`
@@ -53,9 +53,6 @@ class DeleteConfirmation extends Component {
   };
 
   render() {
-    if (!this.token) {
-      return <Redirect to="/admin/login" />;
-    }
     const { listing } = this.state;
     return (
       listing && (

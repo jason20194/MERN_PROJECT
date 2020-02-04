@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 // import Modal from "react-bootstrap/Modal";
 // import DeleteListing from "./DeleteConfirmation";
 
@@ -11,6 +11,10 @@ export class AllListingAdmin extends Component {
     // setShow: false
   };
   async componentDidMount() {
+    // let token = localStorage.getItem("token");
+    // if (!token) {
+    //   return <Redirect to="/admin/login" />;
+    // }
     try {
       const response = await axios.get("http://localhost:5000/listings/all");
       const { data } = response;
