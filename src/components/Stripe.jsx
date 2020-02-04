@@ -8,6 +8,10 @@ class Stripe extends Component {
     this.submit = this.submit.bind(this);
   }
 
+  state = {
+    paid: false
+  };
+
   async submit(ev) {
     ev.preventDefault();
     const { currentTarget } = ev;
@@ -25,6 +29,8 @@ class Stripe extends Component {
 
     const cartTotal = this.props.cartTotal;
 
+    this.setState({ paid: true });
+
     // axios request to the backend with token to process the payment
     axios
       .post("/charge", {
@@ -34,7 +40,15 @@ class Stripe extends Component {
         orderData: { itemsInCart, customerInfo, cartTotal }
       })
       .then(response => {
-        console.log(response.data);
+        console.log("response = ", response.data);
+
+        console.log("local storage = ", localStorage);
+
+        localStorage.removeItem("products");
+
+        console.log("state = ", this.state);
+
+        console.log("after removing = ", localStorage);
       })
       .catch(err => console.log("this is the error" + err));
   }

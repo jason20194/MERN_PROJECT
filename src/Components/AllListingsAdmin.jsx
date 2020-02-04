@@ -43,7 +43,7 @@ export class AllListingAdmin extends Component {
           {data &&
             data.map((listing, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{listing._id}</td>
                   <td>{listing.title}</td>
                   <td>${listing.price}</td>

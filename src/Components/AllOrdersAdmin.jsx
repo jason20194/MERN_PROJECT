@@ -71,7 +71,7 @@ export class AllOrdersAdmin extends Component {
             {pendingOrders !== null &&
               pendingOrders.map((order, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>{order._id}</td>
                     <td>${order.totalValue}</td>
                     <td>{order.numberOfItems}</td>
@@ -106,7 +106,7 @@ export class AllOrdersAdmin extends Component {
             {fulfilledOrders !== null &&
               fulfilledOrders.map((order, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>{order._id}</td>
                     <td>{order.totalValue}</td>
                     <td>{order.numberOfItems}</td>
