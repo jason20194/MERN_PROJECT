@@ -1,0 +1,12 @@
+#product-carousel .carousel-control-next-icon {
+  background-image: url(data:image/svg+xml,%3csvg xmlns=http://www.w3.org/2000/svg fill=%23000 …%3cpath d=M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z/%3e%3c/svg%3e);
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  /* background: no-repeat 50% / 100% 100%; */
+}
+
+.carousel-img {
+  height: 300px;
+  /* width: 270px; */
+}

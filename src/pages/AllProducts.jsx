@@ -3,7 +3,9 @@ import axios from "axios";
 import AddToCart from "../components/AddToCart";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-// import style from "../components/products.module.css"
+import "../components/products.css";
+import { Card, Placeholder } from "semantic-ui-react";
+import ReactImageFallback from "react-image-fallback";
 
 class AllProducts extends Component {
   state = {
@@ -31,31 +33,53 @@ class AllProducts extends Component {
     if (imagesLength === 0) {
       return null;
     }
-    return <img width="300" height="300" src={images[0]} alt="product pic" />;
+
+    return (
+      <img className="w-100 card-list-img" src={images[0]} alt="product pic" />
+    );
   };
 
   render() {
     const { data } = this.state;
-    return data
-      ? data.map((product, index) => {
-          return (
-            <div key={index} className="all_products">
-              <h1>{product.title}</h1>
-              <p>Id: {product._id}</p>
-              <p>Price: ${product.price}</p>
-              <p>
-                availability:{" "}
-                {product.available ? <span>✅</span> : <span>❌</span>}
-              </p>
-              {this.checkImages(product.image)}
-              <Link to={`/listing/${product._id}`}>
-                <Button>Product Details</Button>
-              </Link>
-              {product.available ? <AddToCart product={product} /> : null}
-            </div>
-          );
-        })
-      : null;
+
+    return (
+      <div className="all_products container d-flex">
+        {data &&
+          data.map((product, index) => {
+            // console.log(product);
+            return (
+              <Card style={{ width: "350px" }}>
+                <Card.Content>
+                  <div>
+                    <ReactImageFallback
+                      src={this.checkImages(product.image)}
+                      fallbackImage="https://via.placeholder.com/348x195"
+                    />
+                  </div>
+                  {/* {this.checkImages(product.image)} */}
+                  <div className="card-info p-3">
+                    <Card.Header>{product.title}</Card.Header>
+                    {/* <Card.Meta>
+                      <span className="product-id">Item Id: {product._id}</span>
+                    </Card.Meta> */}
+                    <Card.Description>Price: ${product.price}</Card.Description>
+                    <Card.Content extra>
+                      {" "}
+                      In Stock:{" "}
+                      {product.available ? <span>✅</span> : <span>❌</span>}
+                    </Card.Content>
+                    <Link to={`/listing/${product._id}`}>
+                      <Button>Product Details</Button>
+                    </Link>
+                    <AddToCart product={product} />
+                  </div>
+                </Card.Content>
+              </Card>
+            );
+          })}
+      </div>
+    );
   }
 }
+
 export default AllProducts;
