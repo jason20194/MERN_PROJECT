@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/order.css";
+import { Redirect, Link } from "react-router-dom";
 
 class OrderDisplay extends Component {
   state = {
@@ -69,6 +69,17 @@ class OrderDisplay extends Component {
               </div>
             )
           : null}
+        <div>
+          <Link to={`/admin`}>
+            <Button
+              style={{ backgroundColor: "#000000" }}
+              size="md"
+              className="back-to-product-btn"
+            >
+              Back to Admin Dashboard
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }
