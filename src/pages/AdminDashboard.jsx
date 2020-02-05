@@ -4,6 +4,7 @@ import AllOrdersAdmin from "../components/AllOrdersAdmin";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Button from "react-bootstrap/Button";
+import Logout from "../components/Logout";
 
 import { Link } from "react-router-dom";
 
@@ -23,16 +24,11 @@ class AdminDashboard extends Component {
     return (
       <div>
         <Link to={`/new_listing`}>
-          <Button
-            style={{
-              margin: "5px",
-              background: "pink"
-            }}
-          >
-            Create Listing
-          </Button>
+          <Button>Create Listing</Button>
         </Link>
-
+        <Button>
+          <Logout />
+        </Button>
         <Tabs
           defaultActiveKey="listings"
           transition={false}

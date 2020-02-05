@@ -28,15 +28,9 @@ class NavBar extends Component {
   }
 
   render() {
-    console.log(this.state.numberOfItems);
-    // let numberOfItems;
-    // let parsedProducts;
-    // if (this.state.products) {
-    //   parsedProducts = JSON.parse(this.state.products);
-    //   numberOfItems = parsedProducts.length;
-    // }
+    // let token = localStorage.getItem("token");
 
-    // console.log("numberOfItems =   ", numberOfItems);
+    // console.log(token);
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -90,9 +84,6 @@ class NavBar extends Component {
                 </i>
               </a>
             </li>
-            <li className="nav-item">
-             <Logout />
-            </li>
           </ul>
         </div>
       </nav>
@@ -110,3 +101,10 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(NavBar);
+
+// let token = localStorage.getItem("token");
+//     if (!token) {
+//       this.redirect();
+//     }
+
+//     {localStorage.getItem("token") ? <Logout />}
