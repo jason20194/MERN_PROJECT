@@ -21,6 +21,8 @@ code {
 .myTextArea
 {
   border: solid thin lightgray;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .myInput
@@ -29,7 +31,7 @@ code {
   margin-bottom: 10px;
   margin-top: 25px;
 }
-
 h1{
   margin-top: 80px;
 }
+

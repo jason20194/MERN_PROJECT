@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import Button from "react-bootstrap/Button";
 import Logout from "./Logout";
+import AllListingAdmin from "./AllListingsAdmin";
+import LogIn from "./LogIn";
 
 class NavBar extends Component {
   state = {
@@ -89,7 +91,6 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <Logout />
             </li>
           </ul>
         </div>

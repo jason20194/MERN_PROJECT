@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import styles from "../components/products.module.css"
+import Button from "react-bootstrap/Button";
 import { Alert } from 'react-alert'
 
 
@@ -75,28 +76,28 @@ class ListingForm extends Component {
 
 
   render() {
-    let widget = window.cloudinary.createUploadWidget(
-      {
-        cloudName: "medicinepower",
-        uploadPreset: "medicinepower"
-      },
-      (error, result) => {
-        if (!error && result && result.event === "success") {
-          this.setState((prevState) => {
-            return {
-              url: [...prevState.url, result.info.url]
-            }
-          })
-        }
-      }
-    );
+  //   let widget = window.cloudinary.createUploadWidget(
+  //     {
+  //       cloudName: "medicinepower",
+  //       uploadPreset: "medicinepower"
+  //     },
+  //     (error, result) => {
+  //       if (!error && result && result.event === "success") {
+  //         this.setState((prevState) => {
+  //           return {
+  //             url: [...prevState.url, result.info.url]
+  //           }
+  //         })
+  //       }
+  //     }
+  //   );
 
 
-  const showWidget = () => {
-    widget.open();
-    console.log(widget);
+  // const showWidget = () => {
+  //   widget.open();
+  //   console.log(widget);
     
-  };
+  // };
 
     return (
       <div className={styles.formWrapper}>
@@ -130,13 +131,13 @@ class ListingForm extends Component {
               placeholder="Description:"
             />
           </div>
-          <div className='d-flex justify-content-around'>
+          <div className='d-flex justify-content-between'>
 
-          <div id='photo-form-container'>
-      <button onClick={showWidget} style={{width: "200px", margin: "10px auto"}}>Choose File</button>
-          <input type="submit" value="Create Product Listing" style={{width: "200px"}} />
-          <button style={{width: "200px"}} onClick={this.props.reset}>Reset</button>
-      </div>
+         
+      <Button onClick={this.props.showWidget} >Choose File</Button>
+          <Button type="submit" >Create Product</Button> 
+          <Button  onClick={this.props.reset}>Reset</Button>
+     
 
           </div>
   
