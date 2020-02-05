@@ -68,7 +68,7 @@ class Product extends Component {
               </h6>
             </div>
             <div className="product-buttons d-flex align-items-center mt-3">
-              <AddToCart product={product} />
+            {product.available ? <AddToCart product={product} /> :null}
               <br></br>
               <Link to={`/all_products`}>
                 <Button

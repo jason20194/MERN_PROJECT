@@ -71,7 +71,7 @@ class AllProducts extends Component {
                     <Link to={`/listing/${product._id}`}>
                       <Button>Product Details</Button>
                     </Link>
-                    <AddToCart product={product} />
+                    {product.available ? <AddToCart product={product} /> :null}
                   </div>
                 </Card.Content>
               </Card>

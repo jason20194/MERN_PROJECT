@@ -131,13 +131,13 @@ class ListingForm extends Component {
               placeholder="Description:"
             />
           </div>
-          <div className='d-flex'>
+          <div className='d-flex justify-content-between'>
 
-          <div id='photo-form-container'>
-      <Button onClick={this.props.showWidget} style={{width: "120px", margin: "20px auto"}}>Choose File</Button>
-          <Button type="submit" style={{width: "180px"}}>Create Product</Button> 
-          <Button style={{width: "100px"}} onClick={this.props.reset}>Reset</Button>
-      </div>
+         
+      <Button onClick={this.props.showWidget} >Choose File</Button>
+          <Button type="submit" >Create Product</Button> 
+          <Button  onClick={this.props.reset}>Reset</Button>
+     
 
           </div>
   
