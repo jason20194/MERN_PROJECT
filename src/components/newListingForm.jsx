@@ -134,8 +134,8 @@ class ListingForm extends Component {
           <div className='d-flex'>
 
           <div id='photo-form-container'>
-      <Button onClick={this.props.showWidget} style={{width: "100px", margin: "20px auto"}}>Choose File</Button>
-          <Button type="submit" style={{width: "180px"}}>Create Product Listing</Button> 
+      <Button onClick={this.props.showWidget} style={{width: "120px", margin: "20px auto"}}>Choose File</Button>
+          <Button type="submit" style={{width: "180px"}}>Create Product</Button> 
           <Button style={{width: "100px"}} onClick={this.props.reset}>Reset</Button>
       </div>
 
