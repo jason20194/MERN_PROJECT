@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import MyForm from "../components/newListingForm";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 import { Redirect } from "react-router-dom";
 
 class NewListing extends Component {
@@ -26,15 +28,17 @@ class NewListing extends Component {
         "x-access-token": token
       }
     };
-
-    await axios.post(
-      "http://localhost:5000/listings/new",
-      {
-        ...values,
-        image: this.state.url
-      },
-      postData
-    );
+    try {
+      await axios.post(
+        "http://localhost:5000/listings/new",
+        {
+          ...values,
+          image: this.state.url
+        },
+        postData
+      );
+      this.props.history.push("/admin");
+    } catch (error) {}
   };
 
   render() {
@@ -60,9 +64,13 @@ class NewListing extends Component {
     };
 
     return (
-      <div className='d-flex justify-content-center'>
-        <MyForm onSubmit={this.submit}
-        showWidget={showWidget} />
+      <div>
+        <Link to={`/admin`}>
+          <Button>Back to Admin</Button>
+        </Link>
+        <div className="d-flex justify-content-center">
+          <MyForm onSubmit={this.submit} showWidget={showWidget} />
+        </div>
       </div>
     );
   }

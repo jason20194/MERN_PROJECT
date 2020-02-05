@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import EditForm from "../components/EditForm";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router";
 
 class EditListing extends Component {
   state = {
@@ -20,11 +21,11 @@ class EditListing extends Component {
       );
 
       // console.log(this.props.match.params.id)
-      console.log(response);
+      // console.log(response);
 
       this.setState({
         data: response.data,
-        loading: false,
+        loading: false
         // url: response.data.image
       });
     } catch (err) {
@@ -42,34 +43,28 @@ class EditListing extends Component {
 
     // this.setState({
     //   data: values,
-       
+
     // })
-    values.image = this.state.url
-    console.log('values',values)
+    values.image = this.state.url;
+    console.log("values", values);
     let postData = {
       headers: {
         "x-access-token": token
       }
     };
-    await axios
-      .put(
-        `http://localhost:5000/listings/edit/${this.props.match.params.id}`,
-        values,
-        postData
-      )
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-    console.log(values);
+    const response = await axios.put(
+      `http://localhost:5000/listings/edit/${this.props.match.params.id}`,
+      values,
+      postData
+    );
+    try {
+      console.log("inside put  ", response);
+      console.log("props.history = ", this.props.history);
 
-    // that is this code doing?
-    // {
-    //   ...values,
-    //   image: this.state.url
-    // }
+      this.props.history.push("/admin");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
@@ -80,15 +75,13 @@ class EditListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log('result info url', result.info.url);
+          console.log("result info url", result.info.url);
           this.setState(prevState => {
             return {
-              
-                url: [...prevState.url, result.info.url]
-              
+              url: [...prevState.url, result.info.url]
             };
           });
-          console.log('state after upload', this.state.url)
+          console.log("state after upload", this.state.url);
         }
       }
     );
@@ -103,11 +96,15 @@ class EditListing extends Component {
     }
 
     return (
-      <div className= 'd-flex justify-content-center'>
-        <EditForm onSubmit={this.submit} initialValues={this.state.data} showWidget={showWidget}/>
+      <div className="d-flex justify-content-center">
+        <EditForm
+          onSubmit={this.submit}
+          initialValues={this.state.data}
+          showWidget={showWidget}
+        />
       </div>
     );
   }
 }
 
-export default EditListing;
+export default withRouter(EditListing);

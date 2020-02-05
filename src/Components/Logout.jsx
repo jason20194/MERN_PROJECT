@@ -9,7 +9,6 @@ export class Logout extends Component {
   }
   logout = () => {
     const token = localStorage.removeItem("token");
-    console.log("redirect called", this.props);
 
     if (!token) {
       this.redirect();
@@ -22,12 +21,14 @@ export class Logout extends Component {
   };
 
   render() {
+    console.log(this.props);
+
     return (
       <Button
-        style={{
-          margin: "5px",
-          background: "green"
-        }}
+        // style={{
+        //   margin: "5px",
+        //   background: "green"
+        // }}
         onClick={this.logout}
       >
         Logout
