@@ -18,9 +18,7 @@ const HomePage = () => {
           <div></div>
         </div>
       </div>
-      <div className={classes.nextContent}>
-        <h1>hi</h1>
-      </div>
+      <div className={classes.nextContent}></div>
     </>
   );
 };

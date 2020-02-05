@@ -8,13 +8,13 @@ export default function NavBar() {
   // }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="/">
+      {/* <a className="navbar-brand" href="/">
         <img
           id="brand-image"
           alt="Website Logo"
           src={require("../images/medicinepower.png")}
-        />
-      </a>
+        /> */}
+      {/* </a> */}
       <a className="navbar-brand">Medicine Power</a>
       <button
         className="navbar-toggler"
