@@ -45,7 +45,7 @@ class EditListing extends Component {
        
     // })
     values.image = this.state.url
-    console.log('values', values)
+    console.log('values',values)
     let postData = {
       headers: {
         "x-access-token": token

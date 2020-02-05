@@ -61,7 +61,8 @@ class NewListing extends Component {
 
     return (
       <div>
-        <MyForm onSubmit={this.submit} />
+        <MyForm onSubmit={this.submit}
+        showWidget={showWidget} />
       </div>
     );
   }

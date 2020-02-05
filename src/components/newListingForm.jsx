@@ -76,28 +76,28 @@ class ListingForm extends Component {
 
 
   render() {
-    let widget = window.cloudinary.createUploadWidget(
-      {
-        cloudName: "medicinepower",
-        uploadPreset: "medicinepower"
-      },
-      (error, result) => {
-        if (!error && result && result.event === "success") {
-          this.setState((prevState) => {
-            return {
-              url: [...prevState.url, result.info.url]
-            }
-          })
-        }
-      }
-    );
+  //   let widget = window.cloudinary.createUploadWidget(
+  //     {
+  //       cloudName: "medicinepower",
+  //       uploadPreset: "medicinepower"
+  //     },
+  //     (error, result) => {
+  //       if (!error && result && result.event === "success") {
+  //         this.setState((prevState) => {
+  //           return {
+  //             url: [...prevState.url, result.info.url]
+  //           }
+  //         })
+  //       }
+  //     }
+  //   );
 
 
-  const showWidget = () => {
-    widget.open();
-    console.log(widget);
+  // const showWidget = () => {
+  //   widget.open();
+  //   console.log(widget);
     
-  };
+  // };
 
     return (
       <div className={styles.formWrapper}>
@@ -134,7 +134,7 @@ class ListingForm extends Component {
           <div className='d-flex'>
 
           <div id='photo-form-container'>
-      <Button onClick={showWidget} style={{width: "100px", margin: "20px auto"}}>Choose File</Button>
+      <Button onClick={this.props.showWidget} style={{width: "100px", margin: "20px auto"}}>Choose File</Button>
           <Button type="submit" style={{width: "180px"}}>Create Product Listing</Button> 
           <Button style={{width: "100px"}} onClick={this.props.reset}>Reset</Button>
       </div>
