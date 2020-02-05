@@ -55,7 +55,7 @@ class ListingForm extends Component {
         return (
             <form onSubmit={this.props.handleSubmit}>
             <div>
-                <Field name ="title" component={this.renderField} type="text" label="Title"/>
+                <Field name ="title" component={this.renderField} type="text" label="Title" placeholder="title" />
             </div>
             <div>
                 <Field name="price" component={this.renderField} type="number" label="Price"/>

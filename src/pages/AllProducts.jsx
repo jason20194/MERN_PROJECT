@@ -28,7 +28,7 @@ class AllProducts extends Component {
     }
     const imagesLength = images.length;
     if (typeof images === String) {
-      return <img width="400" src={images} alt="product pic" />;
+      return <img width="348px" height="195px" src={images} alt="product pic" />;
     }
     if (imagesLength === 0) {
       return null;
@@ -71,7 +71,7 @@ class AllProducts extends Component {
                     <Link to={`/listing/${product._id}`}>
                       <Button>Product Details</Button>
                     </Link>
-                    <AddToCart product={product} />
+                    {product.available ? <AddToCart product={product} /> :null}
                   </div>
                 </Card.Content>
               </Card>

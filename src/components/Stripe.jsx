@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
+import { withRouter } from "react-router";
+
 const axios = require("axios");
 
 class Stripe extends Component {
@@ -7,6 +9,10 @@ class Stripe extends Component {
     super(props);
     this.submit = this.submit.bind(this);
   }
+
+  state = {
+    paid: false
+  };
 
   async submit(ev) {
     ev.preventDefault();
@@ -25,6 +31,8 @@ class Stripe extends Component {
 
     const cartTotal = this.props.cartTotal;
 
+    this.setState({ paid: true });
+
     // axios request to the backend with token to process the payment
     axios
       .post("/charge", {
@@ -34,10 +42,16 @@ class Stripe extends Component {
         orderData: { itemsInCart, customerInfo, cartTotal }
       })
       .then(response => {
-        console.log(response.data);
+        localStorage.removeItem("products");
+        this.redirect();
       })
       .catch(err => console.log("this is the error" + err));
   }
+
+  redirect = () => {
+    console.log("redirect called", this.props);
+    this.props.history.push("/thank_you");
+  };
 
   render() {
     const fieldStyle = {
@@ -82,4 +96,6 @@ class Stripe extends Component {
   }
 }
 
-export default injectStripe(Stripe);
+export default withRouter(injectStripe(Stripe));
+
+// export default injectStripe(Stripe);

@@ -28,7 +28,7 @@ class NewListing extends Component {
     };
 
     await axios.post(
-      "http://localhost:5000/admin/new",
+      "http://localhost:5000/listings/new",
       {
         ...values,
         image: this.state.url
@@ -60,11 +60,9 @@ class NewListing extends Component {
     };
 
     return (
-      <div>
-        <MyForm onSubmit={this.submit} />
-        <div id="photo-form-container">
-          <button onClick={showWidget}>Upload Photo</button>
-        </div>
+      <div className='d-flex justify-content-center'>
+        <MyForm onSubmit={this.submit}
+        showWidget={showWidget} />
       </div>
     );
   }
