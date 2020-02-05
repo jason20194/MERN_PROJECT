@@ -115,19 +115,16 @@ class EditForm extends Component {
             placeholder="Description:"
           />
         </div>
-        <div className='d-flex'>
+        <div className='d-flex justify-content-between'>
 
-        <div id='photo-form-container'>
-
-        <Button onClick={this.props.showWidget} style={{width: "150px", margin: "20px auto"}}>Choose File</Button>
-        <Button type="submit" style={{width: "150px"}}>Save Changes</Button> 
-        <Button onClick={this.props.reset} style={{width: "100px"}}>Reset</Button>
-        </div>
+        <Button onClick={this.props.showWidget}>Choose File</Button>
+        <Button type="submit">Save Changes</Button> 
+        <Button onClick={this.props.reset}>Reset</Button>
         </div>
 
 
       </form>
-      </div>  
+      </div>
     );
   }
 }
