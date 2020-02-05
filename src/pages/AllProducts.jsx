@@ -14,7 +14,9 @@ class AllProducts extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get("http://localhost:5000/listings/all");
+      const response = await axios.get(
+        `https://desolate-coast-17419.herokuapp.com/listings/all`
+      );
       const { data } = response;
       this.setState({ data });
     } catch (err) {
@@ -28,7 +30,9 @@ class AllProducts extends Component {
     }
     const imagesLength = images.length;
     if (typeof images === String) {
-      return <img width="348px" height="195px" src={images} alt="product pic" />;
+      return (
+        <img width="348px" height="195px" src={images} alt="product pic" />
+      );
     }
     if (imagesLength === 0) {
       return null;
@@ -71,7 +75,7 @@ class AllProducts extends Component {
                     <Link to={`/listing/${product._id}`}>
                       <Button>Product Details</Button>
                     </Link>
-                    {product.available ? <AddToCart product={product} /> :null}
+                    {product.available ? <AddToCart product={product} /> : null}
                   </div>
                 </Card.Content>
               </Card>
