@@ -1,9 +1,41 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import Button from "react-bootstrap/Button";
 import Logout from "./Logout";
 
 class NavBar extends Component {
+  state = {
+    numberOfItems: 0
+  };
+
+  updateNumberOfItems = () => {
+    if (this.state.numberOfItems !== this.props.products.length) {
+      this.setState({
+        numberOfItems: this.props.products.length
+      });
+    }
+  };
+  // we need to call updateNumberOfItems on mount and update both
+  componentDidMount() {
+    this.updateNumberOfItems();
+  }
+
+  componentDidUpdate() {
+    this.updateNumberOfItems();
+  }
+
   render() {
+    console.log(this.state.numberOfItems);
+    // let numberOfItems;
+    // let parsedProducts;
+    // if (this.state.products) {
+    //   parsedProducts = JSON.parse(this.state.products);
+    //   numberOfItems = parsedProducts.length;
+    // }
+
+    // console.log("numberOfItems =   ", numberOfItems);
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
@@ -49,8 +81,10 @@ class NavBar extends Component {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/cart">
-                <i class="fa fa-shopping-cart">
-                  <span class="badge badge-light">1</span>
+                <i className="fa fa-shopping-cart">
+                  <span className="badge badge-light">
+                    {this.state.numberOfItems}
+                  </span>
                 </i>
               </a>
             </li>
@@ -64,4 +98,13 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+  // console.log(state.cart);
+
+  return {
+    // its stored in cart because we have used cart in combine reducers function in reducers index
+    products: state.cart.products
+  };
+};
+
+export default connect(mapStateToProps)(NavBar);
