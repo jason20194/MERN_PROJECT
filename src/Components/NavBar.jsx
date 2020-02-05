@@ -3,6 +3,9 @@ import Button from "react-bootstrap/Button";
 import Logout from "./Logout";
 
 export default function NavBar() {
+  // if (this.props.location.pathname === "/") {
+  //   return null
+  // }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="/">

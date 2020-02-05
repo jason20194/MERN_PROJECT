@@ -63,7 +63,7 @@ class LogIn extends Component {
         <div className="card2">
           <h1>LOGIN</h1>
           <br></br>
-          <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
+          <Form onSubmit={this.handleSubmit} style={{ width: "80%" }}>
             <FormGroup>
               <Label for="Username">Username:</Label>
               <Input
