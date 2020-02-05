@@ -38,7 +38,6 @@ class AllProducts extends Component {
     const { data } = this.state;
     return data
       ? data.map((product, index) => {
-          console.log(product);
           return (
             <div key={index} className="all_products">
               <h1>{product.title}</h1>
