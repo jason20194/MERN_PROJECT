@@ -45,12 +45,12 @@ class AllProducts extends Component {
     const { data } = this.state;
 
     return (
-      <div className="all_products container d-flex">
+      <div className="all_products container d-flex all-products">
         {data &&
           data.map((product, index) => {
             // console.log(product);
             return (
-              <Card style={{ width: "350px" }}>
+              <Card className="each-product" style={{ width: "350px" }}>
                 <Card.Content>
                   <div>
                     <ReactImageFallback
@@ -71,7 +71,9 @@ class AllProducts extends Component {
                       {product.available ? <span>✅</span> : <span>❌</span>}
                     </Card.Content>
                     <Link to={`/listing/${product._id}`}>
-                      <Button>Product Details</Button>
+                      <Button className="product-details">
+                        Product Details
+                      </Button>
                     </Link>
                     {product.available ? <AddToCart product={product} /> : null}
                   </div>

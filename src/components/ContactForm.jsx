@@ -14,7 +14,8 @@ class ContactForm extends Component {
     this.state = {
       name: "",
       email: "",
-      message: ""
+      message: "",
+      successMessage: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,11 +30,13 @@ class ContactForm extends Component {
 
     const { name, email, message } = this.state;
     try {
-      await axios.post("/api/form", {
+      let response = await axios.post("/api/form", {
         name,
         email,
         message
       });
+      this.setState({ successMessage: response.data });
+      // console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -43,24 +46,42 @@ class ContactForm extends Component {
       <div className="card-container">
         <div class="card2">
           <h1>CONTACT US</h1>
-      <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
-        <FormGroup>
-          <Label for="Name">Name</Label>
-          <Input type="text" name="name" onChange={this.handleChange} />
-        </FormGroup>
-        <FormGroup>
-          <Label for="Email">Email</Label>
-          <Input type="email" name="email" onChange={this.handleChange} />
-        </FormGroup>
-        <FormGroup>
-          <Label for="Message">Message</Label>
-          <Input type="textarea" name="message" onChange={this.handleChange} />
-        </FormGroup>
+          <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
+            <FormGroup>
+              <Label for="Name">Name</Label>
+              <Input
+                className="name"
+                type="text"
+                name="name"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="Email">Email</Label>
+              <Input
+                className="email"
+                type="email"
+                name="email"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="Message">Message</Label>
+              <Input
+                className="message"
+                type="textarea"
+                name="message"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
 
-        <Button>Submit</Button>
-      </Form>
-         </div>
-    </div>
+            <Button className="submit-button">Submit</Button>
+          </Form>
+        </div>
+        {this.state.successMessage ? (
+          <p style={{ color: "green" }}>{this.state.successMessage}</p>
+        ) : null}
+      </div>
     );
   }
 }

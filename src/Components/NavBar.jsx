@@ -61,7 +61,7 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/all_products">
+              <a className="nav-link all-products" href="/all_products">
                 Products
               </a>
             </li>
@@ -71,7 +71,7 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contact">
+              <a className="nav-link contact" href="/contact">
                 Contact
               </a>
             </li>

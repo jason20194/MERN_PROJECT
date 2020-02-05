@@ -68,13 +68,13 @@ class Product extends Component {
               </h6>
             </div>
             <div className="product-buttons d-flex align-items-center mt-3">
-            {product.available ? <AddToCart product={product} /> :null}
+              {product.available ? <AddToCart product={product} /> : null}
               <br></br>
               <Link to={`/all_products`}>
                 <Button
                   style={{ backgroundColor: "#000000" }}
                   size="md"
-                  className="back-to-product-btn"
+                  className="back-to-product-btn back-to-products"
                 >
                   Back to Product page
                 </Button>
