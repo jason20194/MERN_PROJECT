@@ -80,11 +80,11 @@ class EditListing extends Component {
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log(result.info.url);
+          console.log('result info url', result.info.url);
           this.setState(prevState => {
             return {
               
-                url: [result.info.url]
+                url: [...prevState.url, result.info.url]
               
             };
           });

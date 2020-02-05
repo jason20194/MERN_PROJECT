@@ -119,8 +119,8 @@ class EditForm extends Component {
 
         <div id='photo-form-container'>
 
-        <Button onClick={this.props.showWidget} style={{width: "100px", margin: "20px auto"}}>Choose File</Button>
-        <Button type="submit" style={{width: "100px"}}>Save Changes</Button> 
+        <Button onClick={this.props.showWidget} style={{width: "150px", margin: "20px auto"}}>Choose File</Button>
+        <Button type="submit" style={{width: "150px"}}>Save Changes</Button> 
         <Button onClick={this.props.reset} style={{width: "100px"}}>Reset</Button>
         </div>
         </div>
