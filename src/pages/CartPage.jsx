@@ -30,58 +30,45 @@ class CartPage extends Component {
     // console.log(totalCart);
 
     return (
-      <StripeProvider
-        apiKey="	
-    pk_test_rUJstJZFyU6dqDejrAXPdZ7I00a5ztU78b"
-      >
-        <div>
-          {data
-            ? data.map((product, index) => {
-                return (
-                  <Container key={index}>
-                    <Row>
-                      <Col sm={8}>
-                        <div key={index} className="products-on-cart">
-                          <h1>title: {product.title}</h1>
-                          {/* <p>id: {product._id}</p> */}
-                          <p>description:{product.description}</p>
-                          {/* <p>${product.price}</p> */}
-                        </div>
-                      </Col>
-                      <Col sm={4}>
-                        <p>${product.price}</p>
+      <div>
+        {data
+          ? data.map((product, index) => {
+              return (
+                <Container key={index}>
+                  <Row>
+                    <Col sm={8}>
+                      <div key={index} className="products-on-cart">
+                        <h1>title: {product.title}</h1>
+                        {/* <p>id: {product._id}</p> */}
+                        <p>description:{product.description}</p>
+                        {/* <p>${product.price}</p> */}
+                      </div>
+                    </Col>
+                    <Col sm={4}>
+                      <p>${product.price}</p>
 
-                        <RemoveFromCart
-                          product={product}
-                          productIndex={index}
-                          itemRemovedFromCart={this.itemRemovedFromCart}
-                        />
-                      </Col>
-                    </Row>
-                    <hr />
-                  </Container>
-                );
-              })
-            : null}
-          <Container>
-            <Row>
-              <Col sm={8}>CHECKOUT</Col>
-              <Col sm={4}>Total Cart Value = {totalCart}</Col>
-            </Row>
-          </Container>
-          {/* trying to pass props with link */}
-          <Link to="/payment">
-            <Button>Checkout</Button>
-          </Link>
-          <hr />
-          <hr />
-          <hr />
-          <h1>React Stripe Elements Example</h1>
-          <Elements>
-            <Stripe cartData={data} cartTotal={totalCart} />
-          </Elements>
-        </div>
-      </StripeProvider>
+                      <RemoveFromCart
+                        product={product}
+                        productIndex={index}
+                        itemRemovedFromCart={this.itemRemovedFromCart}
+                      />
+                    </Col>
+                  </Row>
+                  <hr />
+                </Container>
+              );
+            })
+          : null}
+        <Container>
+          <Row>
+            <Col sm={8}>CHECKOUT</Col>
+            <Col sm={4}>Total Cart Value = {totalCart}</Col>
+          </Row>
+        </Container>
+        <Link to="/payment">
+          <Button>Checkout</Button>
+        </Link>
+      </div>
     );
   }
 }

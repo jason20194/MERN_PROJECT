@@ -41,10 +41,20 @@ class DeleteConfirmation extends Component {
   };
 
   deleteListing = async id => {
+    const token = localStorage.getItem("token");
+
+    let postData = {
+      headers: {
+        "x-access-token": token
+      }
+    };
     console.log("the id is", id);
 
     try {
-      await axios.delete(`http://localhost:5000/listings/delete/${id}`);
+      await axios.delete(
+        `http://localhost:5000/listings/delete/${id}`,
+        postData
+      );
       // const order = response.data;
       this.setState({
         deleted: true,

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import styles from "../components/products.module.css"
+import { Alert } from 'react-alert'
 
 
 const validate = values => {
@@ -27,13 +28,10 @@ class ListingForm extends Component {
   //     )
   // }
 
-  renderField = ({ input, type, label, meta: { touched, error, warning } }) => {
+  renderField = ({ input, type, placeholder, meta: { touched, error, warning } }) => {
     return (
       <div>
-        <label>
-          <h2>{label}:</h2>
-        </label>
-        <input {...input} type={type} className="myInput" />
+        <input {...input} type={type} className="myInput" placeholder={placeholder}/>
         {touched && error && <div style={{ color: "red" }}>{error}</div>}
       </div>
     );
@@ -47,9 +45,6 @@ class ListingForm extends Component {
     if (input.name === "description") {
       return (
         <div>
-          <label>
-            <h2>{label}:</h2>
-          </label>
           <textarea
             rows="10"
             cols="56"
@@ -57,6 +52,7 @@ class ListingForm extends Component {
             type={type}
             className="myTextArea"
             id={styles.productTextArea}
+            placeholder="Description:"
           />
           {touched && error && <div style={{ color: "red" }}>{error}</div>}
         </div>
@@ -64,9 +60,6 @@ class ListingForm extends Component {
     }
     return (
       <div>
-        <label>
-          <h2>{label}:</h2>
-        </label>
         <textarea
           rows="10"
           cols="56"
@@ -79,16 +72,42 @@ class ListingForm extends Component {
     );
   };
 
+
+
   render() {
+    let widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: "medicinepower",
+        uploadPreset: "medicinepower"
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          this.setState((prevState) => {
+            return {
+              url: [...prevState.url, result.info.url]
+            }
+          })
+        }
+      }
+    );
+
+
+  const showWidget = () => {
+    widget.open();
+    console.log(widget);
+    
+  };
+
     return (
       <div className={styles.formWrapper}>
         <form className={styles.productForm} onSubmit={this.props.handleSubmit}>
+        <h1>NEW LISTING</h1>
           <div>
             <Field
               name="title"
               component={this.renderField}
               type="text"
-              label="Title"
+              placeholder="Title:"
             />
           </div>
           <div>
@@ -96,7 +115,7 @@ class ListingForm extends Component {
               name="price"
               component={this.renderField}
               type="number"
-              label="Price"
+              placeholder="Price:"
             />
           </div>
           <div>
@@ -108,12 +127,19 @@ class ListingForm extends Component {
               name="description"
               component={this.renderMessageField}
               type="textarea"
-              label="Description"
+              placeholder="Description:"
             />
           </div>
+          <div className='d-flex justify-content-around'>
+
+          <div id='photo-form-container'>
+      <button onClick={showWidget} style={{width: "200px", margin: "10px auto"}}>Choose File</button>
+          <input type="submit" value="Create Product Listing" style={{width: "200px"}} />
+          <button style={{width: "200px"}} onClick={this.props.reset}>Reset</button>
+      </div>
+
+          </div>
   
-          <input type="submit" value="Create Product Listing" style={{width: "200px", margin: "10px auto"}} />
-          <button style={{width: "200px", margin: "10px auto"}} onClick={this.props.reset}>Reset</button>
         </form>
       </div>
     );
