@@ -91,7 +91,7 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item">
-             <Logout />
+             <Logout/>
             </li>
           </ul>
         </div>
