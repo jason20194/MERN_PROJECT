@@ -16,12 +16,12 @@ export class AllOrdersAdmin extends Component {
 
       this.setState({ data });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   }
 
   fulfilOder = async id => {
-    console.log("the id is", id);
+    // console.log("the id is", id);
 
     try {
       await axios.put(`http://localhost:5000/orders/fulfil/${id}`);
@@ -31,13 +31,13 @@ export class AllOrdersAdmin extends Component {
       // make another get request here with the axios instead
       this.componentDidMount();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
   render() {
     const { data } = this.state;
-    console.log(this.state);
+    // console.log(this.state);
 
     let fulfilledOrders = [];
     let pendingOrders = [];

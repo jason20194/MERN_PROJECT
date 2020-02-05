@@ -25,7 +25,7 @@ class EditListing extends Component {
       this.setState({
         data: response.data,
         loading: false,
-        url: response.data.image
+        // url: response.data.image
       });
     } catch (err) {
       // console.log(err);
@@ -40,6 +40,12 @@ class EditListing extends Component {
     const token = localStorage.getItem("token");
     console.log("inside edit axios and this is token from lclstrg = ", token);
 
+    // this.setState({
+    //   data: values,
+       
+    // })
+    values.image = this.state.url
+    console.log('values', values)
     let postData = {
       headers: {
         "x-access-token": token
@@ -77,16 +83,19 @@ class EditListing extends Component {
           console.log(result.info.url);
           this.setState(prevState => {
             return {
-              url: [...prevState.url, result.info.url]
+              
+                url: [result.info.url]
+              
             };
           });
+          console.log('state after upload', this.state.url)
         }
       }
     );
 
     const showWidget = () => {
       widget.open();
-      console.log(widget);
+      // console.log(widget);
     };
 
     if (this.state.loading) {
@@ -95,10 +104,7 @@ class EditListing extends Component {
 
     return (
       <div>
-        <EditForm onSubmit={this.submit} initialValues={this.state.data} />
-        <div id="photo-form-container">
-          <button onClick={showWidget}>Upload Photo</button>
-        </div>
+        <EditForm onSubmit={this.submit} initialValues={this.state.data} showWidget={showWidget}/>
       </div>
     );
   }

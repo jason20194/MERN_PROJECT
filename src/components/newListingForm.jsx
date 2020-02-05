@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import styles from "../components/products.module.css"
+import Button from "react-bootstrap/Button";
 import { Alert } from 'react-alert'
 
 
@@ -130,12 +131,12 @@ class ListingForm extends Component {
               placeholder="Description:"
             />
           </div>
-          <div className='d-flex justify-content-around'>
+          <div className='d-flex'>
 
           <div id='photo-form-container'>
-      <button onClick={showWidget} style={{width: "200px", margin: "10px auto"}}>Choose File</button>
-          <input type="submit" value="Create Product Listing" style={{width: "200px"}} />
-          <button style={{width: "200px"}} onClick={this.props.reset}>Reset</button>
+      <Button onClick={showWidget} style={{width: "100px", margin: "20px auto"}}>Choose File</Button>
+          <Button type="submit" style={{width: "180px"}}>Create Product Listing</Button> 
+          <Button style={{width: "100px"}} onClick={this.props.reset}>Reset</Button>
       </div>
 
           </div>

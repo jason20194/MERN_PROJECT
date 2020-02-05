@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import styles from "../components/products.module.css";
+import Button from "react-bootstrap/Button";
 
 const validate = values => {
   let errors = [];
@@ -25,13 +27,12 @@ class EditForm extends Component {
   //     )
   // }
 
-  renderField = ({ input, type, label, meta: { touched, error, warning } }) => {
+ 
+
+  renderField = ({ input, type, placeholder, meta: { touched, error, warning } }) => {
     return (
       <div>
-        <label>
-          <h2>{label}:</h2>
-        </label>
-        <input {...input} type={type} className="myInput" />
+        <input {...input} type={type} className="myInput" placeholder={placeholder}/>
         {touched && error && <div style={{ color: "red" }}>{error}</div>}
       </div>
     );
@@ -44,15 +45,14 @@ class EditForm extends Component {
   }) => {
     return (
       <div>
-        <label>
-          <h2>{label}:</h2>
-        </label>
         <textarea
           rows="10"
           cols="56"
           {...input}
           type={type}
           className="myTextArea"
+          id={styles.productTextArea}
+          placeholder="Description:"
         />
         {touched && error && <div style={{ color: "red" }}>{error}</div>}
       </div>
@@ -60,14 +60,39 @@ class EditForm extends Component {
   };
 
   render() {
+    // let widget = window.cloudinary.createUploadWidget(
+    //   {
+    //     cloudName: "medicinepower",
+    //     uploadPreset: "medicinepower"
+    //   },
+    //   (error, result) => {
+    //     if (!error && result && result.event === "success") {
+    //       this.setState((prevState) => {
+    //         return {
+    //           url: [...prevState.url, result.info.url]
+    //         }
+    //       })
+    //     }
+    //   }
+    // );
+
+
+    // const showWidget = () => {
+    //   widget.open();
+    //   console.log(widget);
+      
+    // };
+
     return (
+      <div className={styles.formWrapper}>
       <form onSubmit={this.props.handleSubmit}>
+        <h1>EDIT LISTING</h1>
         <div>
           <Field
             name="title"
             component={this.renderField}
             type="text"
-            label="Title"
+            placeholder="Title:"
           />
         </div>
         <div>
@@ -75,7 +100,7 @@ class EditForm extends Component {
             name="price"
             component={this.renderField}
             type="number"
-            label="Price"
+            placeholder="Price:"
           />
         </div>
         <div>
@@ -87,13 +112,22 @@ class EditForm extends Component {
             name="description"
             component={this.renderMessageField}
             type="textarea"
-            label="Description"
+            placeholder="Description:"
           />
         </div>
+        <div className='d-flex'>
 
-        <input type="submit" value="Save changes" />
-        <button onClick={this.props.reset}>Reset</button>
+        <div id='photo-form-container'>
+
+        <Button onClick={this.props.showWidget} style={{width: "100px", margin: "20px auto"}}>Choose File</Button>
+        <Button type="submit" style={{width: "100px"}}>Save Changes</Button> 
+        <Button onClick={this.props.reset} style={{width: "100px"}}>Reset</Button>
+        </div>
+        </div>
+
+
       </form>
+      </div>  
     );
   }
 }

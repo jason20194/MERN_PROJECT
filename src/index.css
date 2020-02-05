@@ -21,6 +21,7 @@ code {
 .myTextArea
 {
   border: solid thin lightgray;
+  margin-top: 20px;
 }
 
 .myInput
