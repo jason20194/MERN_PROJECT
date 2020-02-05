@@ -103,7 +103,7 @@ class EditListing extends Component {
     }
 
     return (
-      <div>
+      <div className= 'd-flex justify-content-center'>
         <EditForm onSubmit={this.submit} initialValues={this.state.data} showWidget={showWidget}/>
       </div>
     );
