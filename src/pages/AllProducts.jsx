@@ -14,7 +14,9 @@ class AllProducts extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get("http://localhost:5000/listings/all");
+      const response = await axios.get(
+        `https://desolate-coast-17419.herokuapp.com/listings/all`
+      );
       const { data } = response;
       this.setState({ data });
     } catch (err) {
