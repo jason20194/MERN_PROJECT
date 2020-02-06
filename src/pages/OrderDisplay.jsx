@@ -17,7 +17,7 @@ class OrderDisplay extends Component {
       this.redirect();
     }
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/orders/${this.props.match.params.id}`
+      `${process.env.REACT_APP_BACK_END}/orders/${this.props.match.params.id}`
     );
     this.setState({ order: response.data });
   };
@@ -30,7 +30,7 @@ class OrderDisplay extends Component {
     console.log("the id is", id);
 
     try {
-      await axios.put(`http://localhost:5000/orders/fulfil/${id}`);
+      await axios.put(`${process.env.REACT_APP_BACK_END}/orders/fulfil/${id}`);
 
       this.setState({ fulfilled: true });
     } catch (err) {
