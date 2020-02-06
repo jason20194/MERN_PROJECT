@@ -1,34 +1,15 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { updateCart } from "../actions/cartAction";
+import axios from "axios";  
 
 class ThankYou extends Component {
-  componentDidMount = () => {
-    let cart = JSON.parse(localStorage.getItem("products"));
-    if (!cart) {
-      cart = [];
-    }
-    localStorage.setItem("products", JSON.stringify(cart));
-    this.props.updateCart(cart);
-  };
-
   render() {
     return (
-      <div>
-        <h1>Hello from Thank You page</h1>
+      <div className="thank-you">
+        <h1>THANK YOU</h1>
+        <p>Thanks for your purchase! We look forward to serving you again!</p>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    products: state.cart.products
-  };
-};
-
-const mapDispatchProps = {
-  updateCart
-};
-
-export default connect(mapStateToProps, mapDispatchProps)(ThankYou);
+export default ThankYou;

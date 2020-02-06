@@ -18,7 +18,8 @@ class Stripe extends Component {
     ev.preventDefault();
     const { currentTarget } = ev;
     const fD = new FormData(currentTarget);
-
+    // const orderId = this.props.orderId
+    // console.log('stripe orderId', orderId)
     const customerInfo = {
       name: fD.get("name"),
       address: fD.get("address"),
@@ -52,7 +53,12 @@ class Stripe extends Component {
 
   redirect = () => {
     console.log("redirect called", this.props);
-    this.props.history.push("/thank_you");
+    // this.props.history.push("/thank_you");
+
+    this.props.history.push({
+      pathname: '/thank_you',
+      state: { orderId: this.props.orderId }
+    })
   };
 
   render() {
