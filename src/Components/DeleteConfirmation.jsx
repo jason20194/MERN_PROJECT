@@ -49,10 +49,9 @@ class DeleteConfirmation extends Component {
       }
     };
     console.log("the id is", id);
-
     try {
       await axios.delete(
-        `http://localhost:5000/listings/delete/${id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/listings/delete/${id}`,
         postData
       );
       // const order = response.data;
