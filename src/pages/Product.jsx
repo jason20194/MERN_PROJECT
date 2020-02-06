@@ -25,7 +25,7 @@ class Product extends Component {
       return null;
     }
     if (typeof images === String) {
-      return <img width="400" src={images} alt="product pic" />;
+      return <img width="400" src={images} alt="product" />;
     }
     if (images.length === 0) {
       return null;
@@ -39,7 +39,7 @@ class Product extends Component {
               <img
                 className="d-block w-100 carousel-img"
                 src={image}
-                alt="Product Picture"
+                alt="Product"
               />
             </Carousel.Item>
           ))}
@@ -47,6 +47,8 @@ class Product extends Component {
       </div>
     );
   };
+
+  // Line 66:38:  Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby  jsx-a11y/accessible-emoji
 
   render() {
     const { product } = this.state;
@@ -63,7 +65,17 @@ class Product extends Component {
             <div className="in-stock ml-1">
               <h6>
                 In Stock:{" "}
-                {product.available ? <span> ✅</span> : <span> ❌</span>}
+                {product.available ? (
+                  <span role="img" aria-label="available">
+                    {" "}
+                    ✅
+                  </span>
+                ) : (
+                  <span role="img" aria-label="unvailable">
+                    {" "}
+                    ❌
+                  </span>
+                )}
               </h6>
             </div>
             <div className="product-buttons d-flex align-items-center mt-3">

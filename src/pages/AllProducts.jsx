@@ -73,7 +73,15 @@ class AllProducts extends Component {
                     <Card.Content extra>
                       {" "}
                       In Stock:{" "}
-                      {product.available ? <span>✅</span> : <span>❌</span>}
+                      {product.available ? (
+                        <span role="img" aria-label="available">
+                          ✅
+                        </span>
+                      ) : (
+                        <span role="img" aria-label="unvailable">
+                          ❌
+                        </span>
+                      )}
                     </Card.Content>
                     <Link to={`/listing/${product._id}`}>
                       <Button className="product-details">
