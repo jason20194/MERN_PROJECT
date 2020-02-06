@@ -11,6 +11,7 @@ class ThankYou extends Component {
     localStorage.setItem("products", JSON.stringify(cart));
     this.props.updateCart(cart);
   };
+  // comment
 
   render() {
     return (
