@@ -2,34 +2,34 @@ import React, { Component } from "react";
 import axios from "axios";  
 
 class ThankYou extends Component {
-  state = {
-    order: null,
-    fulfilled: false
-  };
+  // state = {
+  //   order: null,
+  //   fulfilled: false
+  // };
 
-  componentDidMount = async () => {
-    let token = localStorage.getItem("token");
-    // console.log('token', token)
-    const orderId = this.props.location.state.orderId
-    console.log('orderId in ThankYou', orderId)
-    console.log('thank you props', this.props)
-    if (!token) {
-      this.redirect();
-    }
-    const response = await axios.get(
-      `http://localhost:5000/orders/${orderId}`
-    );
-    console.log('response data', response.data)
-    this.setState({ order: response.data });
-  };
+  // componentDidMount = async () => {
+  //   let token = localStorage.getItem("token");
+  //   // console.log('token', token)
+  //   const orderId = this.props.location.state.orderId
+  //   console.log('orderId in ThankYou', orderId)
+  //   console.log('thank you props', this.props)
+  //   if (!token) {
+  //     this.redirect();
+  //   }
+  //   const response = await axios.get(
+  //     `http://localhost:5000/orders/${orderId}`
+  //   );
+  //   console.log('response data', response.data)
+  //   this.setState({ order: response.data });
+  // };
   render() {
-    const { order } = this.state;
+    // const { order } = this.state;
 
     return (
-      <div className='d-flex justify-content-center'>
+      <div className="thank-you">
         <h1>THANK YOU</h1>
-        <p>Thanks for your purchase of the following:</p>
-        {order
+        <p>Thanks for your purchase! We look forward to serving you again! :)</p>
+        {/* {order
           ? order !== null && (
               <div className="font">
                 {console.log("order", order)}
@@ -48,7 +48,7 @@ class ThankYou extends Component {
                 <p>Total Value: ${order.totalValue}</p>
               </div>
             )
-          : null}
+          : null} */}
       </div>
       
     );
