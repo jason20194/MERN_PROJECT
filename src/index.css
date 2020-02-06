@@ -12,26 +12,24 @@ code {
     monospace;
 }
 
-#brand-image
-{
-  height:50px;
-  width:60px;
+#brand-image {
+  height: 50px;
+  width: 60px;
 }
 
-.myTextArea
-{
+.myTextArea {
   border: solid thin lightgray;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.myInput
-{
+.myInput {
   width: 469px;
   margin-bottom: 10px;
   margin-top: 25px;
 }
-h1{
+
+/* h1{
   margin-top: 80px;
 }
-
+ */

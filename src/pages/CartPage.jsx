@@ -30,44 +30,52 @@ class CartPage extends Component {
     // console.log(totalCart);
 
     return (
-      <div>
+      <div className="container">
+        <div className="text-center p-5">
+          <h1 className="cart-title">CART</h1>
+        </div>
         {data
           ? data.map((product, index) => {
               return (
                 <Container key={index}>
-                  <Row>
+                  <Row className="cart-row py-3">
                     <Col sm={8}>
                       <div key={index} className="products-on-cart">
-                        <h1>title: {product.title}</h1>
+                        <h1 className="product-title">{product.title}</h1>
                         {/* <p>id: {product._id}</p> */}
-                        <p>description:{product.description}</p>
+                        <p className="product-font">{product.description}</p>
                         {/* <p>${product.price}</p> */}
+                        <RemoveFromCart
+                          product={product}
+                          productIndex={index}
+                          itemRemovedFromCart={this.itemRemovedFromCart}
+                        />
                       </div>
                     </Col>
                     <Col sm={4}>
-                      <p>${product.price}</p>
-
-                      <RemoveFromCart
-                        product={product}
-                        productIndex={index}
-                        itemRemovedFromCart={this.itemRemovedFromCart}
-                      />
+                      <p className="product-font2 text-right">
+                        ${product.price}
+                      </p>
                     </Col>
                   </Row>
-                  <hr />
+                  {/* <hr /> */}
                 </Container>
               );
             })
           : null}
         <Container>
-          <Row>
-            <Col sm={8}>CHECKOUT</Col>
-            <Col sm={4}>Total Cart Value = {totalCart}</Col>
+          <Row className="product-font3 py-3">
+            <Col sm={8}>
+              <Link to="/payment">
+                <Button>Checkout</Button>
+              </Link>
+            </Col>
+
+            <Col sm={4} className="product-font4 text-right">
+              Total Cart Value = ${totalCart}
+            </Col>
           </Row>
         </Container>
-        <Link to="/payment">
-          <Button>Checkout</Button>
-        </Link>
       </div>
     );
   }

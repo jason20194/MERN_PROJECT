@@ -72,6 +72,7 @@ class Stripe extends Component {
             type="text"
             name="name"
             placeholder="Card Holder's Name"
+            required
           />
 
           <input
@@ -79,16 +80,19 @@ class Stripe extends Component {
             type="text"
             name="address"
             placeholder="Delivery address"
+            required
           />
 
           <input
             style={fieldStyle}
             type="text"
             name="email"
-            placeholder=" email address"
+            placeholder="Email address"
+            required
           />
 
           <CardElement />
+          <br></br>
           <button type="submit">Pay</button>
         </form>
       </div>

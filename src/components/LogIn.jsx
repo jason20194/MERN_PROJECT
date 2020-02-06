@@ -70,6 +70,7 @@ class LogIn extends Component {
                 name="username"
                 placeholder="Your Username.."
                 onChange={this.handleChange}
+                required
               />
             </FormGroup>
             <FormGroup>
@@ -79,6 +80,7 @@ class LogIn extends Component {
                 name="password"
                 placeholder="Your Password.."
                 onChange={this.handleChange}
+                required
               />
             </FormGroup>
             <Button>Log In</Button>
