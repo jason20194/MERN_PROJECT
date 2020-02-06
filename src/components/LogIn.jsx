@@ -34,7 +34,7 @@ class LogIn extends Component {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/listings/admin/login`,
+        `${process.env.REACT_APP_BACK_END}/listings/admin/login`,
         {
           username,
           password
