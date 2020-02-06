@@ -60,24 +60,26 @@ class LogIn extends Component {
     return (
       <div className="card-container">
         <div className="card2">
-          <h1>LOGIN</h1>
+          <h1 className="login-form">LOGIN</h1>
           <br></br>
-          <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
+          <Form onSubmit={this.handleSubmit} style={{ width: "80%" }}>
             <FormGroup>
-              <Label for="Username">Username:</Label>
+              <Label for="Username"></Label>
               <Input
                 className="username"
                 type="username"
                 name="username"
+                placeholder="Your Username.."
                 onChange={this.handleChange}
               />
             </FormGroup>
             <FormGroup>
-              <Label for="Password">Password:</Label>
+              <Label for="Password"></Label>
               <Input
                 className="password"
                 type="password"
                 name="password"
+                placeholder="Your Password.."
                 onChange={this.handleChange}
               />
             </FormGroup>

@@ -45,32 +45,35 @@ class ContactForm extends Component {
     return (
       <div className="card-container">
         <div class="card2">
-          <h1>CONTACT US</h1>
-          <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
+          <h1 className="contact-form-header"> CONTACT US</h1>
+          <Form onSubmit={this.handleSubmit} style={{ width: "80%" }}>
             <FormGroup>
-              <Label for="Name">Name</Label>
+              <Label for="Name"></Label>
               <Input
-                className="name"
                 type="text"
                 name="name"
+                placeholder="Your Name.."
                 onChange={this.handleChange}
               />
             </FormGroup>
             <FormGroup>
-              <Label for="Email">Email</Label>
+              <Label for="Email"></Label>
               <Input
                 className="email"
                 type="email"
                 name="email"
+                placeholder="Your Email.."
                 onChange={this.handleChange}
               />
             </FormGroup>
             <FormGroup>
-              <Label for="Message">Message</Label>
+              <Label for="Message"></Label>
               <Input
                 className="message"
                 type="textarea"
+                style={{ height: 200 }}
                 name="message"
+                placeholder="Your Message.."
                 onChange={this.handleChange}
               />
             </FormGroup>
