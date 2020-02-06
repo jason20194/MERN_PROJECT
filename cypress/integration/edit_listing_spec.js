@@ -1,5 +1,5 @@
 beforeEach(() => {
-    localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGdtYWlsLmNvbSIsIm9uZU1vcmUiOiJ5ZXMiLCJpYXQiOjE1ODA5NTY1MDQsImV4cCI6MTU4MDk2MDEwNH0.D9ANUjIRSdKWslFb3F2tZnkLvgFculdYU0xBeVWu4K4")
+    localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGdtYWlsLmNvbSIsIm9uZU1vcmUiOiJ5ZXMiLCJpYXQiOjE1ODA5NTk1NjEsImV4cCI6MTU4MDk2MzE2MX0.YInnIIGWTfH_8YbUiIVoIlOg6l7Qz39UkwCxLsG8bnU")
   })
 
 describe('Edit Listing', function() {
