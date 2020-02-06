@@ -24,7 +24,7 @@ class AdminDashboard extends Component {
     return (
       <div>
         <Link to={`/new_listing`}>
-          <Button>Create Listing</Button>
+          <Button className="create-listing">Create Listing</Button>
         </Link>
         <Button>
           <Logout />

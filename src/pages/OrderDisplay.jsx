@@ -17,7 +17,7 @@ class OrderDisplay extends Component {
       this.redirect();
     }
     const response = await axios.get(
-      `http://localhost:5000/orders/${this.props.match.params.id}`
+      `${process.env.REACT_APP_BACKEND_URL}/orders/${this.props.match.params.id}`
     );
     this.setState({ order: response.data });
   };
