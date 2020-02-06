@@ -71,3 +71,8 @@
 .checkout-button {
   background-color: green;
 }
+
+.navbar-brand {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 150%;
+}

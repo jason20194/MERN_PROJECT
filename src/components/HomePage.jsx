@@ -21,11 +21,6 @@ const HomePage = () => {
         </div>
       </div>
       <br></br>
-      <div>
-        <h1 className="home-header2 ml-4"> About our products </h1>
-      </div>
-      <img className={styles.ginimg} src={Guilin} />
-      <div className={classes.nextContent}></div>
     </>
   );
 };
