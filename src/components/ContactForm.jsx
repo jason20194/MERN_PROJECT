@@ -45,7 +45,7 @@ class ContactForm extends Component {
     return (
       <div className="card-container">
         <div className="card2">
-          <h1 className="contact-form-header"> CONTACT US</h1>
+          <h1 className="product-title2"> CONTACT US</h1>
           <Form onSubmit={this.handleSubmit} style={{ width: "80%" }}>
             <FormGroup>
               <Label for="Name"></Label>
@@ -83,10 +83,12 @@ class ContactForm extends Component {
 
             <Button className="submit-button">Submit</Button>
           </Form>
+          <div>
+            {this.state.successMessage ? (
+              <p style={{ color: "green" }}>{this.state.successMessage}</p>
+            ) : null}
+          </div>
         </div>
-        {this.state.successMessage ? (
-          <p style={{ color: "green" }}>{this.state.successMessage}</p>
-        ) : null}
       </div>
     );
   }
