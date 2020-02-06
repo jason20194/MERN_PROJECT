@@ -28,10 +28,6 @@ class NavBar extends Component {
   }
 
   render() {
-    // let token = localStorage.getItem("token");
-
-    // console.log(token);
-
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">

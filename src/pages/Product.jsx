@@ -15,7 +15,7 @@ class Product extends Component {
 
   componentDidMount = async () => {
     const response = await axios.get(
-      `http://localhost:5000/listings/${this.props.match.params.id}`
+      `${process.env.REACT_APP_BACK_END}/listings/${this.props.match.params.id}`
     );
     console.log(response.data);
     this.setState({ product: response.data });

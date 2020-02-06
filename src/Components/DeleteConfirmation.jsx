@@ -15,8 +15,9 @@ class DeleteConfirmation extends Component {
     if (!token) {
       this.redirect();
     }
+
     const response = await axios.get(
-      `http://localhost:5000/listings/${this.props.match.params.id}`
+      `${process.env.REACT_APP_BACK_END}/listings/${this.props.match.params.id}`
     );
     console.log(response.data);
     this.setState({ listing: response.data });
@@ -49,10 +50,9 @@ class DeleteConfirmation extends Component {
       }
     };
     console.log("the id is", id);
-
     try {
       await axios.delete(
-        `http://localhost:5000/listings/delete/${id}`,
+        `${process.env.REACT_APP_BACK_END}/listings/delete/${id}`,
         postData
       );
       // const order = response.data;

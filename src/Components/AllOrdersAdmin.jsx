@@ -11,7 +11,9 @@ export class AllOrdersAdmin extends Component {
   };
   async componentDidMount() {
     try {
-      const response = await axios.get("http://localhost:5000/orders/all");
+      const response = await axios.get(
+        process.env.REACT_APP_BACK_END + "/orders/all"
+      );
       const { data } = response;
 
       this.setState({ data });
@@ -24,7 +26,7 @@ export class AllOrdersAdmin extends Component {
     // console.log("the id is", id);
 
     try {
-      await axios.put(`http://localhost:5000/orders/fulfil/${id}`);
+      await axios.put(process.env.REACT_APP_BACK_END + `/orders/fulfil/${id}`);
       // const order = response.data;
 
       // need to change this method, cant directly call component did mount.

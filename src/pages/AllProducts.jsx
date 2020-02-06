@@ -14,7 +14,9 @@ class AllProducts extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get("http://localhost:5000/listings/all");
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACK_END}/listings/all`
+      );
       const { data } = response;
       this.setState({ data });
     } catch (err) {
@@ -48,9 +50,12 @@ class AllProducts extends Component {
       <div className="all_products container d-flex all-products">
         {data &&
           data.map((product, index) => {
-            // console.log(product);
             return (
-              <Card className="each-product" style={{ width: "350px" }}>
+              <Card
+                key={index}
+                className="each-product"
+                style={{ width: "350px" }}
+              >
                 <Card.Content>
                   <div>
                     <ReactImageFallback
