@@ -28,18 +28,14 @@ class NavBar extends Component {
   }
 
   render() {
-    // let token = localStorage.getItem("token");
-
-    // console.log(token);
-
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
-          <img
+          {/* <img
             id="brand-image"
             alt="Website Logo"
             src={require("../images/medicinepower.png")}
-          />
+          /> */}
         </a>
         <a className="navbar-brand">Medicine Power</a>
         <button
@@ -61,7 +57,7 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/all_products">
+              <a className="nav-link all-products" href="/all_products">
                 Products
               </a>
             </li>
@@ -71,7 +67,7 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contact">
+              <a className="nav-link contact" href="/contact">
                 Contact
               </a>
             </li>

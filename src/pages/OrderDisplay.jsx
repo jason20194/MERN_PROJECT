@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/order.css";
+import { Redirect, Link } from "react-router-dom";
+import { Table } from "reactstrap";
 
 class OrderDisplay extends Component {
   state = {
@@ -41,18 +42,24 @@ class OrderDisplay extends Component {
     const { order } = this.state;
 
     return (
-      <div className="card">
-        <h1 className="title">Order Details</h1>
+      <div>
         <br></br>
         {order
           ? order !== null && (
               <div className="font">
                 {console.log("order", order)}
+                <h1 className="title">Order Details:</h1>
+                <hr></hr>
                 <p>Order ID: {order._id}</p>
+
+                <h1>Customer Details:</h1>
+                <hr></hr>
                 <p>Name: {order.customer.name} </p>
                 <p>Address: {order.customer.address} </p>
                 <p>Email: {order.customer.email} </p>
                 <p>
+                  <h1>Products:</h1>
+                  <hr></hr>
                   Items:{" "}
                   {order.items.map((item, index) => (
                     <p>{item.title}</p>
@@ -69,6 +76,17 @@ class OrderDisplay extends Component {
               </div>
             )
           : null}
+        <div>
+          <Link to={`/admin`}>
+            <Button
+              style={{ backgroundColor: "#000000" }}
+              size="md"
+              className="back-to-product-btn"
+            >
+              Back to Admin Dashboard
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }

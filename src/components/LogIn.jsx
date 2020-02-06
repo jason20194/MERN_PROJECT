@@ -34,7 +34,7 @@ class LogIn extends Component {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/listings/admin/login",
+        `${process.env.REACT_APP_BACKEND_URL}/listings/admin/login`,
         {
           username,
           password
@@ -60,26 +60,30 @@ class LogIn extends Component {
     return (
       <div className="card-container">
         <div className="card2">
-          <h1>LOGIN</h1>
+          <h1 className="login-form">LOGIN</h1>
           <br></br>
-          <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
+          <Form onSubmit={this.handleSubmit} style={{ width: "80%" }}>
             <FormGroup>
-              <Label for="Username">Username:</Label>
+              <Label for="Username"></Label>
               <Input
+                className="username"
                 type="username"
                 name="username"
+                placeholder="Your Username.."
                 onChange={this.handleChange}
               />
             </FormGroup>
             <FormGroup>
-              <Label for="Password">Password:</Label>
+              <Label for="Password"></Label>
               <Input
+                className="password"
                 type="password"
                 name="password"
+                placeholder="Your Password.."
                 onChange={this.handleChange}
               />
             </FormGroup>
-            <Button>Log In</Button>
+            <Button className="admin-login">Log In</Button>
           </Form>
         </div>
       </div>
