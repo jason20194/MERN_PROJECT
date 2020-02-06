@@ -36,12 +36,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    // "test": "react-scripts test",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "react-scripts build",
     "deploy": "npm run git-push-master && npm run build && netlify deploy --prod --dir=build",
     "git-push-master": "git add . && git commit -m 'pushing to master' && git push origin master",
-    "test": "cypress open"
+    // "test": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
