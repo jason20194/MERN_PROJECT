@@ -18,21 +18,20 @@ const validate = values => {
 };
 
 class EditForm extends Component {
-  // renderDropdown = () => {
-  //     return(
-  //         <select name="productAvailability">
-  //           <option value="In Stock">In Stock</option>
-  //           <option value="Out of Stock">Out of Stock</option>
-  //         </select>
-  //     )
-  // }
-
- 
-
-  renderField = ({ input, type, placeholder, meta: { touched, error, warning } }) => {
+  renderField = ({
+    input,
+    type,
+    placeholder,
+    meta: { touched, error, warning }
+  }) => {
     return (
       <div>
-        <input {...input} type={type} className="myInput" placeholder={placeholder}/>
+        <input
+          {...input}
+          type={type}
+          className="myInput"
+          placeholder={placeholder}
+        />
         {touched && error && <div style={{ color: "red" }}>{error}</div>}
       </div>
     );
@@ -60,70 +59,44 @@ class EditForm extends Component {
   };
 
   render() {
-    // let widget = window.cloudinary.createUploadWidget(
-    //   {
-    //     cloudName: "medicinepower",
-    //     uploadPreset: "medicinepower"
-    //   },
-    //   (error, result) => {
-    //     if (!error && result && result.event === "success") {
-    //       this.setState((prevState) => {
-    //         return {
-    //           url: [...prevState.url, result.info.url]
-    //         }
-    //       })
-    //     }
-    //   }
-    // );
-
-
-    // const showWidget = () => {
-    //   widget.open();
-    //   console.log(widget);
-      
-    // };
-
     return (
       <div className={styles.formWrapper}>
-      <form onSubmit={this.props.handleSubmit}>
-        <h1>EDIT LISTING</h1>
-        <div>
-          <Field
-            name="title"
-            component={this.renderField}
-            type="text"
-            placeholder="Title:"
-          />
-        </div>
-        <div>
-          <Field
-            name="price"
-            component={this.renderField}
-            type="number"
-            placeholder="Price:"
-          />
-        </div>
-        <div>
-          In Stock
-          <Field name="available" component="input" type="checkbox"></Field>
-        </div>
-        <div>
-          <Field
-            name="description"
-            component={this.renderMessageField}
-            type="textarea"
-            placeholder="Description:"
-          />
-        </div>
-        <div className='d-flex justify-content-between'>
-
-        <Button onClick={this.props.showWidget}>Choose File</Button>
-        <Button type="submit">Save Changes</Button> 
-        <Button onClick={this.props.reset}>Reset</Button>
-        </div>
-
-
-      </form>
+        <form onSubmit={this.props.handleSubmit}>
+          <h1>EDIT LISTING</h1>
+          <div>
+            <Field
+              name="title"
+              component={this.renderField}
+              type="text"
+              placeholder="Title:"
+            />
+          </div>
+          <div>
+            <Field
+              name="price"
+              component={this.renderField}
+              type="number"
+              placeholder="Price:"
+            />
+          </div>
+          <div>
+            In Stock
+            <Field name="available" component="input" type="checkbox"></Field>
+          </div>
+          <div>
+            <Field
+              name="description"
+              component={this.renderMessageField}
+              type="textarea"
+              placeholder="Description:"
+            />
+          </div>
+          <div className="d-flex justify-content-between">
+            <Button onClick={this.props.showWidget}>Choose File</Button>
+            <Button type="submit">Save Changes</Button>
+            <Button onClick={this.props.reset}>Reset</Button>
+          </div>
+        </form>
       </div>
     );
   }
