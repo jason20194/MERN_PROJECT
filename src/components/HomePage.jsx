@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "../components/Background.module.css";
 import { Link } from "react-router-dom";
-import styles from "../components/Background.module.css";
 
 const HomePage = () => {
   return (

@@ -39,9 +39,11 @@ class CartPage extends Component {
                   <Row className="cart-row py-3">
                     <Col sm={8}>
                       <div key={index} className="products-on-cart">
-                        <h1 className="product-title">{product.title}</h1>
+                        <h1 className="product-title2">{product.title}</h1>
                         {/* <p>id: {product._id}</p> */}
-                        <p className="product-font">{product.description}</p>
+                        <p className="product-description2">
+                          {product.description}
+                        </p>
                         {/* <p>${product.price}</p> */}
                         <RemoveFromCart
                           product={product}
@@ -64,9 +66,11 @@ class CartPage extends Component {
         <Container>
           <Row className="product-font3 py-3">
             <Col sm={8}>
-              <Link to="/payment">
-                <Button className="checkout-button">Checkout</Button>
-              </Link>
+              {totalCart ? (
+                <Link to="/payment">
+                  <Button className="checkout-button">Checkout</Button>
+                </Link>
+              ) : null}
             </Col>
 
             <Col sm={4} className="product-font4 text-right">
@@ -74,11 +78,6 @@ class CartPage extends Component {
             </Col>
           </Row>
         </Container>
-        {totalCart ? (
-          <Link to="/payment">
-            <Button>Checkout</Button>
-          </Link>
-        ) : null}
       </div>
     );
   }
