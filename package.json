@@ -40,7 +40,10 @@
     "eject": "react-scripts eject",
     "build": "react-scripts build",
     "deploy": "yarn build && netlify deploy --prod --dir=build",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "deploy": "npm run git-push-master && npm run build && netlify deploy --prod --dir=build",
+    "git-push-master": "git add . && git commit -m 'pushing to master' && git push origin master",
+    "cypress:test": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
