@@ -39,7 +39,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "react-scripts build",
-    "deploy": "npm run build && netlify deploy --prod --dir=build"
+    "deploy": "npm run git-push-master && npm run build && netlify deploy --prod --dir=build",
+    "git-push-master": "git add . && git commit -m 'pushing to master' && git push origin master"
   },
   "eslintConfig": {
     "extends": "react-app"

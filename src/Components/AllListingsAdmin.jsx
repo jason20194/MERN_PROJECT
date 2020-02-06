@@ -14,7 +14,7 @@ export class AllListingAdmin extends Component {
   async componentDidMount() {
     try {
       const response = await axios.get(
-        "https://desolate-coast-17419.herokuapp.com/listings/all"
+        process.env.REACT_APP_BACKEND_URL + "/listings/all"
       );
       const { data } = response;
       // console.log(data);
