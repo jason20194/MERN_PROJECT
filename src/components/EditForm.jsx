@@ -69,6 +69,7 @@ class EditForm extends Component {
               component={this.renderField}
               type="text"
               placeholder="Title:"
+              required
             />
           </div>
           <div>
@@ -77,6 +78,7 @@ class EditForm extends Component {
               component={this.renderField}
               type="number"
               placeholder="Price:"
+              required
             />
           </div>
           <div>
@@ -89,6 +91,7 @@ class EditForm extends Component {
               component={this.renderMessageField}
               type="textarea"
               placeholder="Description:"
+              required
             />
           </div>
           <div className="d-flex justify-content-between">

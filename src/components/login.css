@@ -28,3 +28,51 @@
 .contact-form-header {
   font-family: "Lato", sans-serif;
 }
+
+.payment-line {
+  border: 1px solid rgb(240, 236, 236);
+}
+
+.product-title {
+  text-transform: capitalize;
+  font-size: 230%;
+  font-family: "Chivo", sans-serif;
+}
+
+.product-font {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 130%;
+}
+
+.cart-row {
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.product-font2 {
+  font-size: 200%;
+}
+
+.product-font3 {
+  /* padding-left: 16px; */
+}
+
+.product-font4 {
+  font-family: "PT Sans Narrow", sans-serif;
+  align-items: center;
+  font-size: 200%;
+}
+
+.cart-title {
+  font-family: "PT Sans Narrow", sans-serif;
+  text-decoration: underline;
+}
+
+.checkout-button {
+  background-color: green;
+}
+
+.navbar-brand {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 150%;
+}

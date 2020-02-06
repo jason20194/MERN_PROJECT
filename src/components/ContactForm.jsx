@@ -54,6 +54,7 @@ class ContactForm extends Component {
                 name="name"
                 placeholder="Your Name.."
                 onChange={this.handleChange}
+                required
               />
             </FormGroup>
             <FormGroup>
@@ -64,6 +65,7 @@ class ContactForm extends Component {
                 name="email"
                 placeholder="Your Email.."
                 onChange={this.handleChange}
+                required
               />
             </FormGroup>
             <FormGroup>
@@ -75,6 +77,7 @@ class ContactForm extends Component {
                 name="message"
                 placeholder="Your Message.."
                 onChange={this.handleChange}
+                required
               />
             </FormGroup>
 
