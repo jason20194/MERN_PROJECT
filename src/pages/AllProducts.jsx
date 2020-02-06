@@ -15,7 +15,7 @@ class AllProducts extends Component {
   async componentDidMount() {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/listings/all`
+        `${process.env.REACT_APP_BACK_END_URL}/listings/all`
       );
       const { data } = response;
       this.setState({ data });
