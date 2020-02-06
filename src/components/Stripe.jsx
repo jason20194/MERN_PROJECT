@@ -32,7 +32,7 @@ class Stripe extends Component {
 
     const cartTotal = this.props.cartTotal;
 
-    this.setState({ paid: true });
+    // this.setState({ paid: true });
 
     // axios request to the backend with token to process the payment
     axios
@@ -44,6 +44,8 @@ class Stripe extends Component {
       })
       .then(response => {
         localStorage.removeItem("products");
+        console.log("inside response", this.state);
+
         this.redirect();
       })
       .catch(err => console.log("this is the error" + err));
@@ -103,5 +105,3 @@ class Stripe extends Component {
 }
 
 export default withRouter(injectStripe(Stripe));
-
-// export default injectStripe(Stripe);
