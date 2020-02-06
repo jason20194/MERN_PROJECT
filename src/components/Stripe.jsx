@@ -35,7 +35,7 @@ class Stripe extends Component {
 
     // axios request to the backend with token to process the payment
     axios
-      .post("/charge", {
+      .post(`${process.env.REACT_APP_BACK_END}/charge`, {
         method: "POST",
         headers: { "Content-Type": "text/plain" },
         tokenId: token.id,
