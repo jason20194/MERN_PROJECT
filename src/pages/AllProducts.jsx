@@ -26,7 +26,10 @@ class AllProducts extends Component {
 
   checkImages = images => {
     if (!images) {
-      return null;
+      return <ReactImageFallback
+        src={""}
+        fallbackImage="https://via.placeholder.com/348x195"
+      />
     }
     const imagesLength = images.length;
     if (typeof images === String) {
@@ -35,7 +38,10 @@ class AllProducts extends Component {
       );
     }
     if (imagesLength === 0) {
-      return null;
+      return <ReactImageFallback
+        src={""}
+        fallbackImage="https://via.placeholder.com/348x195"
+      />
     }
 
     return (
@@ -58,10 +64,7 @@ class AllProducts extends Component {
               >
                 <Card.Content>
                   <div>
-                    <ReactImageFallback
-                      src={this.checkImages(product.image)}
-                      fallbackImage="https://via.placeholder.com/348x195"
-                    />
+                  {this.checkImages(product.image)}
                   </div>
                   {/* {this.checkImages(product.image)} */}
                   <div className="card-info p-3">
