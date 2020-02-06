@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
-import styles from "../components/products.module.css"
+import styles from "../components/products.module.css";
 import Button from "react-bootstrap/Button";
-import { Alert } from 'react-alert'
-
 
 const validate = values => {
   let errors = [];
@@ -29,10 +27,20 @@ class ListingForm extends Component {
   //     )
   // }
 
-  renderField = ({ input, type, placeholder, meta: { touched, error, warning } }) => {
+  renderField = ({
+    input,
+    type,
+    placeholder,
+    meta: { touched, error, warning }
+  }) => {
     return (
       <div>
-        <input {...input} type={type} className="myInput" placeholder={placeholder}/>
+        <input
+          {...input}
+          type={type}
+          className="myInput"
+          placeholder={placeholder}
+        />
         {touched && error && <div style={{ color: "red" }}>{error}</div>}
       </div>
     );
@@ -57,7 +65,7 @@ class ListingForm extends Component {
           />
           {touched && error && <div style={{ color: "red" }}>{error}</div>}
         </div>
-      )
+      );
     }
     return (
       <div>
@@ -73,36 +81,33 @@ class ListingForm extends Component {
     );
   };
 
-
-
   render() {
-  //   let widget = window.cloudinary.createUploadWidget(
-  //     {
-  //       cloudName: "medicinepower",
-  //       uploadPreset: "medicinepower"
-  //     },
-  //     (error, result) => {
-  //       if (!error && result && result.event === "success") {
-  //         this.setState((prevState) => {
-  //           return {
-  //             url: [...prevState.url, result.info.url]
-  //           }
-  //         })
-  //       }
-  //     }
-  //   );
+    //   let widget = window.cloudinary.createUploadWidget(
+    //     {
+    //       cloudName: "medicinepower",
+    //       uploadPreset: "medicinepower"
+    //     },
+    //     (error, result) => {
+    //       if (!error && result && result.event === "success") {
+    //         this.setState((prevState) => {
+    //           return {
+    //             url: [...prevState.url, result.info.url]
+    //           }
+    //         })
+    //       }
+    //     }
+    //   );
 
+    // const showWidget = () => {
+    //   widget.open();
+    //   console.log(widget);
 
-  // const showWidget = () => {
-  //   widget.open();
-  //   console.log(widget);
-    
-  // };
+    // };
 
     return (
       <div className={styles.formWrapper}>
         <form className={styles.productForm} onSubmit={this.props.handleSubmit}>
-        <h1>NEW LISTING</h1>
+          <h1>NEW LISTING</h1>
           <div>
             <Field
               name="title"
@@ -131,16 +136,11 @@ class ListingForm extends Component {
               placeholder="Description:"
             />
           </div>
-          <div className='d-flex justify-content-between'>
-
-         
-      <Button onClick={this.props.showWidget} >Choose File</Button>
-          <Button type="submit" >Create Product</Button> 
-          <Button  onClick={this.props.reset}>Reset</Button>
-     
-
+          <div className="d-flex justify-content-between">
+            <Button onClick={this.props.showWidget}>Choose File</Button>
+            <Button type="submit">Create Product</Button>
+            <Button onClick={this.props.reset}>Reset</Button>
           </div>
-  
         </form>
       </div>
     );

@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Button from "react-bootstrap/Button";
-import Logout from "./Logout";
-import AllListingAdmin from "./AllListingsAdmin";
-import LogIn from "./LogIn";
-
 class NavBar extends Component {
   state = {
     numberOfItems: 0
@@ -37,7 +32,9 @@ class NavBar extends Component {
             src={require("../images/medicinepower.png")}
           /> */}
         </a>
-        <a className="navbar-brand">Medicine Power</a>
+        <a className="navbar-brand" href="/">
+          Medicine Power
+        </a>
         <button
           className="navbar-toggler collapsed"
           type="button"
