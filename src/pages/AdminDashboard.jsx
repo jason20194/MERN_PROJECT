@@ -5,6 +5,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Button from "react-bootstrap/Button";
 import Logout from "../components/Logout";
+import "../pages/AdminDashboard.css";
 
 import { Link } from "react-router-dom";
 
@@ -23,12 +24,13 @@ class AdminDashboard extends Component {
   render() {
     return (
       <div>
+        <div className="logout-button">
+          <Logout />
+        </div>
         <Link to={`/new_listing`}>
           <Button className="create-listing">Create Listing</Button>
         </Link>
-        <Button>
-          <Logout />
-        </Button>
+
         <Tabs
           defaultActiveKey="listings"
           transition={false}

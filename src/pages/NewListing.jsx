@@ -3,7 +3,6 @@ import MyForm from "../components/newListingForm";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import { Redirect } from "react-router-dom";
 
 class NewListing extends Component {
   state = {

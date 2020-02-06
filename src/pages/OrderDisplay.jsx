@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import "../components/order.css";
-import { Redirect, Link } from "react-router-dom";
-import { Table } from "reactstrap";
+import { Link } from "react-router-dom";
 
 class OrderDisplay extends Component {
   state = {

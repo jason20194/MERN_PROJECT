@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import EditForm from "../components/EditForm";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 
 class EditListing extends Component {

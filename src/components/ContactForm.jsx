@@ -44,7 +44,7 @@ class ContactForm extends Component {
   render() {
     return (
       <div className="card-container">
-        <div class="card2">
+        <div className="card2">
           <h1 className="contact-form-header"> CONTACT US</h1>
           <Form onSubmit={this.handleSubmit} style={{ width: "80%" }}>
             <FormGroup>

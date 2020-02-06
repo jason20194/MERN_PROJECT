@@ -4,7 +4,7 @@ import AddToCart from "../components/AddToCart";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/products.css";
-import { Card, Placeholder } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import ReactImageFallback from "react-image-fallback";
 
 class AllProducts extends Component {
@@ -73,7 +73,15 @@ class AllProducts extends Component {
                     <Card.Content extra>
                       {" "}
                       In Stock:{" "}
-                      {product.available ? <span>✅</span> : <span>❌</span>}
+                      {product.available ? (
+                        <span role="img" aria-label="available">
+                          ✅
+                        </span>
+                      ) : (
+                        <span role="img" aria-label="unvailable">
+                          ❌
+                        </span>
+                      )}
                     </Card.Content>
                     <Link to={`/listing/${product._id}`}>
                       <Button className="product-details">
