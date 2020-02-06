@@ -47,18 +47,14 @@ class OrderDisplay extends Component {
           ? order !== null && (
               <div className="font">
                 {console.log("order", order)}
-                <h1 className="title">Order Details:</h1>
-                <hr></hr>
+                <h1 className="product-title2">Order Details</h1>
                 <p>Order ID: {order._id}</p>
-
-                <h1>Customer Details:</h1>
-                <hr></hr>
+                <h1 className="product-title2">Customer Details:</h1>
                 <p>Name: {order.customer.name} </p>
                 <p>Address: {order.customer.address} </p>
                 <p>Email: {order.customer.email} </p>
                 <p>
-                  <h1>Products:</h1>
-                  <hr></hr>
+                  <h1 className="product-title2">Products:</h1>
                   Items:{" "}
                   {order.items.map((item, index) => (
                     <p>{item.title}</p>

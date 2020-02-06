@@ -76,3 +76,16 @@
   font-family: "PT Sans Narrow", sans-serif;
   font-size: 150%;
 }
+
+.product-description2 {
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 3.2em;
+  line-height: 1.8em;
+}
+
+.product-title2 {
+  font-family: "PT Sans Narrow", sans-serif;
+  text-decoration: underline;
+}

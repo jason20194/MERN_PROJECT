@@ -60,7 +60,7 @@ class LogIn extends Component {
     return (
       <div className="card-container">
         <div className="card2">
-          <h1 className="login-form">LOGIN</h1>
+          <h1 className="product-title2">LOGIN</h1>
           <br></br>
           <Form onSubmit={this.handleSubmit} style={{ width: "80%" }}>
             <FormGroup>

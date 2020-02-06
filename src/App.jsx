@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/NavBar";
 
 import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import AllProducts from "./pages/AllProducts";
 import Product from "./pages/Product";
@@ -48,7 +47,6 @@ class App extends React.Component {
           <Navbar />
           <Switch>
             <Route path="/" component={Home} exact={true} />
-            <Route path="/about_us" component={AboutUs} />
             <Route path="/contact" component={Contact} />
             <Route path="/all_products" component={AllProducts} />
             <Route path="/listing/:id" component={Product} />
