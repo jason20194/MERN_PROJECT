@@ -18,7 +18,8 @@ class Stripe extends Component {
     ev.preventDefault();
     const { currentTarget } = ev;
     const fD = new FormData(currentTarget);
-
+    // const orderId = this.props.orderId
+    // console.log('stripe orderId', orderId)
     const customerInfo = {
       name: fD.get("name"),
       address: fD.get("address"),
@@ -31,11 +32,11 @@ class Stripe extends Component {
 
     const cartTotal = this.props.cartTotal;
 
-    this.setState({ paid: true });
+    // this.setState({ paid: true });
 
     // axios request to the backend with token to process the payment
     axios
-      .post("/charge", {
+      .post(`${process.env.REACT_APP_BACK_END}/charge`, {
         method: "POST",
         headers: { "Content-Type": "text/plain" },
         tokenId: token.id,
@@ -43,6 +44,8 @@ class Stripe extends Component {
       })
       .then(response => {
         localStorage.removeItem("products");
+        console.log("inside response", this.state);
+
         this.redirect();
       })
       .catch(err => console.log("this is the error" + err));
@@ -50,7 +53,12 @@ class Stripe extends Component {
 
   redirect = () => {
     console.log("redirect called", this.props);
-    this.props.history.push("/thank_you");
+    // this.props.history.push("/thank_you");
+
+    this.props.history.push({
+      pathname: '/thank_you',
+      state: { orderId: this.props.orderId }
+    })
   };
 
   render() {
@@ -101,5 +109,3 @@ class Stripe extends Component {
 }
 
 export default withRouter(injectStripe(Stripe));
-
-// export default injectStripe(Stripe);

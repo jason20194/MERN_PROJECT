@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AddToCart from "../components/AddToCart";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/products.css";
 import "../components/Carousel.css";
 import Carousel from "react-bootstrap/Carousel";
-import { Container, Row, Col } from "reactstrap";
-import { isBrowser } from "react-device-detect";
 
 class Product extends Component {
   state = {
@@ -16,7 +14,7 @@ class Product extends Component {
 
   componentDidMount = async () => {
     const response = await axios.get(
-      `http://localhost:5000/listings/${this.props.match.params.id}`
+      `${process.env.REACT_APP_BACK_END}/listings/${this.props.match.params.id}`
     );
     console.log(response.data);
     this.setState({ product: response.data });
@@ -27,7 +25,7 @@ class Product extends Component {
       return null;
     }
     if (typeof images === String) {
-      return <img width="400" src={images} alt="product pic" />;
+      return <img width="400" src={images} alt="product" />;
     }
     if (images.length === 0) {
       return null;
@@ -41,7 +39,7 @@ class Product extends Component {
               <img
                 className="d-block w-100 carousel-img"
                 src={image}
-                alt="Product Picture"
+                alt="Product"
               />
             </Carousel.Item>
           ))}
@@ -49,6 +47,8 @@ class Product extends Component {
       </div>
     );
   };
+
+  // Line 66:38:  Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby  jsx-a11y/accessible-emoji
 
   render() {
     const { product } = this.state;
@@ -65,17 +65,27 @@ class Product extends Component {
             <div className="in-stock ml-1">
               <h6>
                 In Stock:{" "}
-                {product.available ? <span> ✅</span> : <span> ❌</span>}
+                {product.available ? (
+                  <span role="img" aria-label="available">
+                    {" "}
+                    ✅
+                  </span>
+                ) : (
+                  <span role="img" aria-label="unvailable">
+                    {" "}
+                    ❌
+                  </span>
+                )}
               </h6>
             </div>
             <div className="product-buttons d-flex align-items-center mt-3">
-            {product.available ? <AddToCart product={product} /> :null}
+              {product.available ? <AddToCart product={product} /> : null}
               <br></br>
               <Link to={`/all_products`}>
                 <Button
                   style={{ backgroundColor: "#000000" }}
                   size="md"
-                  className="back-to-product-btn"
+                  className="back-to-product-btn back-to-products"
                 >
                   Back to Product page
                 </Button>

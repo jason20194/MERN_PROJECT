@@ -18,15 +18,6 @@ const validate = values => {
 };
 
 class EditForm extends Component {
-  // renderDropdown = () => {
-  //     return(
-  //         <select name="productAvailability">
-  //           <option value="In Stock">In Stock</option>
-  //           <option value="Out of Stock">Out of Stock</option>
-  //         </select>
-  //     )
-  // }
-
   renderField = ({
     input,
     type,
@@ -68,28 +59,6 @@ class EditForm extends Component {
   };
 
   render() {
-    // let widget = window.cloudinary.createUploadWidget(
-    //   {
-    //     cloudName: "medicinepower",
-    //     uploadPreset: "medicinepower"
-    //   },
-    //   (error, result) => {
-    //     if (!error && result && result.event === "success") {
-    //       this.setState((prevState) => {
-    //         return {
-    //           url: [...prevState.url, result.info.url]
-    //         }
-    //       })
-    //     }
-    //   }
-    // );
-
-    // const showWidget = () => {
-    //   widget.open();
-    //   console.log(widget);
-
-    // };
-
     return (
       <div className={styles.formWrapper}>
         <form onSubmit={this.props.handleSubmit}>

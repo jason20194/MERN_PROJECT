@@ -13,6 +13,7 @@ import Product from "./pages/Product";
 import CartPage from "./pages/CartPage";
 import Payment from "./pages/Payment";
 import ThankYou from "./pages/ThankYou";
+import Errors from "./pages/Errors";
 import AdminDashboard from "./pages/AdminDashboard";
 import EditListing from "./pages/EditListing";
 import NewListing from "./pages/NewListing";
@@ -54,6 +55,7 @@ class App extends React.Component {
             <Route path="/cart" component={CartPage} />
             <Route path="/payment" component={Payment} />
             <Route path="/thank_you" component={ThankYou} />
+            <Route path="/error" component={Errors} />
             <Route path="/admin" component={AdminDashboard} exact={true} />
             <Route path="/admin/order/:id" component={OrderDisplay} />
             <Route

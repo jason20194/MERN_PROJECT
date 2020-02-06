@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import "../components/order.css";
-import { Redirect, Link } from "react-router-dom";
-import { Table } from "reactstrap";
+import { Link } from "react-router-dom";
 
 class OrderDisplay extends Component {
   state = {
@@ -17,7 +16,7 @@ class OrderDisplay extends Component {
       this.redirect();
     }
     const response = await axios.get(
-      `http://localhost:5000/orders/${this.props.match.params.id}`
+      `${process.env.REACT_APP_BACK_END}/orders/${this.props.match.params.id}`
     );
     this.setState({ order: response.data });
   };
@@ -30,7 +29,7 @@ class OrderDisplay extends Component {
     console.log("the id is", id);
 
     try {
-      await axios.put(`http://localhost:5000/orders/fulfil/${id}`);
+      await axios.put(`${process.env.REACT_APP_BACK_END}/orders/fulfil/${id}`);
 
       this.setState({ fulfilled: true });
     } catch (err) {

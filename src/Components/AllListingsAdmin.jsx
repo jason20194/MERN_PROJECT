@@ -1,26 +1,21 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
-// import Modal from "react-bootstrap/Modal";
-// import DeleteListing from "./DeleteConfirmation";
 
 export class AllListingAdmin extends Component {
   state = {
     data: null
-    // setShow: false
   };
   async componentDidMount() {
     try {
       const response = await axios.get(
-        "https://desolate-coast-17419.herokuapp.com/listings/all"
+        process.env.REACT_APP_BACK_END + "/listings/all"
       );
       const { data } = response;
-      // console.log(data);
 
       this.setState({ data });
-      // console.log(this.state);
     } catch (err) {
       console.log(err);
     }

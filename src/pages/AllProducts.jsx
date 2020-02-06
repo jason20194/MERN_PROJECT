@@ -4,7 +4,7 @@ import AddToCart from "../components/AddToCart";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../components/products.css";
-import { Card, Placeholder } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import ReactImageFallback from "react-image-fallback";
 
 class AllProducts extends Component {
@@ -15,7 +15,7 @@ class AllProducts extends Component {
   async componentDidMount() {
     try {
       const response = await axios.get(
-        `https://desolate-coast-17419.herokuapp.com/listings/all`
+        `${process.env.REACT_APP_BACK_END}/listings/all`
       );
       const { data } = response;
       this.setState({ data });
@@ -47,12 +47,15 @@ class AllProducts extends Component {
     const { data } = this.state;
 
     return (
-      <div className="all_products container d-flex">
+      <div className="all_products container d-flex all-products">
         {data &&
           data.map((product, index) => {
-            // console.log(product);
             return (
-              <Card style={{ width: "350px" }}>
+              <Card
+                key={index}
+                className="each-product"
+                style={{ width: "350px" }}
+              >
                 <Card.Content>
                   <div>
                     <ReactImageFallback
@@ -70,10 +73,20 @@ class AllProducts extends Component {
                     <Card.Content extra>
                       {" "}
                       In Stock:{" "}
-                      {product.available ? <span>✅</span> : <span>❌</span>}
+                      {product.available ? (
+                        <span role="img" aria-label="available">
+                          ✅
+                        </span>
+                      ) : (
+                        <span role="img" aria-label="unvailable">
+                          ❌
+                        </span>
+                      )}
                     </Card.Content>
                     <Link to={`/listing/${product._id}`}>
-                      <Button>Product Details</Button>
+                      <Button className="product-details">
+                        Product Details
+                      </Button>
                     </Link>
                     {product.available ? <AddToCart product={product} /> : null}
                   </div>

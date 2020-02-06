@@ -3,7 +3,6 @@ import MyForm from "../components/newListingForm";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import { Redirect } from "react-router-dom";
 
 class NewListing extends Component {
   state = {
@@ -30,7 +29,7 @@ class NewListing extends Component {
     };
     try {
       await axios.post(
-        "http://localhost:5000/listings/new",
+        `${process.env.REACT_APP_BACK_END}/listings/new`,
         {
           ...values,
           image: this.state.url

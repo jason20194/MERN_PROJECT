@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Elements, StripeProvider } from "react-stripe-elements";
 import { Link } from "react-router-dom";
 
 import Col from "react-bootstrap/Col";
@@ -9,7 +8,6 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { updateCart } from "../actions/cartAction";
 import RemoveFromCart from "../components/RemoveFromCart";
-import Stripe from "../components/Stripe";
 
 // import CheckoutForm from "../components/CheckoutForm";
 
@@ -76,6 +74,11 @@ class CartPage extends Component {
             </Col>
           </Row>
         </Container>
+        {totalCart ? (
+          <Link to="/payment">
+            <Button>Checkout</Button>
+          </Link>
+        ) : null}
       </div>
     );
   }

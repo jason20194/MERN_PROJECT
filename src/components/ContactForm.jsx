@@ -14,7 +14,8 @@ class ContactForm extends Component {
     this.state = {
       name: "",
       email: "",
-      message: ""
+      message: "",
+      successMessage: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,11 +30,13 @@ class ContactForm extends Component {
 
     const { name, email, message } = this.state;
     try {
-      await axios.post("/api/form", {
+      let response = await axios.post("/api/form", {
         name,
         email,
         message
       });
+      this.setState({ successMessage: response.data });
+      // console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -41,7 +44,7 @@ class ContactForm extends Component {
   render() {
     return (
       <div className="card-container">
-        <div class="card2">
+        <div className="card2">
           <h1 className="contact-form-header"> CONTACT US</h1>
           <Form onSubmit={this.handleSubmit} style={{ width: "80%" }}>
             <FormGroup>
@@ -57,6 +60,7 @@ class ContactForm extends Component {
             <FormGroup>
               <Label for="Email"></Label>
               <Input
+                className="email"
                 type="email"
                 name="email"
                 placeholder="Your Email.."
@@ -67,6 +71,7 @@ class ContactForm extends Component {
             <FormGroup>
               <Label for="Message"></Label>
               <Input
+                className="message"
                 type="textarea"
                 style={{ height: 200 }}
                 name="message"
@@ -76,9 +81,12 @@ class ContactForm extends Component {
               />
             </FormGroup>
 
-            <Button>Submit</Button>
+            <Button className="submit-button">Submit</Button>
           </Form>
         </div>
+        {this.state.successMessage ? (
+          <p style={{ color: "green" }}>{this.state.successMessage}</p>
+        ) : null}
       </div>
     );
   }

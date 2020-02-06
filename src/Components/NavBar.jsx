@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Button from "react-bootstrap/Button";
-import Logout from "./Logout";
-import AllListingAdmin from "./AllListingsAdmin";
-import LogIn from "./LogIn";
-
 class NavBar extends Component {
   state = {
     numberOfItems: 0
@@ -28,10 +23,6 @@ class NavBar extends Component {
   }
 
   render() {
-    // let token = localStorage.getItem("token");
-
-    // console.log(token);
-
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
@@ -41,7 +32,9 @@ class NavBar extends Component {
             src={require("../images/medicinepower.png")}
           /> */}
         </a>
-        <a className="navbar-brand">Medicine Power</a>
+        <a className="navbar-brand" href="/">
+          Medicine Power
+        </a>
         <button
           className="navbar-toggler collapsed"
           type="button"
@@ -61,7 +54,7 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/all_products">
+              <a className="nav-link all-products" href="/all_products">
                 Products
               </a>
             </li>
@@ -71,7 +64,7 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contact">
+              <a className="nav-link contact" href="/contact">
                 Contact
               </a>
             </li>
@@ -83,6 +76,9 @@ class NavBar extends Component {
                   </span>
                 </i>
               </a>
+            </li>
+            <li className="nav-item">
+             <Logout/>
             </li>
           </ul>
         </div>
