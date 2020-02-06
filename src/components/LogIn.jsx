@@ -66,6 +66,7 @@ class LogIn extends Component {
             <FormGroup>
               <Label for="Username">Username:</Label>
               <Input
+                className="username"
                 type="username"
                 name="username"
                 onChange={this.handleChange}
@@ -74,12 +75,13 @@ class LogIn extends Component {
             <FormGroup>
               <Label for="Password">Password:</Label>
               <Input
+                className="password"
                 type="password"
                 name="password"
                 onChange={this.handleChange}
               />
             </FormGroup>
-            <Button>Log In</Button>
+            <Button className="admin-login">Log In</Button>
           </Form>
         </div>
       </div>

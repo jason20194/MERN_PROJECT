@@ -15,7 +15,7 @@ class Product extends Component {
 
   componentDidMount = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/listings/${this.props.match.params.id}`
+      `${process.env.REACT_APP_BACK_END}/listings/${this.props.match.params.id}`
     );
     console.log(response.data);
     this.setState({ product: response.data });
@@ -74,7 +74,7 @@ class Product extends Component {
                 <Button
                   style={{ backgroundColor: "#000000" }}
                   size="md"
-                  className="back-to-product-btn"
+                  className="back-to-product-btn back-to-products"
                 >
                   Back to Product page
                 </Button>

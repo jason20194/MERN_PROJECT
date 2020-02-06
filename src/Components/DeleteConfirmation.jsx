@@ -17,7 +17,7 @@ class DeleteConfirmation extends Component {
     }
 
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/listings/${this.props.match.params.id}`
+      `${process.env.REACT_APP_BACK_END}/listings/${this.props.match.params.id}`
     );
     console.log(response.data);
     this.setState({ listing: response.data });
@@ -52,7 +52,7 @@ class DeleteConfirmation extends Component {
     console.log("the id is", id);
     try {
       await axios.delete(
-        `${process.env.REACT_APP_BACKEND_URL}/listings/delete/${id}`,
+        `${process.env.REACT_APP_BACK_END}/listings/delete/${id}`,
         postData
       );
       // const order = response.data;
