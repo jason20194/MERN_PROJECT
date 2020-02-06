@@ -21,7 +21,7 @@ class CartPage extends Component {
   render() {
     const data = this.props.products;
     if (!data) {
-      return <h1>no items in cart</h1>;
+      return <h1>No items in cart</h1>;
     }
     const totalCart = data.reduce((a, b) => {
       return a + parseFloat(b.price);
@@ -67,7 +67,7 @@ class CartPage extends Component {
           <Row className="product-font3 py-3">
             <Col sm={8}>
               <Link to="/payment">
-                <Button>Checkout</Button>
+                <Button className="checkout-button">Checkout</Button>
               </Link>
             </Col>
 

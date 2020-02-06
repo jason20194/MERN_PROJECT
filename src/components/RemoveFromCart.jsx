@@ -28,7 +28,7 @@ class RemoveFromCart extends Component {
         }}
         onClick={this.updateLocalStorageAndDispatch}
       >
-        Remove from cart
+        Remove
       </Button>
     );
   }
