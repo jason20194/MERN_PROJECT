@@ -53,7 +53,7 @@ class EditListing extends Component {
       }
     };
     const response = await axios.put(
-      `http://localhost:5000/listings/edit/${this.props.match.params.id}`,
+      `${process.env.REACT_APP_BACKEND_URL}/listings/edit/${this.props.match.params.id}`,
       values,
       postData
     );

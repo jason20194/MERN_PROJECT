@@ -30,7 +30,7 @@ class NewListing extends Component {
     };
     try {
       await axios.post(
-        "http://localhost:5000/listings/new",
+        `${process.env.REACT_APP_BACKEND_URL}/listings/new`,
         {
           ...values,
           image: this.state.url

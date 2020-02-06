@@ -15,8 +15,9 @@ class DeleteConfirmation extends Component {
     if (!token) {
       this.redirect();
     }
+
     const response = await axios.get(
-      `http://localhost:5000/listings/${this.props.match.params.id}`
+      `${process.env.REACT_APP_BACKEND_URL}/listings/${this.props.match.params.id}`
     );
     console.log(response.data);
     this.setState({ listing: response.data });
