@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+import { updateCart } from "../actions/cartAction";
 
 class ThankYou extends Component {
   componentDidMount = () => {
@@ -21,4 +22,14 @@ class ThankYou extends Component {
   }
 }
 
-export default ThankYou;
+const mapStateToProps = state => {
+  return {
+    products: state.cart.products
+  };
+};
+
+const mapDispatchProps = {
+  updateCart
+};
+
+export default connect(mapStateToProps, mapDispatchProps)(ThankYou);
